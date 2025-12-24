@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        /* 모든 태그에 바깥여백 0 안여백 0 */
+    }
+    .header{
+        background-color: lightgray;
+        /* 배경색 */
+        height: 100px;
+        /* 높이 */
+        text-align: center;
+        /* 가운데 정렬 */
+        line-height: 100px;
+        /* 줄간격 */
+        font-size: 30px;
+        /* 기본 글자크기는 16ㅔㅌ */
+    }
+    .nav{
+        background-color: pink;
+        height: 50px;
+    }
+   .nav-menu{
+        list-style: none;
+        /* ul 블릿제거 */
+    }
+    .nav-menu li{
+        float: left;
+        /* li를 가로로 배치 */
+        width: 25%;
+        text-align: center;
+        /* 가운데 정렬 */
+        line-height: 50px;
+        /* 줄간격 */
+    }
+    .nav-menu li a{
+        text-decoration: none;
+        /* 밑줄 제거 */
+        color : black
+    }
+    .main{
+        background-color: lightblue;
+        height: 400px;
+        text-align: center;
+
+    }
+    .footer{
+        background-color: black;
+        color: white;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+    }
+
+
+
+</style>    
+</head>
+<body>
+    <div class="header">헤더</div>
+    <div class="nav">
+        <ul class="nav-menu">
+            <li><a href="https://nate.com">Mainmenu1</a></li>
+            <li><a href="basic1.html">Mainmenu2</a></li>
+            <li><a href="">Mainmenu3</a></li>
+            <li><a href="">Mainmenu4</a></li>
+        </ul>
+    </div>
+    <div class="main">여긴본문</div>
+    <div class="footer">여긴푸터</div>
+</body>
+</html>
