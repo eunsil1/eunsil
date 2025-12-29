@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* css - cascade style sheet(단계별 스타일 시트) */
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+  header{
+    background-color:lightgray;
+    height: 100px;
+    text-align: center;
+    }
+  header h1{
+    line-height: 100px;
+    font-size: 30px;
+  }
+  nav{
+    background-color: pink;
+    height: 50px;
+  }
+  nav ul{
+    list-style: none;
+  }
+  nav ul li{
+    float: left;
+    width: 25%;
+    text-align: center;
+    line-height: 50px;
+  }
+  nav ul li a{
+    text-decoration: none;
+    color: black;
+  }
+  nav ul li a:hover{
+    color: red;
+    /* a태그에 마우스를 올렸을때 빨간색 */
+  }
+
+  main{
+    background-color: lightblue;
+    height: 500px;
+  }
+  section{
+    background-color: yellowgreen;
+    height: 500px;
+    float: left;
+    width: 75%;
+  }
+  aside{
+    background-color: lightcoral;
+    height: 500px;
+    float: left;
+    width: 25%;
+  }
+
+  footer{
+    background-color: black;
+    color: white;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+  }
+  </style>
+
+</head>
+<body>
+  <header>
+    <h1>시멘틱 태그(의미를 가진 태그)</h1>
+
+  </header>
+      <nav>
+        <ul>
+          <li><a href="basic.html">블럭요소</a></li>
+          <li><a href="basic(인라인).html">인라인요소</a></li>
+          <li><a href="basic2(인라인블럭).html">인라인블럭요소</a></li>
+          <li><a href="../1223/legacy.html">레이아웃구성(레거시)</a></li>
+          <!-- ..은 상위폴더로 나감 -->
+        </ul>
+      </nav>
+      <main>
+        <section>
+          <h2>섹션제목</h2>
+          <p>섹션내용</p>
+        </section>
+        <aside>
+          <h2>사이드</h2>
+          <p>사이드내용</p>
+        </aside>
+      </main>
+      <footer>
+        <p>푸터영역</p>
+      </footer>
+  
+</body>
+</html>
