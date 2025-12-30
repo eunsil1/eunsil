@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>레드향 주문하기</h1>
+    <form action="">
+        <fieldset>
+            <legend>상품선택</legend>
+        </fieldset>
+        <fieldset>
+            <legend>배송정보</legend>
+            <ul>
+                <li>
+                    <label for="user-name">이름</label>
+                    <input type="text" id="user-name">
+                </li>
+                <li>
+                    <label for="pass">패스워드</label>
+                    <input type="password" id="pass">
+                </li>
+                <li>
+                    <label for="addr">배송 주소</label>
+                    <input type="text" id="addr">
+                </li>
+                <li>
+                    <label for="mail">이메일 주소</label>
+                    <input type="text" id="mail">
+                </li>
+                <li>
+                    <label for="phone">연락처</label>
+                    <input type="tel" id="phone" size="11"
+                    maxlength="11">
+                </li>
+                <li>
+                    <label for="d-day">배송지정(주문일로부터 최소 3일 이후)</label>
+                    <input type="date" id="d-day">
+                </li>
+                <li>
+                    <label for="memo">메모</label>
+                    <textarea id="memo" cols="40" rows="4"></textarea>
+                    <!-- 메모칸 / 40자까지 4줄 -->
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+</body>
+</html>

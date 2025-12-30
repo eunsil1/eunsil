@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    .container{
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        /* 좌우 바깥여백 auto(자동) 화면에 중앙 정렬 */
+    }
+    table{
+        border: 1px solid #000;
+        border-collapse: collapse;
+        text-align: center;
+        /* 상속성 때문에 tr,td도 같이 중앙정렬 됨 */
+    }
+    td,th{
+        border: 1px solid #000;
+        padding: 10px 20px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>레드향</h1>
+    <p>껍질에 붉은 빛이 돌아 <strong>레드향</strong>이라 불린다.</p>
+    <p>레드향은 <em>한라봉과 귤을 교배한</em> 것으로 <br/>
+    일반 귤보다 2~3배 크고, 과육이 붉고 통통하다.</p>
+    <blockquote><em>비타민C</em>와 <i>비타민D</i>가 풍부해 <br/>
+    <strong>혈액순환, 감기예방</strong>등에 좋은 것으로 알려져있다.</blockquote>
+    <h2>레드향 샐러드 레시피</h2>
+    <h2>상품구성</h2>
+    <table>
+        <caption>선물용과 가정용 상품 구성</caption>
+        <colgroup>
+            <!-- * 칸(열) 담당 그룹, css 스타일 쓰듯이 쓰는게 요즘 문법 -->
+            <col style="width: 150px; background-color: #ccc;"> 
+            <col style="width: 200px;"> 
+            <col style="width: 150px;"> 
+            <col style="width: 150px;"> 
+    
+        </colgroup>
+        <thead>
+            <tr style="background-color: #ccc;">
+                <th>용도</th>
+                <th>중량</th>
+                <th>개수</th>
+                <th>가격</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">선물용</td>
+                <!-- 행 병합 -->
+                <td>3kg</td>
+                <td>11~16과</td>
+                <td>35,000</td>
+            </tr>
+            <tr>
+                <td>5kg</td>
+                <td>18~26과</td>
+                <td>52,000</td>
+            </tr>
+            <tr>
+                <td rowspan="2">가정용</td>
+                <td>3kg</td>
+                <td>11~16과</td>
+                <td>30,000</td>
+            </tr>
+            <tr>
+                <td>5kg</td>
+                <td>18~26과</td>
+                <td>47,000</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
