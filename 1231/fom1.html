@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    ul{list-style: none;}
+</style>
+
+</head>
+<body>
+    <h2>입력폼 기본구조</h2>
+    <form action="/summit-path" method="post">
+        <!-- required : 필수입력 / maxlength : 최대길이 / placeholder : 안내문구-->
+     <ul>
+        <li>
+            <label for="user_id">아이디:</label>
+            <input type="text" id="user_id" name="user_id" 
+            required placeholder="아이디입력" maxlength="10" size="12">
+            
+        </li>
+
+        <li>
+            <label for="username">이름:</label>
+            <input type="text" id="username" name="username">
+        </li>
+
+        <li>
+            <label for="pass">비번:</label>
+            <input type="password" id="pass" name="pass">
+        </li>
+
+        <li>
+            <label for="email">이메일:</label>
+            <input type="email" id="email" name="email">
+        </li>
+
+        <li>
+            <label for="intro">자기소개:</label>
+            <textarea id="intro" name="intro" rows="4" cols="40"></textarea>
+        </li>
+
+        <li>
+            <button type="submit">제출하기</button>
+        </li>
+    </ul>
+
+    </form>
+
+<form>
+    지역:
+    <select name="area">
+        <option value="">선택</option>
+        <option value="seoul">서울</option>
+        <option value="busan">부산</option>
+        <option value="daegu">대구</option>
+    </select>
+</form>
+<form action="">
+    성별:
+    <input type="radio" name="gender" value="M"> 남
+    <input type="radio" name="gender" value="F" selected> 여
+    <br><br>
+
+    관심사:
+    <input type="checkbox" name="hobby" value="game"> 게임
+    <input type="checkbox" name="hobby" value="music"> 음악
+    <input type="checkbox" name="hobby" value="coding"> 코딩
+
+</form>
+</body>
+</html>

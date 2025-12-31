@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>기본테이블</h2>
+    <table border ="1">
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+        </tr>
+        <tr>
+            <td>영화</td>
+            <td>12</td>
+        </tr>
+    </table>
+
+    <h2>테이블 구조 분리(실무 중요)</h2>
+    <!-- <thead>제목영역 <tbody>데이터영역 <tfoot>합계/요약 -->
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>과목</th>
+                <th>점수</th>
+                <!-- th 제목 행 , 글씨 진하게, 중앙정렬-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>국어</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>수학</td>
+                <td>95</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>평균</th>
+                <th>92.5</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h2>셀병합(rowspan(세로) colspan(가로))</h2>
+
+<table border="1">
+    <tr>
+        <th>교사</th>
+        <th>과목</th>
+        <th>강의실</th>
+    </tr>
+    <tr>
+        <td>1교시</td>
+        <td colspan="2">자바 프로그래밍(특강실)</td>
+    </tr>
+</table>
+
+</body>
+</html>

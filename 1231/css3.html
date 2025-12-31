@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+p{
+    color: red;
+}
+.bb{
+    color: blue;
+}
+/* 클래스는 우선순위이기 때문에  지정된 색상으로 적용 */
+.vio{
+    background-color: violet;
+}
+#vio{
+    background-color: green;
+}
+/* id가 class 보다 우선순위가 더 높다 */
+/* id는 중복 불가 class는 중복 가능*/
+.nam{
+    background-color: darkblue;
+}
+h2{
+    background-color: yellow !important;
+}
+</style>
+</head>
+<body>
+    <h1 class="vio">나는 보라색</h1>
+    <h1 id="vio" class="vio">나는 초록색</h1>
+    <p>나는 빨간색</p>
+    <p class="bb">나는 파란색</p>
+
+    <h2>나는 노란색</h2>
+    <h2 class="nam">나는 남색</h2>
+</body>
+</html>

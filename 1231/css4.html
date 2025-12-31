@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+ul{
+    list-style: none;
+}
+.menu{
+    color: red;
+    font-weight: bold;
+}
+/* div p{color: green;} */
+.box p{color: green;}
+
+/* form input */
+form > input[type="text"]{
+    border: 2px solid blue;
+}
+
+img[alt="강쥐2"]{
+    border: 5px solid orange ;
+}
+
+</style>
+</head>
+<body>
+    <!-- 문제
+     1. 블릿없애기
+     2. menu 클래스에 글자색 빨간색, 글자굵기 -->
+    <ul>
+    <li class="menu">홈</li>
+    <li class="menu">소개</li>
+    <li>공지사항</li>
+</ul>
+    <!-- 자손 선택자 -->
+    <!-- box 클래스 안에 있는 p태그만 초록색 -->
+<div class="box">
+    <p>문장 1</p>
+    <p>문장 2</p>
+</div>
+
+<p>문장 3</p>
+
+
+<!-- 자식 선택자 + 속성 선택자 -->
+ <!-- form 바로 아래 있는 input 태그만 선택 -->
+  <!-- 테두리를 파란색 -->
+<form>
+    <input type="text" placeholder="아이디">
+    <input type="password" placeholder="비밀번호">
+    <input type="submit" value="로그인">
+</form>
+
+    <img src="images/dog1.jpg" width="200" alt="강쥐1">
+    <img src="images/dog2.jpg" width="200" alt="강쥐2">
+    <img src="images/dog3.jpg" width="200" alt="강쥐3">
+
+
+</body>
+</html>
