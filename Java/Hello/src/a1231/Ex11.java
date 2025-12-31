@@ -18,7 +18,7 @@ public class Ex11 {
             if(student){
                 System.out.println("학생(초등학생~대학생): " + (price /2) + "원");
             }
-        }else if(age >= 21 && age < 65){
+        }else if(age > 20 && age < 65){
             System.out.println("일반 성인 : " +  price + "원");
         }else if(age < 7){
             System.out.println("7세 미만 : 무료");
