@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+body{
+  font-family: "Nanum Gothic", sans-serif;
+}
+/* 본문에 모든 글씨체는 나눔 고딕입니다. */
+.font1{
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+}
+.font2{
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  /* 글자 기울임 */
+  font-size: 32px;
+}
+.font3{
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 32px;
+}
+
+  /* 그룹 선택자 h1, h2, h3 모두에 color blue */
+h1,h2,h3{color: blue;}
+
+p{background-color: yellow;}
+
+.pink{background-color: pink;}
+/* p.pink{background-color : pink;} */
+
+</style>
+</head>
+<body>
+    <h1>파란색</h1>
+    <h2>파란색</h2>
+    <h3>파란색</h3>
+    <p>백그라운드 노란색</p>
+    <p class="pink">백그라운드 핑크색</p>
+    <p class="font1">첫번째 글자입니다.</p>
+    <p class="font2">두번째 글자입니다.</p>
+    <p class="font3">세번째 글자입니다.</p>
+</body>
+</html>
