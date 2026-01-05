@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  /* html을 디자인 할 수 있다. */
+.box{
+  width: 150px; /* 넓이 */
+  height: 150px; /* 높이 */
+  
+}
+.box1{
+  background-color: aqua;
+  margin: 10px;
+  /* 바깥여백 : 위 오른쪽 아래 왼쪽 10px씩 */
+}
+.box2{
+  background-color: yellow;
+  border: 1px solid #333;
+  margin: 10px 20px 30px 40px;
+  /* 바깥여백 : 위 10 오른쪽 20 아래 30 왼쪽 40px */
+}
+.box3{
+  background-color: blue;
+  /* margin-left: 900px; */
+  margin-left: auto;
+  margin-right: auto;
+  /* 넓이가 있는 블럭요소 바깥여백 왼쪽 오른쪽 auto 주면 */
+  /* 화면의 좌우 중앙 정렬된다. */
+}
+.box4{
+  background-color: blueviolet;
+  margin: 0 auto;
+}
+
+</style>
+
+  
+</head>
+<body>
+  <!-- div : division의 약자, 구역을 뜻함 -->
+  <!-- class : 별명 - box 이면서 box1 이름도 된다-->
+  <!-- 스타일에 클래스의 효과를 주려면 . 을 앞에 써준다.-->
+  <div class="box box1">박스1</div>
+  <div class="box box2">박스2</div>
+  <div class="box box3">박스3</div>
+  <div class="box box4">박스4</div>
+</body>
+</html>

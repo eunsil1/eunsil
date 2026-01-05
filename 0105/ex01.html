@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.box{
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  float: left;
+}
+
+.bigbox{
+  width: 700px;
+  height: 500px;
+  border: 3px double #000;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+
+.bigbox h1{
+  text-align: center;
+  padding: 10px 0;
+}
+
+.box h3{
+  padding: 7px;
+}
+
+.box p{
+  padding: 0 5px;
+  text-align: justify;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="bigbox">
+  <h1>제목</h1>
+    <div class="box box1">
+    <h3>박스1</h3>
+      <p>
+        첫 번째 박스의 내용입니다. 
+        이 박스는 왼쪽 상단에 위치합니다. 
+        텍스트는 양쪽 정렬로 표시됩니다. 
+        여러 줄의 텍스트를 입력할 수 있습니다.
+      </p>
+    </div>
+    <div class="box box2">
+      <h3>박스2</h3>
+      <p>
+        두 번째 박스의 내용입니다. 
+        이 박스는 첫 번째 박스 옆에 위치합니다. 
+        float: left로 인해 가로로 배치됩니다. 
+        세 박스가 한 줄에 나란히 배치됩니다.
+      </p>
+    </div>
+    <div class="box box3">
+      <h3>박스3</h3>
+      <p>
+        세 번째 박스의 내용입니다. 
+        이 박스는 첫 번째 줄의 마지막 박스입니다. 
+        다음 줄에 박스 4, 5, 6이 배치됩니다. 
+        float 속성으로 자동으로 다음 줄로 넘어갑니다.
+      </p>
+    </div>
+    <div class="box box4">
+      <h3>박스4</h3>
+      <p>
+        네 번째 박스의 내용입니다. 
+        이 박스는 두 번째 줄의 첫 번째 박스입니다. 
+        margin-bottom으로 위쪽 박스와 간격이 있습니다. 
+        레이아웃이 깔끔하게 정렬됩니다.
+      </p>
+    </div> 
+    <div class="box box5">
+      <h3>박스5</h3>
+      <p>
+        다섯 번째 박스의 내용입니다. 
+        이 박스는 두 번째 줄의 두 번째 박스입니다. 
+        박스들 사이의 간격은 margin-left로 조절됩니다. 
+        전체 레이아웃이 균형잡혀 보입니다.
+      </p>
+    </div> 
+    <div class="box box6">
+      <h3>박스6</h3>
+      <p>
+        여섯 번째 박스의 내용입니다. 
+        이 박스는 두 번째 줄의 마지막 박스입니다. 
+        총 6개의 박스가 3개씩 두 줄로 배열되었습니다. 
+        float를 사용한 레이아웃 예제입니다.
+      </p>
+    </div> 
+  </div>
+</body>
+</html>

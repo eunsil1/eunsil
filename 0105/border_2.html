@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 100px;
+            margin: 15px;
+            display: inline-block;
+            /* 옆으로 나열되면서 넓이를 가질 수 잇다. */
+            border-style: solid; /*실선*/
+        }
+        #dox1{border-width: 2px;/*네 방향 모두 2px*/}
+        #dox2{border-width: thick thin;/*top & bottom - thick, left & right - thin*/}
+        #dox3{border-width: thick thin thin;/*top - thick, left & right - thin, bottom - thin*/}
+        #dox4{border-width: 10px 5px 5px 10px;/*top - 10px, right - 5px, bottom - 5px, left - 10px*/}
+        #dox5{border-width: 20px 5px 10px;}
+        /* 위 20, 오른족 왼쪽 5, 아래 10 */
+    </style>
+</head>
+<body>
+    <div id="dox1"> 실선 테두리</div>
+    <div id="dox2"> 점선 테두리</div>
+    <div id="dox3"> 짦은 점선 테두리</div>
+    <div id="dox4"> 이중 테두리</div>
+    <div id="dox5"> 이중 테두리</div>
+</body>
+</html>
