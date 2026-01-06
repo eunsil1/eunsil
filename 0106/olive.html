@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+*{margin: 0;padding: 0;}
+.container{
+
+}
+.container h1{
+  font-size: 22px;
+  text-align: center;
+  padding: 10px 0;
+}
+.skin{
+  width: 790px;
+  height: 300px;
+  border: 1px solid #333;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.box{
+  width: 160px;
+  height: 280px;
+  float: left;
+  margin-left: 30px;
+}
+.box .imgbox1{
+  width: 160px;
+  height: 160px;
+  display: block;
+  /* span 인라인요소: 넓이 높이 못가짐 -> 블럭요소로 변경 */
+}
+.imgbox1 img{
+  width: 160px;
+  height: 160px;
+  display: block;
+}
+.box .txt1{
+  font-size: 14px;
+  padding: 2px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;     /* 줄 수 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.txt2 del{
+  font-size: 12px;
+  color: #a9a9a9 ;
+}
+.txt2 span{
+  font-size: 14px;
+  color: #e02020;
+}
+.txt3 span{
+  float: left;
+  padding: 1px 7px;
+}
+.txt3 .sbox1{
+  /* display: inline-block;
+  width: 40px; */
+  background-color: #f65c60;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 10px;
+}
+.txt3 .sbox3{
+  /* display: inline-block;
+  width: 70px; */
+  background-color: #f374b7;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 10px;
+}
+.txt3 .sbox2{
+  /* display: inline-block;
+  width: 70px; */
+  background-color: #6fcff7;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+
+
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>스킨케어에서 많이 본 상품이에요</h1>
+      <div class="skin">
+        <div class="box box1">
+          <span class="imgbox1">
+            <img src="images/a1.jpg" alt="">
+            
+          </span>
+          <p class="txt1">
+            [2025 어워즈 1위] 토리든 다이브인 저분자 히알루론산 세럼 100ml 어워즈 한정기획
+          </p>
+          <p class="txt2">
+            <del>50,000원</del><br>
+            <span>35,000원</span>
+          </p>
+          <p class="txt3">
+            <span class="sbox1">세일</span>
+            <span class="sbox3">오늘드림</span>
+          </p>
+        </div>
+        <div class="skin">
+          <div class="box box2">
+            <span class="imgbox1">
+              <img src="images/a2.jpg" alt="">
+        
+            </span>
+            <p class="txt1">
+              [2025 어워즈] 웰라쥬 리얼 히알루로닉 블루 100 앰플 75ml 더블 어워즈 한정기획
+            </p>
+            <p class="txt2">
+              <del>50,000원</del><br>
+              <span>32,900원</span>
+            </p>
+            <p class="txt3">
+              <span class="sbox1">세일</span>
+              <span class="sbox3">오늘드림</span>
+            </p>
+          </div>
+          <div class="skin">
+            <div class="box box3">
+              <span class="imgbox1">
+                <img src="images/a3.png" alt="">
+              </span>
+              <p class="txt1">
+                [2025 어워즈] 아누아 피디알엔 히알루론산 캡슐 100 세럼 30mL
+              </p>
+              <p class="txt2">
+                <del>58,500원</del><br>
+                <span>27,500원</span>
+              </p>
+              <p class="txt3">
+                <span class="sbox1">세일</span>
+                <span class="sbox3">오늘드림</span>
+              </p>
+            </div>
+            <div class="skin">
+              <div class="box box4">
+                <span class="imgbox1">
+                  <img src="images/a4.jpg" alt="">
+                </span>
+                <p class="txt1">
+                  [수분크림 본품증정] 메디큐브 에이지알 미니플러스 짱구 에디션(올영한정)/미니플러스
+                </p>
+                <p class="txt2">
+                  <del>126,000원</del><br>
+                  <span>122,000원</span>
+                </p>
+                <p class="txt3">
+                  <span class="sbox1">세일</span>
+                  <span class="sbox2">증정</span>
+                  <span class="sbox3">오늘드림</span>
+                </p>
+              </div>
+      </div>
+  </div>
+</body>
+</html>

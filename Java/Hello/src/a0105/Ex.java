@@ -17,7 +17,7 @@ public class Ex {
         day = i;
       }
     }
-    System.out.println("가장 많이 판 날의 갯수 : " + max);
+    System.out.println("가장 많이 판 날의 갯수 : " + max + "개");
     System.out.println("가장 많이 판 날 : " + days[day] + "요일");
   }
 }
