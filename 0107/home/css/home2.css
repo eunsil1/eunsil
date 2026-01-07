@@ -3,7 +3,6 @@
 .content{
   width: 1136px;
   height: 420px;
-  border: 1px solid #333;
   margin-left: auto;
   margin-right: auto;
 }
@@ -12,7 +11,7 @@
   width: 269px;
   height: 383px;
   float: left;
-  margin-left: 10px;
+  margin-left: 12px;
 }
 
 .content .box4{
