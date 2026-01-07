@@ -1,0 +1,71 @@
+*{margin: 0; padding: 0;}
+
+.content{
+  width: 1140px;
+  height: 400px;
+  border: 1px solid #333;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wbox{
+  width: 365px;
+  height: 352px;
+  float: left;
+  margin-left: 20px;
+}
+
+.wbox3{
+  margin-right: 0;
+}
+
+.wbox .wbox_img{
+  width: 365px;
+  height: 243px;
+}
+
+.wbox_img1{
+  background-image: url(../image/win1.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%; 
+  /* 배경사이즈 100 -> 110 0.3초동안 바뀜 */
+  transition: all 0.3s;
+}
+
+.wbox_img1:hover{
+  background-size: 110% 110%;
+ }
+
+.wbox_img2{
+   background-image: url(../image/win2.jpeg);
+   background-repeat: no-repeat;
+   background-position: 50% 50%;
+   background-size: 100% 100%;
+   /* 배경사이즈 100 -> 110 0.3초동안 바뀜 */
+   transition: all 0.3s;
+}
+
+.wbox_img2:hover{
+   background-size: 110% 110%;
+}
+
+.wbox_img3{
+  background-image: url(../image/win3.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  /* 배경사이즈 100 -> 110 0.3초동안 바뀜 */
+  transition: all 0.3s;
+}
+
+.wbox_img3:hover{
+  background-size: 110% 110%;
+}
+
+.wbox .text1{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 👈 3줄 */
+  overflow: hidden
+}

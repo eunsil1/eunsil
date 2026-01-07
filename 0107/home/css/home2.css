@@ -1,0 +1,112 @@
+*{margin: 0; padding: 0;}
+
+.container{
+  width: 1136px;
+  height: 442px;
+  border: 1px solid #333;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content .box{
+  width: 269px;
+  height: 383px;
+  float: left;
+  margin-left: 12px;
+}
+
+.box4{
+  margin-right: 0px;
+}
+
+.box .imgbox_img{
+  width: 269px;
+  height: 269px;
+}
+
+.imgbox_img{
+  display: block;
+  width: 100%;
+}
+
+.box .imgbox_1 {
+  background-image: url(../image/a1.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  transition: all 0.3s;
+}
+
+.imgbox_1:hover {
+  background-size: 110% 110%;
+}
+
+.imgbox_2 {
+  background-image: url(../image/a2.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  transition: all 0.3s;
+}
+
+.imgbox_2:hover {
+  background-size: 110% 110%;
+}
+
+.imgbox_3 {
+  background-image: url(../image/a3.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  transition: all 0.3s;
+}
+
+.imgbox_3:hover {
+  background-size: 110% 110%;
+}
+
+.imgbox_4 {
+  background-image: url(../image/a4.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  transition: all 0.3s;
+}
+
+.imgbox_4:hover {
+  background-size: 110% 110%;
+}
+
+.box .text1{
+  font-size: 10px;
+  color: gray;
+}
+
+.box .text2{
+  font-size: 12px;
+}
+
+.text3 .t1{
+  font-size: 17px;
+  font-weight: bold;
+  color: rgb(22, 151, 202);
+}
+
+.text3 .t2{
+  font-weight: bold;
+}
+
+.text4 .t3{
+  color: rgb(22, 151, 202);
+  font-size: 12px;
+}
+
+.text4 .t4{
+  font-size: 12px;  
+}
+
+.text4 .t5{
+  font-size: 12px;
+  color: gray;
+  font-weight: bold;
+}
