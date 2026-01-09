@@ -9,7 +9,7 @@ public class Ex1 {
     // int v;
     // int result = v + 10;
     // System.out.println(result);
-    Student s2 = new Student("이수만", 75);
+    Student s2 = new Student("이수만", 75); 
     s2.printInfo();
   }
  
@@ -20,6 +20,7 @@ public class Ex1 {
 //리턴 타입이 없다. (void 안씀)
 //new 키워드로 객체 생성 시 자동 호출
 //주로 멤버 변수 초기화
+// 생성과 동시에 초기값이 들어감 (ex : 문자열 - 빈문자열, 정수 - 0 으로 들어감)
 
 class Student{
 
@@ -27,12 +28,13 @@ class Student{
   int age;
   //생성자 - 생략되어 있음
   //기본생성자는 생략되면 자바가 컴파일 시 알아서 만들어서 실행
+  
 
   Student(){
     System.out.println("기본 생성자 실행");
   }
 
-    public Student(String name, int age) {
+    public Student(String name, int age) { // 생성과 동시에 이수만과 75가 들어감
     this.name = name;
     this.age = age;
   }

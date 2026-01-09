@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+<style>
+*{margin: 0; padding: 0;}
+  .bigBox{
+    width: 700px;
+    /* height: 330px; */
+    border: 1px solid #333;
+    margin: 50px auto;
+    background-color: gray;
+    /* overflow: hidden; 넘치는것을 가리는게 원래용도*/
+    /* float 되서 높이가 없는 부모를 알아서 맞춤 */
+  }
+
+  .box-container{
+    display: flex;
+    flex-wrap: wrap; /*줄바뀜 허용*/
+    gap: 25px;
+    padding: 0 25px 25px 25px;
+  }
+
+  .bigBox h2{
+    margin: 10px; text-align: center;
+  }
+
+  .box{
+    width: 300px;
+    height: 100px;
+    border: 1px solid #333;
+    padding: 5px;
+    /* float: left;
+    margin-left: 25px; */
+  }
+  
+  .box1{
+    background-color: aquamarine;
+  }
+
+  .box2{
+    background-color: sienna;
+  }
+
+  .box3{
+    background-color: coral;
+  }
+
+  .box4{
+    background-color: crimson;
+  }
+  
+</style>
+</head>
+<body>
+  <div class="bigBox">
+    <h2>Html과 Css 차이</h2>
+    <div class="box-container">
+        <div class="box box1">
+          <p>Html은 문서의 뼈대를 만든다.  
+            html은 Hyper Text Markup Language 약자이다.        
+            확장자는 html로 지정하면 웹브라우저에서 인식한다.
+          </p>
+        </div>
+        <div class="box box2">
+          <p>Css은 글꼴이나, 배경색,너비와 높이, 위치등을 지정한다.       
+            css은 cascade style sheet 약자이다.       
+            확장자는 css로 지정하면 웹브라우저에서 인식한다.
+          </p>
+        </div>
+        <div class="box box3">
+          <p>
+            JavaScript는 웹 페이지에 동작을 부여한다.
+            버튼 클릭, 입력 처리, 화면 변경 등을 제어할 수 있다.
+            JavaScript는 웹 브라우저에서 실행되는 프로그래밍 언어이다.
+          </p>
+        </div>
+        <div class="box box4">
+          <p>
+            jQuery는 JavaScript를 쉽게 사용하도록 도와주는 라이브러리이다.
+            복잡한 JavaScript 코드를 간단한 문법으로 작성할 수 있다.
+            DOM 제어와 이벤트 처리를 편리하게 할 수 있다.
+          </p>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
