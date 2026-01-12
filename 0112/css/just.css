@@ -1,0 +1,67 @@
+*{margin: 0; padding: 0;}
+
+.container{
+  width: 1200px;
+  height: 700px;
+  margin: 0 auto;
+}
+
+.logo{
+  width: 1200px;
+  height: 100px;
+  background-color: red;
+}
+
+
+.image{
+  width: 1200px;
+    height: 300px;
+    background-color: blue;
+}
+
+.gallery{
+  width: 400px;
+    height: 200px;
+    float: left;
+    background-color: pink;
+}
+
+.banner{
+  width: 400px;
+    height: 200px;
+    float: left;
+    background-color: green;
+}
+
+.goto{
+  width: 400px;
+    height: 200px;
+    background-color: skyblue;
+    float: left;
+}
+
+footer{
+  width: 1200px;
+  height: 100px;
+}
+
+footer .logo1{
+  width: 200px;
+  height: 100px;
+  float: left;
+  background-color: aqua;
+}
+
+footer .copy{
+  width: 800px;
+  height: 100px;
+  background-color: orange;
+  float: left;
+}
+
+footer .sns{
+  width: 200px;
+    height: 100px;
+    background-color: yellow;
+    float: left;
+}

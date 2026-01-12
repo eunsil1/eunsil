@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 외부스타일 -->
+  <link rel="stylesheet" href="css/style.css">
+<style>
+h2{color: green; font-size: 20px;}
+
+#title{color: orange; font-size: 32px;}
+h2, h3{
+  /* ,로 여러 선택자 지정 가능 */
+  border: 1px solid #333;
+}
+
+ul.menu>li{ /*> 자식선택자*/
+  border: 1px solid #333;
+  /* float: left; */
+}
+/* ul.menu li 자손(하위) ul.menu 밑에 모든 li에 보더*/
+
+a:link {color: black;} /*방문전*/
+a:visited {color: black;} /*방문전*/
+a:hover{color: red;} /* 마우스 오버 - 반드시 기억 - */
+a:active{background-color: orange;} /*클릭 시*/
+
+ul.menu>li:nth-child(1){background-color: yellow;}
+
+/* after 선택자 중요*/
+ul.menu::after{
+  content: "나는 맨뒤";
+}
+
+ul.menu::before{
+  content: "나는 맨앞";
+}
+
+.p1{border: 2px solid red;}
+.p2{border: 2px dashed blue;}
+.p3{border: 2px dotted green;}
+.p4{border: 3px double red;} /*double로 할 시 최소 3px로 설정해야함*/
+.p5{border: 10px groove yellowgreen;} /*음각*/
+.p6{border: 10px ridge yellowgreen;}  /*양각*/
+.p7{border: 10px inset yellowgreen;}  /*안쪽으로 눌린 느낌*/
+.p8{border: 10px outset yellowgreen;} /*바깥으로 튀어나온 느낌*/
+
+
+</style>
+</head>
+<body>
+  <!-- 인라인 스타일 css 비추천 -->
+   <p style="color: red; font-size: 20px;">글자</p>
+   <h2>내용2</h2>
+   <h3 id="title">첫번째 h3</h3>
+   <h3>첫번째 h3</h3>
+
+  <ul class="menu">
+    <li>
+      <a href="#">Mainmenu1</a>
+      <ul>
+        <li><a href="#">submenu1</a></li>
+        <li><a href="#">submenu2</a></li>
+        <li><a href="#">submenu3</a></li>
+        <li><a href="#">submenu4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Mainmenu2</a>
+      <ul>
+        <li><a href="#">submenu1</a></li>
+        <li><a href="#">submenu2</a></li>
+        <li><a href="#">submenu3</a></li>
+        <li><a href="#">submenu4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Mainmenu3</a>
+      <ul>
+        <li><a href="#">submenu1</a></li>
+        <li><a href="#">submenu2</a></li>
+        <li><a href="#">submenu3</a></li>
+        <li><a href="#">submenu4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Mainmenu4</a>
+      <ul>
+        <li><a href="#">submenu1</a></li>
+        <li><a href="#">submenu2</a></li>
+        <li><a href="#">submenu3</a></li>
+        <li><a href="#">submenu4</a></li>
+      </ul>
+    </li>
+  </ul>
+  <p class="p1">요즈음에는 반응형 웹이 대세이다.</p>
+  <p class="p2">요즈음에는 반응형 웹이 대세이다.</p>
+  <p class="p3">요즈음에는 반응형 웹이 대세이다.</p>
+  <p class="p4">요즈음에는 반응형 웹이 대세이다.</p>
+  <p class="p5">요즈음에는 반응형 웹이 대세이다.</p>
+  <p class="p6">요즈음에는 반응형 웹이 대세이다.</p>
+  <p class="p7">요즈음에는 반응형 웹이 대세이다.</p>
+  <p class="p8">요즈음에는 반응형 웹이 대세이다.</p>
+</body>
+</html>

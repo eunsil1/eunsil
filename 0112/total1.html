@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <html> 문서의 최상의 요소 -->
+  <!-- <body> 실제 화면에 표시되는 내용 -->
+  <h1> H1~H6까지 존재 헤딩태그</h1>
+  <p>문단입니다. 여러줄로 나눌 수 있어요 <br>br은 줄바꿈 태그</p>
+  <p> span 태그는 짧은 글에 <span>style</span> 을 줄 때 써요 </p>
+  <p>strong 태그는 <strong>진하게</strong> 써가면서 중요한 글을 뜻해요</p>
+  <p>em 태그는 <em>기울여</em> 써가면서 중요한 글을 뜻해요</p>
+  <!-- 순서없는 목록은 ul 입니다. -->
+  <ul>
+    <li>사과</li>
+    <li>바나나</li>
+    <li>오렌지</li>
+  </ul>
+  <!-- 순서 있는 목록(ol: ordered list) -->
+   <ol>
+    <li>첫번째</li>
+    <li>두번째</li>
+    <li>세번째</li>
+   </ol>
+   <hr/>
+  <!-- 링크 % 이미지 -->
+  <p><a href="http://nate.com">네이트</a></p>
+  <p><a href="http://nate.com" target="_blank">네이트 새탭열기</a></p>
+  <p><a href="total2.html">정리2로 이동</a></p>
+  <p><a href="http://nate.com"><img src="images/cat1.jpg" alt=""></a></p>
+  <hr/>
+  <!-- 입력폼(form) -->
+   <form action="">
+    <ul>
+      <!-- 텍스트 입력 -->
+      <li><input type="text" placeholder="이름"></li>
+      <!-- 비밀번호 입력 -->
+      <li><input type="password" placeholder="비밀번호"></li>
+      <!-- 이메일 입력 -->
+       <li><input type="email" placeholder="이메일"></li>
+
+      <!-- 체크박스 -->
+       <li><input type="checkbox" id="agree">
+        <label for="agree">동의합니다</label></li>
+
+      <!-- 라디오버튼 -->
+       <li>
+          <input type="radio" name="gender" value="male" id="male">
+          <label for="male">남성</label>
+
+          <input type="radio" name="gender" value="female" id="female">
+          <label for="female">여성</label>
+       </li>
+      </ul>
+
+      <!-- 선택박스 -->
+       <select>
+        <option>선택하세요</option>
+        <option>옵션1</option>
+        <option>옵션2</option>
+       </select>
+       <hr>
+       <ul>
+        <li>
+          <!-- 인용문 -->
+           <blockquote>인용문</blockquote>
+        </li>
+        <!-- 코드 -->
+        <li><code>코드내용</code></li>
+        <li><address>경기도 광주시</address></li>
+       </ul>
+       <!-- 코딩한 그래도 보여줌 -->
+      <pre>
+        dfadsf  
+          dfadf
+
+      </pre>
+
+      <div>구역 나누는 태그</div>
+      <span></span>
+    
+   </form>
+</body>
+</html>

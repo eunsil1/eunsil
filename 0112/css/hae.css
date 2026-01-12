@@ -1,0 +1,44 @@
+#container{
+  width: 1000px;
+  height: 650px;
+}
+
+header{
+  width: 149px;
+  height: 650px;
+  background-color: plum;
+  float: left;
+}
+
+#img_slide{
+  width: 851px;
+  height: 350px;
+  background-color: orange;
+}
+
+section article{
+  width: 234px;
+  height: 200px;
+  flex: 1;
+  float: left;
+}
+
+.notice{
+  background-color: red;
+}
+
+.banner{
+  background-color: blue;
+}
+
+.icons{
+  background-color: skyblue;
+}
+
+footer{
+  width: 702px;
+  height: 100px;
+  background-color: green;
+  float: left;
+}
+
