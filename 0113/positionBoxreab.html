@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+.bigbox{
+  width: 450px;
+  height: 450px;
+  border: 1px solid #333;
+  margin: 0 auto;  
+  position: relative;
+  /* absolue 기준 */
+}
+
+.box{
+  width: 150px;
+  height: 150px;
+}
+
+.box1{
+  background-color: pink;
+}
+
+.box2{
+  background-color: aqua;
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+}
+
+.box3{
+  /* position: static; 생략 */
+  background-color: orange;
+}
+
+.box4{
+  background-color: yellowgreen;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="box box1">박스1</div>
+
+  <div class="bigbox">
+  <div class="box box2">박스2</div>
+  <div class="box box3">박스3</div>
+  </div>
+
+  <div class="box box4">박스4</div>
+
+</body>
+</html>

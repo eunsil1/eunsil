@@ -1,0 +1,96 @@
+*{margin: 0; padding: 0;} /* 전체선택자 */
+
+.content{
+  width: 1440px;
+  height: 500px;
+  /* border: 1px solid #333; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content .box{
+  width: 280px;
+  height: 480px;
+  float: left;
+  margin-right: 10px;
+}
+
+.content .box5{
+  margin-right: 0px;
+}
+/* .content > div : nth-child(5) -> content 하위의 5번째 div */
+
+.box .imgbox{
+  width: 280px;
+  height: 350px;
+  position: relative;
+  /* 이 박스가 기준 */
+}
+
+.imgbox1 .heart{
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.imgbox2 .win2{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0,0,0,0);
+  /* 검정색에 불투명도 1(100) */
+  left: 0;
+  top: 0; 
+  transition: all 0.5s;
+}
+
+.imgbox2:hover .win2{
+  background-color: rgba(0,0,0,0.5);
+} 
+
+.imgbox img{
+  display: block;
+  width: 100%;
+}
+
+.imgbox img:nth-child(1){display: block;}
+.imgbox img:nth-child(2){display: none;}
+
+.imgbox:hover img:nth-child(1){display: none;}
+.imgbox:hover img:nth-child(2){display: block;}
+
+.box p{
+  padding-top: 7px;
+}
+
+.box .txt1{
+  font-weight: bold;
+}
+
+.box .txt2 .t1{
+  color: palevioletred;
+}
+
+.txt2 del{
+  font-size: 12px;
+  color: #999;
+}
+
+.txt3{
+  color: green;
+}
+
+.txt4{
+  font-size: 13px;
+}
+
+.txt4 .tt1{
+  font-weight: bold;
+}
+
+.txt4 .tt2{
+  color: #777;
+}
+
+/* .txt1:hover{background-color: aqua;} */
+

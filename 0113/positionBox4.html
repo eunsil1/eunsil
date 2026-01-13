@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+
+body{
+  height: 3000px;
+}
+
+.box{
+  width: 150px;
+  height: 150px;
+}
+
+.box1{
+  background-color: pink;
+}
+
+.box2{
+  background-color: aqua;
+}
+
+.box3{
+  /* position: static; 모든 css에는 생략되어있음 */
+  background-color: orange;
+  /* margin-top: 50px;
+  margin-left: 50px; */
+  position: fixed; 
+  bottom: 50px;
+  right: 50px;
+  /* 자리값이 없다. (원래 위치에서 이동 - 원래 위치 뺏김) */
+  /* 기준위치 부모(body - 화면 전체) */
+  /* 스크롤 시 화면에 고정됨 */
+}
+
+.box4{
+  background-color: yellowgreen;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="box box1">박스1</div>
+  <div class="box box2">박스2</div>
+  <div class="box box3">박스3</div>
+  <div class="box box4">박스4</div>
+</body>
+</html>

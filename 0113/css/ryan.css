@@ -1,0 +1,136 @@
+*{margin: 0; padding: 0;}
+
+.bigbox{
+  /* 부모 */
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border: 1px dotted #000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  /* 정중앙 박스 */
+}
+
+.face{
+  width: 500px;
+  height: 450px;
+  position: absolute;
+  bottom: 0;
+  background-color: #d59729;
+  border-radius: 50%;
+  border: 10px solid #333;
+  box-sizing: border-box; 
+  /*박스안에 맞게끔 조정*/
+}
+
+.ear{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  background-color: #d59729;
+  border-radius: 50%;
+  border: 10px solid #333;
+  top: 20px;
+  /* z-index: 2; 순서바꾸기*/
+}
+
+.ear.left{
+  left: 40px;
+}
+
+.ear.right{
+  right: 40px;
+}
+
+.eyebrow{
+  width: 100px;
+  height: 20px;
+  border: 1px solid #333;
+  position: absolute;
+  top: 120px;
+  background-color: #000;
+  border-radius: 7px;
+}
+
+.eyebrow.left{
+  left: 100px;
+}
+
+.eyebrow.right{
+  right: 100px; 
+}
+
+.eyeball{
+  width: 30px;
+  height: 30px;
+  background-color: #000;
+  position: absolute;
+  top: 180px;
+  border-radius: 50px;
+}
+
+.eyeball.left{
+  left: 130px;
+}
+
+.eyeball.right{
+  right: 130px; 
+}
+
+.nose{
+  width: 40px;
+  height: 40px;
+  border: 1px solid #333;
+  position: absolute;
+  bottom: 160px;
+  left: 50%;
+  margin-left: -20px;
+  /* 정중앙 정렬을 할땐 반지름 값만큼 이동시킴 */
+  background-color: #000;
+  border-radius: 50%;
+  z-index: 1;
+  /* width: 50px;
+  height: 50px;
+  background-color: #000;
+  position: absolute;
+  top: 220px;
+  border-radius: 50px;
+  left: 210px; */
+  }
+
+.mouth{
+  width: 80px;
+  height: 74px;
+  border: 10px solid #000;
+  position: absolute;
+  top: 240px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.mouth.left{
+  left: 175px;
+}
+
+.mouth.right{
+  right: 175px;
+}
+
+.mouth_cover{
+  position: absolute;
+  width: 37px;
+  height: 40px;
+  background-color: #fff;
+  top: 2px;
+  transform: rotate(45deg);
+}
+
+.mouth_cover.left{
+  left: 42px;
+}
+
+.mouth_cover.right{
+  right: 42px;
+}
