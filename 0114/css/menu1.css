@@ -1,0 +1,75 @@
+*{margin: 0; padding: 0;}
+
+header{
+  width: 600px;
+  height: 150px;
+  background-color: hotpink;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav{
+  width: 600px;
+  height: 60px;
+  background-color: #ccc;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav ul{
+  list-style: none;
+  /* 불릿제거 */
+}
+
+nav > ul > li{
+  float: left;
+}
+
+/* > 자식선택자 */
+/* nav>ul>li>a{
+  color: #333;
+} */
+
+/* 자손 또는 하위선택자(공란) */
+nav ul li a{
+  /* a는 인라인요소라 넓이 높이 주려면 블록처리 해야함 */
+  display: block;
+  width: 150px;
+  height: 60px;
+  line-height: 60px;
+  color: #333;
+  text-align: center;
+  background-color: pink;
+}
+
+nav ul li ul{
+  display: none;
+  position: absolute;
+  /* 겹침 허용, 자리값 없어 메뉴 반드시 작성해야함 */
+}
+
+nav ul li:hover ul{
+  display: block;
+}
+
+
+
+main{
+  width: 600px;
+  height: 400px;
+  background-color: tan;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer{
+  width: 600px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #000;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+

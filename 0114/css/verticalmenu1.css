@@ -1,0 +1,44 @@
+*{margin: 0; padding: 0;}
+
+ul{list-style: none;}
+
+a{text-decoration: none; color: #333;}
+
+section{
+  width: 700px;
+  height: 500px;
+  border: 1px solid #333;
+  margin: 100px auto 0 auto;
+  position: relative;
+}
+
+.gnb li a{
+  display: block;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #ccc;
+  text-indent: 20px;
+  /* 들여쓰기 */
+}
+
+.gnb>li>a{
+  background-color: #915959;
+  color: #fff;
+}
+
+.gnb > li {
+  /* position: relative; */
+}
+
+.gnb li ul{
+  position: absolute;
+  display: none;
+  
+}
+
+.gnb li:hover ul{
+  left: 150px;
+  top: 0;
+  display: block;
+}
