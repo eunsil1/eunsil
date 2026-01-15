@@ -8,14 +8,11 @@ public class Student {
   private int kor;
   private int eng;
   private int math;
-
-
-  private int sum;
-  private double avg;
+  // private int sum;
  
 
 
-  public Student(String studenId, String name, int age, String major, int kor, int eng, int math, int sum, double avg) {
+  public Student(String studenId, String name, int age, String major, int kor, int eng, int math) {
     this.studentId = studenId;
     this.name = name;
     this.age = age;
@@ -23,21 +20,11 @@ public class Student {
     this.kor = kor;
     this.eng = eng;
     this.math = math;
-    this.sum = sum;
-    this.avg = avg;
+    // this.sum = kor + eng + math;
     
-    calculateTotal();
-    calculateAverage();
 
   }
 
-  private void calculateAverage() {
-    this.avg = sum / 3.0;
-  }
-
-  private void calculateTotal() {
-    this.sum = kor + eng + math;
-  }
 
   public String getStudentId() {
     return studentId;
@@ -95,13 +82,7 @@ public class Student {
     this.math = math;
   }
 
-  public void getSum(int sum) {
-    this.sum = sum;
-  }
-
-  public void getAvg(double avg){
-    this.avg = avg;
-  }
+  
 
   
 

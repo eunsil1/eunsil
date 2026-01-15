@@ -1,18 +1,68 @@
 *{margin: 0; padding: 0;}
+
 .bigbox{
+  position: absolute;
   width: 500px;
   height: 500px;
-  border: 1px solid #333;
+  border: 1px dotted #333;
   left: 50%;
+  right: 50%;
+  transform: translate(-50% -50%);
 }
 
-/* .face{
+.face{
   width: 500px;
-  height: 450px;
+  height: 500px;
   position: absolute;
   bottom: 0;
   background-color: rgb(120, 139, 245);
   border-radius: 50%;
   border: 10px solid #333;
   box-sizing: border-box;
-} */
+}
+
+.eyeball{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background-color: black;
+  top: 180px;
+  border-radius: 50%;
+}
+
+.eyeball.left{
+  left: 100px;
+}
+
+.eyeball.right{
+  right: 100px; 
+}
+
+.nose{
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  position: absolute;
+  border-radius: 50%;
+  bottom: 160px;
+  left: 50%;
+  margin-left: -20px;
+  z-index: 1;
+}
+
+.mouse{
+  width: 80px;
+  height: 100px;
+  background-color: #fff;
+  border: 3px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: border-box;
+  top: 240px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mouse.left{
+  left: 100px;
+}

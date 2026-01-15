@@ -98,16 +98,15 @@ public class StudentApp {
       System.out.println("결과: 학생을 찾을 수 없습니다.");
     }else{
       System.out.println("결과: 학생을 찾았습니다.");
-      System.out.printf("학번: %s, 이름: %s, 나이: %d, 전공: %s, 국어: %d, 영어: %d, 수학: %d, 총점: %d, 평균: %.2f");
+      System.out.printf("학번: %s, 이름: %s, 나이: %d, 전공: %s, 국어: %d, 영어: %d, 수학: %d",
       student.getStudentId(),
       student.getName(),
       student.getAge(),
       student.getMajor(),
       student.getKor(),
       student.getEng(),
-      student.getMath(),
-      student.cacult,
-      student.getAvg();
+      student.getMath());
+      
     }
 
     
@@ -122,16 +121,15 @@ public class StudentApp {
     for(int i = 0; i < studentsArray.length; i++){
       if(studentsArray[i] != null){
         Student student = studentsArray[i];
-        System.out.printf("%s %s %d %s 국어: %d 영어: %d 수학: %d 총점: %d 평균: %.2f",
+        System.out.printf("%s %s %d %s 국어: %d 영어: %d 수학: %d\n",
           student.getStudentId(),
           student.getName(),
           student.getAge(),
           student.getMajor(),
           student.getKor(),
           student.getEng(),
-          student.getMath(),
-          student.getSum(),
-          student.getAvg());
+          student.getMath()
+          );
       }
     }
 
