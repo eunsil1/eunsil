@@ -15,12 +15,16 @@ public class StudentApp {
             System.out.println("-----------------------------------------------------------------------");
             System.out.print("선택> ");
 
-            int selNum = 0;
+            int selNum = 0; //try-catch문에서는 초기화가 먼저 필요함
             try {
+                // try 안에서만 값이 대입
                 selNum = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
                 // 잘못된 입력 처리
+                // selNum 값이 안들어감
+                // 자바는 초기화 됐는지 확인하고 검사 - 에러
             }
+            
 
             switch (selNum) {
                 case 1:
