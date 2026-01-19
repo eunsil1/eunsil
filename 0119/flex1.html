@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  .flex-container{
+    width: 700px;
+    background-color: dodgerblue;
+    display: flex; /*부모에게 부여해야함*/
+    /* flex-wrap: nowrap;  */
+    /* 생략되어 있음 - 넘쳐도 한줄로 표시(넓이 무시) */
+    /* flex-wrap: wrap; */
+    /* 부모의 높이 안깨짐 */
+    /* 넘치면 줄바꿈 됨(넓이 인정 - 100px) */
+    flex-wrap: wrap-reverse;
+
+
+  }
+
+  .flex-container > div{
+    background-color: #f1f1f1;
+    width: 100px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 75px; /*줄간격*/
+    margin: 10px; /*위로 흡수되었기 때문에 위는 붙어서 나옴*/
+
+    
+    /* float: left; */
+    /* 사용자 배경 사라짐 (높이 없어짐) */
+    /* 넓이 700 두줄 됨 */
+  }
+</style>
+</head>
+<body>
+  <h1>flexiable boxes</h1>
+  <div class="flex-container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+  </div>
+</body>
+</html>

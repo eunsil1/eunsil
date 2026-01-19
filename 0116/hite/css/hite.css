@@ -124,7 +124,7 @@
   text-align: center;
   padding-top: 30%;
   box-sizing: border-box;
-  background: url(../img/more.png) no-repeat 50% 80%;
+  background: url(../img/more.png) no-repeat 50% 70%;
   opacity: 0;
   transition: all 0.5s
 }
@@ -142,7 +142,7 @@
 }
 
 .box8 p{
-  padding-top: 100px;
+  padding-top: 120px;
 }
 
 
