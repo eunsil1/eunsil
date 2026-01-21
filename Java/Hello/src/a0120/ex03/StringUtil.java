@@ -74,5 +74,25 @@ public class StringUtil {
     }
     return false;
   }
+
+  public static String countVowels(String string) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'countVowels'");
+  }
+
+  public static String toUpperCase(String string) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'toUpperCase'");
+  }
+
+  public static String containsWord(String string, String string2) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'containsWord'");
+  }
+
+  public static String replaceChar(String string, char c, char d) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'replaceChar'");
+  }
   
 }

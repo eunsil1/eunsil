@@ -1,4 +1,4 @@
-package a0120.Book;
+package a0121.ex01;
 
 public class Book {
   String title;
@@ -11,7 +11,7 @@ public class Book {
 
   @Override
   public String toString() {
-    return "Book {title=" + title + ", author=" + author + "}";
+    return "Book{title= '" + title + "', author='" + author + "'}";
   }
 
   
