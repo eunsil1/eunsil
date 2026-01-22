@@ -1,5 +1,5 @@
 #include <stdio.h>
-// 배열 합계와 평균
+// 최대값
 int main(){
   int arr[5] = {10, 5, 30, 20, 8};
   int i;
