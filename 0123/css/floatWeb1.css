@@ -1,0 +1,246 @@
+*{
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* 헤더 */
+header{
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,1);
+  /* 박스 그림자: x위치 y위치 흐림효과(블러 5px) 색상*/
+}
+
+.header-container{
+  max-width: 1200px; /*최대크기*/
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo{
+  float: left;
+  font-size: 1.8em;
+  font-weight: bold;
+  line-height: 1.8rem;
+  /* 줄간격, 폰트 사이즈 : 16 * 1.8 */
+}
+
+nav{
+  float: right;
+}
+
+nav ul{list-style: none;/* 블릿 숨기기 */}
+nav ul li{
+  float: left;
+  margin-left: 30px;
+  /* 메뉴의 왼쪽 바깥여백 30 */
+}
+nav a{
+  color: white;
+  text-decoration: none;
+  /* 밑줄 제거 */
+  font-weight: 500;
+  transition: opacity 0.3s;
+  display: block;
+  line-height: 1.8rem;
+}
+nav a:hover{
+  opacity: 0.8;
+  /* 불투명도 */
+}
+
+/* 메인 컨텐츠 */
+main{
+  max-width: 1200px; /*최대크기*/
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.hero{
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 10px;
+  /* 모서리 둥글게 */
+  margin-bottom: 60px;
+}
+
+.hero h1{
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.hero p{
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.btn{
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: inline-block; /*block을 주면 부모의 최대 넓이로 따라감*/
+  border-radius: 5px;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-weight: 600;
+  /* transform: translateY(0px); 생략되어 있는 형태 */
+  transition: transform 0.3s;
+}
+
+.btn:hover{
+  transform: translateY(-2px);
+}
+
+/* 카드섹션 */
+.section-title{
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.cards{
+  margin-bottom: 60px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.card{
+  float: left;
+  width: (33.333% - 30px);
+  margin: 0 15px 30px 15px;
+  max-width: 350px; /* 350px 보다 작게 */
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon{
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.card h3{
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.card p{
+  color: #666;
+  line-height: 1.8;
+}
+
+/* 푸터 */
+footer{
+  background: #333;
+  color: #fff;
+  padding: 40px 20px;
+  margin-top: 60px;
+}
+
+.footer-container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section{
+  float: left;
+  width: calc(25% - 30px);
+  margin: 0 15px; 
+}
+
+.footer-section h4{
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.footer-section ul{
+  list-style: none;
+}
+
+.footer-section ul li{
+  margin-bottom: 10px;
+}
+
+.footer-section a{
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+
+}
+
+.footer-section a:hover{
+  color: white;
+}
+
+.footer-bottom{
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #555;
+  color: #ccc;
+  clear: both;
+}
+
+@media(max-width: 992px){ /*반응형 웹*/
+  .card{
+    width: calc(50% - 30px);
+  }
+  .footer-section{
+    width: calc(50% - 30px);
+    margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 768px){ 
+  .logo{
+    float: none;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  nav{float:none;}
+  nav ul{text-align: center;}
+  nav ul li{
+    float: none;
+    display: inline-block;
+    margin: 0 10px;
+  }
+  .hero h1{font-size: 2rem;}
+  .hero p{font-size: 1rem;}
+  .section-title{font-size: 2rem;}
+  .card{
+    width: 100px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .footer-section{
+    width: 100%;
+    margin-bottom: 30px;
+    float: none;
+  }
+}
