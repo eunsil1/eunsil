@@ -8,7 +8,7 @@ public class Library {
     private String isbn;
     private boolean available; //대여 가능 여부
 
-    public Library() {
+    public Library() {// 기본생성자
     }
 
     public Library(String title, String author, String location, String isbn) {
