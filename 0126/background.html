@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+div{
+  width: 100%;
+  height: 900px;
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+
+.section1{
+  background-image: url(images/back1.jpg);
+  background-repeat: no-repeat; /*한개만*/
+  /* background-repeat: repeat-y; 세로로 반복, repeat-x : 가로반복*/
+  background-size: cover; /*꽉차게*/
+  /* background-size: 400px 200px; */
+  background-position: center center; /*이미지 위치 중앙*/
+  background-color: pink;
+
+}
+
+.section2{
+  /* background-color: pink;*/
+  background: pink url(images/back2.jpg) no-repeat 50% 50% / 400px 200px;
+  /* background-size '/' 슬래시 하고 입력*/
+  /* background-color: pink; 색상은 뒤에 입력하던지*/
+}
+</style>
+</head>
+<body>
+  <div class="section1"></div>
+  <div class="section2"></div>
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 엔티티 코드표</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', Arial, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-box input {
+            padding: 12px 20px;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 500px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #f5576c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        th:first-child {
+            width: 100px;
+            text-align: center;
+        }
+
+        th:nth-child(2) {
+            width: 200px;
+        }
+
+        th:nth-child(3) {
+            width: 150px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.3s;
+        }
+
+        tbody tr:hover {
+            background-color: #fff5f7;
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        td {
+            padding: 12px 15px;
+            vertical-align: middle;
+        }
+
+        td:first-child {
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #f5576c;
+            background-color: #fff5f7;
+        }
+
+        td:nth-child(2) {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            color: #d63384;
+            font-weight: 600;
+        }
+
+        td:nth-child(3) {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            color: #0d6efd;
+        }
+
+        td:last-child {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .entity-code {
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .entity-code:hover {
+            background-color: #ffe0e6;
+            transform: scale(1.05);
+        }
+
+        .copy-message {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 1.5em;
+            color: #f5576c;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f5576c;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            th, td {
+                padding: 8px;
+                font-size: 0.85em;
+            }
+
+            td:first-child {
+                font-size: 1.5em;
+            }
+
+            td:nth-child(2), td:nth-child(3) {
+                font-size: 0.9em;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML 엔티티 코드표</h1>
+        <p class="subtitle">HTML에서 특수문자를 안전하게 표시하기 위한 엔티티 코드 모음</p>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="엔티티 코드나 문자로 검색...">
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">1. 기본 특수문자</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>문자</th>
+                        <th>엔티티 이름</th>
+                        <th>숫자 코드</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&lt;')">&amp;lt;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#60;')">&amp;#60;</span></td>
+                        <td>작다 (Less than)</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&gt;')">&amp;gt;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#62;')">&amp;#62;</span></td>
+                        <td>크다 (Greater than)</td>
+                    </tr>
+                    <tr>
+                        <td>&amp;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&amp;')">&amp;amp;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#38;')">&amp;#38;</span></td>
+                        <td>앰퍼샌드 (Ampersand)</td>
+                    </tr>
+                    <tr>
+                        <td>&quot;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&quot;')">&amp;quot;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#34;')">&amp;#34;</span></td>
+                        <td>큰따옴표 (Double quote)</td>
+                    </tr>
+                    <tr>
+                        <td>&apos;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&apos;')">&amp;apos;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#39;')">&amp;#39;</span></td>
+                        <td>작은따옴표 (Single quote)</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&nbsp;')">&amp;nbsp;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#160;')">&amp;#160;</span></td>
+                        <td>줄바꿈 없는 공백 (Non-breaking space)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">2. 수학 기호</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>문자</th>
+                        <th>엔티티 이름</th>
+                        <th>숫자 코드</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&plusmn;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&plusmn;')">&amp;plusmn;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#177;')">&amp;#177;</span></td>
+                        <td>플러스마이너스 (±)</td>
+                    </tr>
+                    <tr>
+                        <td>&times;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&times;')">&amp;times;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#215;')">&amp;#215;</span></td>
+                        <td>곱하기 (×)</td>
+                    </tr>
+                    <tr>
+                        <td>&divide;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&divide;')">&amp;divide;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#247;')">&amp;#247;</span></td>
+                        <td>나누기 (÷)</td>
+                    </tr>
+                    <tr>
+                        <td>&ne;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&ne;')">&amp;ne;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8800;')">&amp;#8800;</span></td>
+                        <td>같지 않음 (≠)</td>
+                    </tr>
+                    <tr>
+                        <td>&le;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&le;')">&amp;le;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8804;')">&amp;#8804;</span></td>
+                        <td>작거나 같음 (≤)</td>
+                    </tr>
+                    <tr>
+                        <td>&ge;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&ge;')">&amp;ge;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8805;')">&amp;#8805;</span></td>
+                        <td>크거나 같음 (≥)</td>
+                    </tr>
+                    <tr>
+                        <td>&infin;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&infin;')">&amp;infin;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8734;')">&amp;#8734;</span></td>
+                        <td>무한대 (∞)</td>
+                    </tr>
+                    <tr>
+                        <td>&sum;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&sum;')">&amp;sum;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8721;')">&amp;#8721;</span></td>
+                        <td>합 (∑)</td>
+                    </tr>
+                    <tr>
+                        <td>&prod;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&prod;')">&amp;prod;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8719;')">&amp;#8719;</span></td>
+                        <td>곱 (∏)</td>
+                    </tr>
+                    <tr>
+                        <td>&radic;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&radic;')">&amp;radic;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8730;')">&amp;#8730;</span></td>
+                        <td>제곱근 (√)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">3. 화살표</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>문자</th>
+                        <th>엔티티 이름</th>
+                        <th>숫자 코드</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&larr;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&larr;')">&amp;larr;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8592;')">&amp;#8592;</span></td>
+                        <td>왼쪽 화살표 (←)</td>
+                    </tr>
+                    <tr>
+                        <td>&rarr;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&rarr;')">&amp;rarr;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8594;')">&amp;#8594;</span></td>
+                        <td>오른쪽 화살표 (→)</td>
+                    </tr>
+                    <tr>
+                        <td>&uarr;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&uarr;')">&amp;uarr;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8593;')">&amp;#8593;</span></td>
+                        <td>위쪽 화살표 (↑)</td>
+                    </tr>
+                    <tr>
+                        <td>&darr;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&darr;')">&amp;darr;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8595;')">&amp;#8595;</span></td>
+                        <td>아래쪽 화살표 (↓)</td>
+                    </tr>
+                    <tr>
+                        <td>&harr;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&harr;')">&amp;harr;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8596;')">&amp;#8596;</span></td>
+                        <td>양방향 화살표 (↔)</td>
+                    </tr>
+                    <tr>
+                        <td>&lArr;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&lArr;')">&amp;lArr;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8656;')">&amp;#8656;</span></td>
+                        <td>왼쪽 이중 화살표 (⇐)</td>
+                    </tr>
+                    <tr>
+                        <td>&rArr;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&rArr;')">&amp;rArr;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8658;')">&amp;#8658;</span></td>
+                        <td>오른쪽 이중 화살표 (⇒)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">4. 통화 및 기호</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>문자</th>
+                        <th>엔티티 이름</th>
+                        <th>숫자 코드</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&cent;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&cent;')">&amp;cent;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#162;')">&amp;#162;</span></td>
+                        <td>센트 (¢)</td>
+                    </tr>
+                    <tr>
+                        <td>&pound;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&pound;')">&amp;pound;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#163;')">&amp;#163;</span></td>
+                        <td>파운드 (£)</td>
+                    </tr>
+                    <tr>
+                        <td>&yen;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&yen;')">&amp;yen;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#165;')">&amp;#165;</span></td>
+                        <td>엔 (¥)</td>
+                    </tr>
+                    <tr>
+                        <td>&euro;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&euro;')">&amp;euro;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8364;')">&amp;#8364;</span></td>
+                        <td>유로 (€)</td>
+                    </tr>
+                    <tr>
+                        <td>&copy;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&copy;')">&amp;copy;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#169;')">&amp;#169;</span></td>
+                        <td>저작권 (©)</td>
+                    </tr>
+                    <tr>
+                        <td>&reg;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&reg;')">&amp;reg;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#174;')">&amp;#174;</span></td>
+                        <td>등록상표 (®)</td>
+                    </tr>
+                    <tr>
+                        <td>&trade;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&trade;')">&amp;trade;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8482;')">&amp;#8482;</span></td>
+                        <td>상표 (™)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">5. 그리스 문자</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>문자</th>
+                        <th>엔티티 이름</th>
+                        <th>숫자 코드</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&Alpha;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&Alpha;')">&amp;Alpha;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#913;')">&amp;#913;</span></td>
+                        <td>알파 대문자 (Α)</td>
+                    </tr>
+                    <tr>
+                        <td>&alpha;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&alpha;')">&amp;alpha;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#945;')">&amp;#945;</span></td>
+                        <td>알파 소문자 (α)</td>
+                    </tr>
+                    <tr>
+                        <td>&Beta;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&Beta;')">&amp;Beta;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#914;')">&amp;#914;</span></td>
+                        <td>베타 대문자 (Β)</td>
+                    </tr>
+                    <tr>
+                        <td>&beta;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&beta;')">&amp;beta;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#946;')">&amp;#946;</span></td>
+                        <td>베타 소문자 (β)</td>
+                    </tr>
+                    <tr>
+                        <td>&Gamma;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&Gamma;')">&amp;Gamma;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#915;')">&amp;#915;</span></td>
+                        <td>감마 대문자 (Γ)</td>
+                    </tr>
+                    <tr>
+                        <td>&gamma;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&gamma;')">&amp;gamma;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#947;')">&amp;#947;</span></td>
+                        <td>감마 소문자 (γ)</td>
+                    </tr>
+                    <tr>
+                        <td>&Delta;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&Delta;')">&amp;Delta;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#916;')">&amp;#916;</span></td>
+                        <td>델타 대문자 (Δ)</td>
+                    </tr>
+                    <tr>
+                        <td>&delta;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&delta;')">&amp;delta;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#948;')">&amp;#948;</span></td>
+                        <td>델타 소문자 (δ)</td>
+                    </tr>
+                    <tr>
+                        <td>&Pi;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&Pi;')">&amp;Pi;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#928;')">&amp;#928;</span></td>
+                        <td>파이 대문자 (Π)</td>
+                    </tr>
+                    <tr>
+                        <td>&pi;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&pi;')">&amp;pi;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#960;')">&amp;#960;</span></td>
+                        <td>파이 소문자 (π)</td>
+                    </tr>
+                    <tr>
+                        <td>&Sigma;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&Sigma;')">&amp;Sigma;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#931;')">&amp;#931;</span></td>
+                        <td>시그마 대문자 (Σ)</td>
+                    </tr>
+                    <tr>
+                        <td>&sigma;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&sigma;')">&amp;sigma;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#963;')">&amp;#963;</span></td>
+                        <td>시그마 소문자 (σ)</td>
+                    </tr>
+                    <tr>
+                        <td>&Omega;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&Omega;')">&amp;Omega;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#937;')">&amp;#937;</span></td>
+                        <td>오메가 대문자 (Ω)</td>
+                    </tr>
+                    <tr>
+                        <td>&omega;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&omega;')">&amp;omega;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#969;')">&amp;#969;</span></td>
+                        <td>오메가 소문자 (ω)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="category-section">
+            <h2 class="category-title">6. 기타 유용한 기호</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>문자</th>
+                        <th>엔티티 이름</th>
+                        <th>숫자 코드</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&deg;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&deg;')">&amp;deg;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#176;')">&amp;#176;</span></td>
+                        <td>도 (°)</td>
+                    </tr>
+                    <tr>
+                        <td>&sup2;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&sup2;')">&amp;sup2;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#178;')">&amp;#178;</span></td>
+                        <td>제곱 (²)</td>
+                    </tr>
+                    <tr>
+                        <td>&sup3;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&sup3;')">&amp;sup3;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#179;')">&amp;#179;</span></td>
+                        <td>세제곱 (³)</td>
+                    </tr>
+                    <tr>
+                        <td>&frac12;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&frac12;')">&amp;frac12;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#189;')">&amp;#189;</span></td>
+                        <td>1/2 (½)</td>
+                    </tr>
+                    <tr>
+                        <td>&frac14;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&frac14;')">&amp;frac14;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#188;')">&amp;#188;</span></td>
+                        <td>1/4 (¼)</td>
+                    </tr>
+                    <tr>
+                        <td>&frac34;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&frac34;')">&amp;frac34;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#190;')">&amp;#190;</span></td>
+                        <td>3/4 (¾)</td>
+                    </tr>
+                    <tr>
+                        <td>&sect;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&sect;')">&amp;sect;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#167;')">&amp;#167;</span></td>
+                        <td>섹션 (§)</td>
+                    </tr>
+                    <tr>
+                        <td>&para;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&para;')">&amp;para;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#182;')">&amp;#182;</span></td>
+                        <td>단락 (¶)</td>
+                    </tr>
+                    <tr>
+                        <td>&bull;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&bull;')">&amp;bull;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8226;')">&amp;#8226;</span></td>
+                        <td>불릿 (•)</td>
+                    </tr>
+                    <tr>
+                        <td>&hellip;</td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&hellip;')">&amp;hellip;</span></td>
+                        <td><span class="entity-code" onclick="copyToClipboard('&#8230;')">&amp;#8230;</span></td>
+                        <td>말줄임표 (…)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p><strong>HTML 엔티티 코드표</strong></p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #999;">
+                엔티티 코드를 클릭하면 클립보드에 복사됩니다. | 검색 기능으로 원하는 코드를 빠르게 찾을 수 있습니다.
+            </p>
+        </div>
+    </div>
+
+    <div id="copyMessage" class="copy-message">복사되었습니다!</div>
+
+    <script>
+        // 클립보드 복사 함수
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // 복사 메시지 표시
+            const message = document.getElementById('copyMessage');
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 2000);
+        }
+
+        // 검색 기능
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
