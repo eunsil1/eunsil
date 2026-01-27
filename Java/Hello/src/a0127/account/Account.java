@@ -40,6 +40,10 @@ public class Account {
     this.balance = balance;
   }
 
+  public String toFileString() {
+    return accountNumber + "|" + ownerName + "|" + balance;
+  }
+
   
   
 }
