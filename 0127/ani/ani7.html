@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  #myball{
+    position: relative;
+    left: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: url(img/f1.png) no-repeat 50% 50%;
+    animation: myani 3s forwards;
+    /* 애니메이션 끝부분 상태로 종료 */
+  }
+  
+  @keyframes myani {
+    0%{left: 10px;}
+    100%{left: 500px;}
+    /* 3초를 100%로 나눈다. */
+  }
+
+
+
+  #myball2{
+    position: relative;
+    left: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: url(img/f1.png) no-repeat 50% 50%;
+    animation: myani 3s forwards ease;
+    /* 뒤에 3s 지연시간 */
+    /* 애니메이션 끝부분 상태로 종료 */
+  }
+  
+  @keyframes myani {
+    0%{left: 10px;}
+    100%{left: 500px;}
+    /* 3초를 100%로 나눈다. */
+  }
+
+  #myball3{
+    position: relative;
+    left: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: url(img/f1.png) no-repeat 50% 50%;
+    animation: myani 3s forwards ease-in;
+    /* 뒤에 3s 지연시간 */
+    /* 애니메이션 끝부분 상태로 종료 */
+  }
+  
+  @keyframes myani {
+    0%{left: 10px;}
+    100%{left: 500px;}
+    /* 3초를 100%로 나눈다. */
+  }
+
+  #myball4{
+    position: relative;
+    left: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: url(img/f1.png) no-repeat 50% 50%;
+    animation: myani 3s forwards ease-in-out;
+    /* 뒤에 3s 지연시간 */
+    /* 애니메이션 끝부분 상태로 종료 */
+  }
+  
+  @keyframes myani {
+    0%{left: 10px;}
+    100%{left: 500px;}
+    /* 3초를 100%로 나눈다. */
+  }
+
+  #myball5{
+    position: relative;
+    left: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: url(img/f1.png) no-repeat 50% 50%;
+    animation: myani 3s forwards linear;
+    /* 뒤에 3s 지연시간 */
+    /* 애니메이션 끝부분 상태로 종료 */
+  }
+  
+  @keyframes myani {
+    0%{left: 10px;}
+    100%{left: 500px;}
+    /* 3초를 100%로 나눈다. */
+  }
+</style>
+</head>
+<body>
+  <div id="myball"></div>
+  <div id="myball2"></div>
+  <div id="myball3"></div>
+  <div id="myball4"></div>
+  <div id="myball5"></div>
+</body>
+</html>

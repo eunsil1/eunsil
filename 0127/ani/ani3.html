@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  #myball{
+    position: relative;
+    left: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: url(img/f1.png) no-repeat 50% 50%;
+    animation-name: myani; /*애니메이션 이름*/
+    animation-duration: 3s; /*애니메이션 시간*/
+    animation-iteration-count: infinite; /*애니메이션 무한 반복*/
+    animation-direction: alternate; /*애니메이션 왕복*/
+  }
+  
+  @keyframes myani {
+    0%{left: 10px;}
+    100%{left: 500px;}
+    /* 3초를 100%로 나눈다. */
+  }
+</style>
+</head>
+<body>
+  <div id="myball"></div>
+</body>
+</html>

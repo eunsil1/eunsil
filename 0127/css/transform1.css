@@ -1,0 +1,126 @@
+*{
+  margin: 0; 
+  padding: 0;
+}
+
+.bigbox{
+  width: 1000px;
+  /* height: 200px; */
+  margin: 100px auto 0;
+  border: 5px solid tan;
+  padding: 20px 0;
+}
+
+.cf::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.bigbox h2{
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.box{
+  width: 200px;
+  height: 150px;
+  border: 2px solid tan;
+  float: left;
+  margin-left: 35px;
+  position: relative;
+}
+
+.box img{
+  display: block;
+  width: 100%;
+}
+
+.box1 img{
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+
+.box1:hover img{
+  transform: rotate(360deg);
+}
+
+.box2 img {
+  transform: rotate(0deg);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+.box2:hover img {
+  transform: rotate(360deg);
+}
+
+.box3 img {
+  transform: rotateY(0deg);
+  /* transform-origin: left top; */
+  transition: transform 0.3s;
+}
+
+.box3:hover img {
+  transform: rotateY(360deg);
+}
+.box4{perspective: 200px;} /* perspective 원근감 */
+.box4 img {
+  transform: rotateY(0deg);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+
+.box4:hover img {
+  transform: rotateY(360deg);
+}
+
+.abigbox {
+  width: 1000px;
+  /* height: 200px; */
+  margin: 100px auto 0;
+  border: 5px solid tan;
+  padding: 20px 0;
+}
+
+.abigbox h2 {
+  padding-bottom: 20px;
+  text-align: center;
+}
+.content{
+  display: flex;
+  justify-content: space-around;
+}
+.abox {
+  width: 200px;
+  height: 150px;
+  border: 2px solid tan;
+  /* margin-left: 35px; */
+  position: relative;
+}
+
+.abox img {
+  display: block;
+  width: 100%;
+}
+.abox1{
+  overflow: hidden;
+}
+.abox1 img{
+  transform: scale(1);
+  transition: all 0.5s;
+}
+
+.abox1:hover img{
+  transform: scale(1.2);
+}
+
+.abox2{
+  background: url(../images/women2.jpg) no-repeat 50% 50%;
+  background-size: 100%;
+  transition: all 0.5s;
+}
+
+.abox2:hover{
+  background-size: 120%;
+}

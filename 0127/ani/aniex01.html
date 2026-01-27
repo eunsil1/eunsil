@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  #balloon{
+    position: relative;
+    top: 10px;
+    height: 200px;
+    width: 200px;
+    background: url(img/bg-main1.png) no-repeat 50% 50%;
+    animation: myani 3s infinite alternate;
+
+  }
+
+  @keyframes myani {
+    0%{top: 10px;}
+    100%{top: 500px;}
+  }
+
+
+  #balloon2{
+    position: relative;
+    top: 10px;
+    height: 200px;
+    width: 200px;
+    background: url(img/bg-main1.png) no-repeat 50% 50%;
+    animation: myani2 3s infinite alternate ease;
+
+  }
+
+  @keyframes myani2 {
+    0%{top: 10px;}
+    100%{top: 500px;}
+  }
+</style>
+
+</head>
+
+<body>
+  <div id="balloon"></div>
+  <div id="balloon2"></div>
+</body>
+</html>

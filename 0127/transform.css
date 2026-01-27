@@ -1,0 +1,76 @@
+*{margin: 0; padding: 0;}
+
+h1{
+  width: 500px;
+  height: 70px;
+  margin-bottom: 20px;
+  border: 1px solid #333;
+  background-color: brown;
+}
+
+p{
+  font-size: 30px;
+  padding-bottom: 30px;
+}
+
+.tra{
+  background-color: #ae5329;
+  transform: translate(-500px,0);
+  /* x축(왼쪽)으로 500px만큼 이동 */
+  transition: all 0.5s;
+  /* -500, 0 이동하는 액션을 0.5초 동안 보여줌 */
+}
+
+.btn1:hover + .tra{ /* +선택자 - next 개념 */
+  transform: translate(0,0);
+}
+
+.rot1{
+  margin: 200px;
+  transform: rotate(0deg);
+  transition: all 0.5s;
+}
+
+.btn2:hover + .rot1{
+  transform: rotate(360deg);
+}
+
+.rot2{
+  margin: 200px 0;
+  transform: rotateY(0deg);
+  transition: all 0.5s;
+}
+
+.btn3:hover + .rot2{
+  transform: rotateY(360deg);
+}
+
+.rot3{
+  margin: 200px 0;
+  transform: rotateX(0deg);
+  transition: all 0.5s;
+}
+
+.btn4:hover + .rot3{
+  transform: rotateX(360deg);
+}
+
+.sca{
+  margin: 50px 0;
+  transform: scale(1,1);
+  transition: all 0.5s;
+} 
+
+.btn5:hover + .sca{
+  transform:  scale(2,2);
+}
+
+.ske{
+  margin: 50px 0;
+  transform: skewX(0deg);
+  transition: all 0.5s;
+}
+
+.btn6:hover + .ske{
+  transform: skewX(-45deg);
+}

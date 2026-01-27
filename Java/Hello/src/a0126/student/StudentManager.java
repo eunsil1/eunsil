@@ -5,11 +5,16 @@ import java.util.Scanner;
 
 public class StudentManager {
 
-    static final String FILE_PATH = "c:/Users/TJ/student/data.txt";
+    static final String FILE_PATH = "c:/Users/tj/student/data.txt";
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        File file = new File(FILE_PATH);
+        File dir = file.getParentFile();
 
+        if (dir != null && !dir.exists()) {
+            dir.mkdirs();
+        }
         while (true) {
             System.out.println("=== 학생 관리 프로그램 ===");
             System.out.println("1. 학생 정보 등록 (새로 저장)");
@@ -39,7 +44,7 @@ public class StudentManager {
         }
     }
 
-    // 1️⃣ 새로 저장 (덮어쓰기)
+    // 1 새로 저장 (덮어쓰기)
     static void saveNew(Scanner sc) {
         try (BufferedWriter bw = new BufferedWriter(
                 new FileWriter(FILE_PATH))) {
@@ -59,7 +64,7 @@ public class StudentManager {
         }
     }
 
-    // 2️⃣ 목록 읽기
+    // 2 목록 읽기
     static void readFile() {
         File file = new File(FILE_PATH);
 
@@ -81,7 +86,7 @@ public class StudentManager {
         }
     }
 
-    // 3️⃣ 학생 정보 추가
+    // 3 학생 정보 추가
     static void append(Scanner sc) {
         try (BufferedWriter bw = new BufferedWriter(
                 new FileWriter(FILE_PATH, true))) {

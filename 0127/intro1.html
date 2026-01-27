@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.outLine{
+  width: 1400px;
+  height: 800px;
+  margin: 20px auto;
+  /* border: 1px solid #333; */
+  position: relative;
+}
+
+.line1{
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 0px;
+  height: 5px;
+  background-color: tan;
+  animation: line1 3s forwards;
+}
+
+@keyframes line1 {
+  0%{width: 0;}
+  100%{width: 1300px;}
+}
+
+.line2{
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 5px;
+  height: 0px;
+  background-color: tan;
+  animation: line2 3s 3s forwards;
+}
+
+@keyframes line2 {
+  0%{height: 0;}
+  100%{height: 700px;}
+}
+
+
+.line3{
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  width: 0px;
+  height: 5px;
+  background-color: tan;
+  animation: line3 3s 6s forwards;
+}
+
+@keyframes line3 {
+  0%{width: 0px;}
+  100%{width: 1300px;}
+}
+
+
+.line4{
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  width: 5px;
+  height: 0px;
+  background-color: tan;
+  animation: line4 3s 9s forwards;
+}
+
+@keyframes line4 {
+  0%{height: 0px;}
+  100%{height: 700px;}
+}
+
+.inLine{
+  position: absolute;
+  width: 1000px;
+  height: 550px;
+  background: url(images/back3.jpg) no-repeat 50% 50% / cover;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  animation: photo 3s 12s forwards;
+}
+
+@keyframes photo {
+  0%{visibility: hidden; opacity: 0;}
+  100%{visibility: visible; opacity: 1;}
+}
+
+</style>
+</head>
+<body>
+  <div class="outLine">
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+      <div class="line line3"></div>
+      <div class="line line4"></div>
+
+      <div class="inLine">
+
+      </div>
+      
+  </div>
+</body>
+</html>
