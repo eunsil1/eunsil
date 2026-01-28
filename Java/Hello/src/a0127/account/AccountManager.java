@@ -99,8 +99,7 @@ public class AccountManager {
 }
 
   private void loadFromFile() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'loadFromFile'");
+    
   }
 
   private void deleteAccount(String deleteAccountNumber) {

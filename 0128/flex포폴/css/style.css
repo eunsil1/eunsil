@@ -1,0 +1,114 @@
+*{margin: 0; padding: 0;}
+
+body {
+  font: normal 18px/1.5 "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flex-wrapper{
+  display: flex;
+  height: 100%;
+}
+
+.flex-wrapper a{
+  position: relative;
+  flex: 1;
+  /* 5등분 1:1:1:1:1 */
+  transition: all 0.4;
+}
+
+.flex-wrapper a.one{
+  background-color: red;
+  background: url(../images/a1.jpg) no-repeat 50% 50% / cover;
+}
+
+.flex-wrapper a.tow {
+  background-color: green;
+  background: url(../images/a2.jpg) no-repeat 50% 50% / cover;
+}
+
+.flex-wrapper a.three {
+  background-color: blue;
+  background: url(../images/a3.jpg) no-repeat 50% 50% / cover;
+}
+
+.flex-wrapper a.four {
+  background-color: orange;
+  background: url(../images/a4.jpg) no-repeat 50% 50% / cover;
+}
+
+.flex-wrapper a.five {
+  background-color: tan;
+  background: url(../images/a5.jpg) no-repeat 50% 50% / cover;
+}
+
+.flex-wrapper a:hover{
+  flex: 3;
+  /* 5등분 1:1:1:1:1 */
+  transition: all 0.4s;
+}
+
+.flex-wrapper .overlay{
+  padding: 0 10px;
+  position: absolute;
+  /* top : 0; left : 0; width : 100%, height: 100%; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-self: center;
+}
+
+.flex-wrapper a:hover .overlay{
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.flex-wrapper a:hover .overlay-inner{
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.flex-wrapper a .overlay-inner h2{
+  transform: translateY(-60px);
+}
+
+.flex-wrapper a .overlay-inner p {
+  transform: translateY(60px);
+}
+
+.flex-wrapper a:hover .overlay-inner * {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s 0.3s;
+  transform: translateY(0px);
+}
+  
+@media screen and (max-width:800px){
+  .flex-wrapper{
+    flex-direction: column;
+    /* 세로로 배열 */
+  }
+  .flex-wrapper a:hover{
+    flex: 1;
+  }
+  .flex-wrapper a:hover .overlay{
+    background-color: transparent;
+    /* 투명색상 */
+  }
+  .flex-wrapper a .overlay h2,
+  .flex-wrapper a .overlay p{
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  /* 호버이전에 효과를 삭제하여 호버효과를 없앰 */
+}

@@ -1,0 +1,168 @@
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ body {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   background: #f5f5f5;
+   padding: 20px;
+ }
+
+ .container {
+   max-width: 1200px;
+   margin: 0 auto;
+ }
+
+ h1 {
+   text-align: center;
+   margin-bottom: 40px;
+   color: #333;
+   font-size: 2.5rem;
+ }
+
+ /* Flex 컨테이너 */
+ .flex-wrapper {
+   display: flex;
+   flex-direction: column;
+   /* 모바일: 세로 배치 */
+   gap: 20px;
+ }
+
+  /* 카드 스타일 */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    /* 부모 글자색을 상속 */
+    display: block;
+    position: relative;
+    min-height: 200px;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  } 
+
+ /* 카드 배경 이미지 */
+ .card.one {
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ }
+
+ .card.two {
+   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+ }
+
+ .card.three {
+   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+ }
+
+ .card.four {
+   background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+ }
+
+ .card.five {
+   background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+ }
+
+  /* 오버레이 */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: background 0.3s ease;
+  }
+
+  .card:hover .overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .overlay-inner{
+    text-align: center;
+    color: #fff;
+  }
+
+  .overlay-inner h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .overlay-inner p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+  /* 데스크탑(1024px 이상) */
+  @media (min-width:1024px){
+    
+    .card{
+      flex: 1 1 calc(33.333% - 14px); /*2열 배치*/
+      min-width: calc(33.333% - 14px);
+    }
+    .card.large{
+      flex: 1 1 calc(66.666% - 14px);
+      min-width: calc(66.666% - 14px);
+    }
+    .overlay-inner h2{
+      font-size: 3rem;
+    }
+
+    .overlay-inner p {
+      font-size: 1.1rem;
+    }
+  }
+    /* 큰 화면(1200px 이상) */
+    @media (min-width:1200px) {
+      .flex-wrapper{
+        gap: 30px;
+      }
+
+      .card {
+        flex: 1 1 calc(25% - 23px);
+        /*4열 배치*/
+        min-width: calc(25% - 23px);
+      }
+  
+      .card.large {
+        flex: 1 1 calc(50% - 15px);
+        min-width: calc(50% - 15px);
+      }
+
+    }
+
+    /* 모바일 최적화 */
+    @media (max-width: 767px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .flex-wrapper {
+        gap: 15px;
+      }
+
+      .overlay-inner h2 {
+        font-size: 1.5rem;
+      }
+
+      .overlay-inner p {
+        font-size: 0.9rem;
+      }
+    }

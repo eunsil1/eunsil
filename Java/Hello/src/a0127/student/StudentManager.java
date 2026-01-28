@@ -3,9 +3,14 @@ package a0127.student;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+// import java.io.FileReader;
+// import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -151,7 +156,11 @@ public class StudentManager {
       System.out.println("파일이 없습니다. 새로 시작합니다.");
       return;
     }
-    try (BufferedReader br = new BufferedReader(new FileReader(filename))){
+
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(
+                new FileInputStream(filename),
+                StandardCharsets.UTF_8))){
+      
       String line;
       while ((line = br.readLine()) != null) {
         line = line.trim(); //공백 삭제후 line에 입력
@@ -173,7 +182,8 @@ public class StudentManager {
   private void saveToFile() {
     //디렉토리 확인 및 생성
     ensureDirectory();
-    try(BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
+    try(BufferedWriter bw = new BufferedWriter( new OutputStreamWriter(new FileOutputStream(filename),StandardCharsets.UTF_8))) {
+
       for(Student student : students){
         bw.write(student.toFileString());
         bw.newLine(); //줄바꿈
