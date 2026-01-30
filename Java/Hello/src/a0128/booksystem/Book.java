@@ -60,8 +60,7 @@ public class Book {
   }
 
   public String toFileString() {
-    int index = 0;
-    return index++ + "|" + title + "|" + author + "|" + isbn + "|" + price;
+    return id + "|" + title + "|" + author + "|" + isbn + "|" + price;
   }
 
   public static Book fromFileString(String line) {

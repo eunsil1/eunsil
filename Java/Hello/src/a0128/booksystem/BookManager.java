@@ -123,7 +123,7 @@ public class BookManager {
  
 
   private void loadfromFile() {
-    File file = new File(filename); //파일의 위치정보
+    File file = new File(filename); 
     if(!file.exists()){
       System.out.println("파일이 없습니다. 새로 시작합니다.");
       return;
@@ -133,9 +133,9 @@ public class BookManager {
       
       String line;
       while ((line = br.readLine()) != null) {
-        line = line.trim(); //공백 삭제후 line에 입력
-        if (!line.isEmpty()) { //line(계좌정보) 비어있지 않으면
-          Book book = Book.fromFileString(line); //123-456|john|10000    
+        line = line.trim(); 
+        if (!line.isEmpty()) { 
+          Book book = Book.fromFileString(line);  
           if(book != null){
             books.add(book);
           }
@@ -152,7 +152,7 @@ public class BookManager {
     try(BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
       for(Book book : books){
         bw.write(book.toFileString());
-        bw.newLine(); //줄바꿈
+        bw.newLine(); 
       }
       System.out.println("파일 저장 완료: " + filename);
     } catch (IOException e) {
@@ -211,6 +211,7 @@ public class BookManager {
     Book book = findBookBytitle(searchBook);
     if (book != null) {
       System.out.println("[제목: " + book.getTitle() + ", 저자: " + book.getAuthor() + ", ISBN: " + book.getIsbn() + ", 가격: " + book.getPrice());
+      return;
     }
     System.out.println("찾는 도서가 없습니다.");
   }
