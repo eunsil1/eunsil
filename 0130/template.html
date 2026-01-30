@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let name = '홍길동';
+    let age = 25;
+    // 일반 문자열 연결
+    document.write("이름: " + name + " 나이: " + age + "세 <br>")
+    document.write(`
+    이름: ${name} <br/>
+    나이 : ${age} 세
+    `);
+   console.log("첫 번째 줄 \n 두 번째 줄 \n 세 번째 줄");
+
+    let isTrue = true;
+    let isFalse = false;
+
+    console.log(typeof isTrue);   // "boolean"
+    console.log(typeof isFalse);  // "boolean"
+  </script>
+</body>
+</html>
