@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //Es6+ 자바스크립트 6이상 버전
+    //...numbers Rest Parameters - 나머지 매개 변수
+    //여러 인수를 배열로 받을 수 있다.
+    
+    function sum(...numbers){
+      let total = 0;
+      for(let num of numbers){
+        total += num;
+      }
+      return total;
+    }
+    console.log(sum(1,2,3)); // 6
+    console.log(sum(1,2,3,4,5)); // 15
+  </script>
+</body>
+</html>

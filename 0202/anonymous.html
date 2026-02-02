@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const sayHello = function(name){
+      return "안녕하세요! " + name + "님";
+    }
+    console.log(sayHello("철수")); //안녕하세요 철수님
+
+    //1단계 : 일반 익명함수
+    const add = function(a, b){
+      return a + b;
+    }
+
+    console.log(add(3,4));
+
+    //2단계 화살표 함수로 변환
+    const addArrow =  (a, b) => {
+        return a + b;
+      }
+    console.log(addArrow(7,4));
+
+    //3단계 
+    const addShort = (a, b) => a + b;
+    console.log(addShort(5, 10)); //15
+  </script>
+</body>
+</html>

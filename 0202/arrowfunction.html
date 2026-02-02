@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 화살표 함수로 배열 메서드
+    let numbers = [1,2,3,4,5];
+
+    // 각 요소를 제곱
+    let squared = numbers.map(x => x * x);
+    console.log(squared);
+
+    // 짝수만 필터링
+    let evens = numbers.filter(x => x % 2 === 0);
+    console.log(evens);
+
+    // 합계 계산
+    let sum = numbers.reduce((acc, x) => acc + x, 0);
+    // acc 누산기 - 계산된 값을 누적
+    // x 는 배열에서 꺼내온 현재요소
+    // acc = 0 -> 0은 초기값
+    console.log(sum); // 15
+  </script>
+</body>
+</html>

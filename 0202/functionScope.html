@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let globalVar = "전역 변수"; //함수 밖 어디서든 접근 가능
+
+    function myScope(){
+      let localVar = "지역 변수"; //함수 안에서만 유효함
+
+      console.log(globalVar); //성공 : 안에서 밖은 보임
+      console.log(localVar); //성공 : 자기 방 안이니까 보임
+    }
+
+    myScope();
+    console.log(globalVar); //성공
+    console.log(localVar); //에러: ReferenceError : localVar is not defined
+  </script>
+</body>
+</html>
