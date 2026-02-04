@@ -1,6 +1,5 @@
 package a0128.ramda;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

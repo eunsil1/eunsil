@@ -5,8 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import a0105.Ex;
-
 public class BookService {
   private boolean reOrder = false;
   private int rentalNum = 1;
@@ -46,9 +44,8 @@ public class BookService {
     System.out.print(message);
     for (Map.Entry<String, Integer> rental : member.getRentalList().entrySet()) {
       System.out.printf(" | [%d] %-20s : %2d일  |\n", s++, rental.getKey(), rental.getValue());
-      // System.out.println(" |                                                    |");
-      
-    }System.out.println(" +----------------------------------------------------+");
+    }
+    System.out.println(" +----------------------------------------------------+");
   }
 
   private void totalrental(Member member2) {
