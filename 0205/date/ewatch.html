@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>
+    <span id="year">0000</span>년
+    <span id="month">00</span>월
+    <span id="date">00</span>일
+    <span id="nday">0</span>요일
+    <span id="hour">00</span>시
+    <span id="minute">00</span>분
+    <span id="second">00</span>초
+  </h1>
+  <script>
+  function autoTime(){
+    var today = new Date(); //현재 날짜 정보
+    // alert(today);
+    var year = today.getFullYear();
+    var month = today.getMonth()+1; //0~11 나오기때문에 +1을 붙여줘야함
+    var date = today.getDate();
+    var day = today.getDay();
+    
+      let days = ["일","월","화","수","목","금","토"];
+      let dataName = days[day];
+
+      var hour = today.getHours();
+      var min = today.getMinutes();
+      var sec = today.getSeconds();
+      if(sec < 10){
+        sec = '0' + sec;
+      }
+
+      // document.write(`${year}년 ${month}월 ${date}일 ${dataName}요일 ${hour}시 ${min}분 ${sec}초`);
+      document.getElementById('year').innerHTML = year;
+      document.getElementById('month').innerHTML = month;
+      document.getElementById('date').innerHTML = date;
+      document.getElementById('nday').innerHTML = dataName;
+      document.getElementById('hour').innerHTML = hour;
+      document.getElementById('minute').innerHTML = min;
+      document.getElementById('second').innerHTML = sec;
+    }
+      // autoTime();
+
+      setInterval(autoTime,1000);
+      // 1초 → autoTime 실행
+      // 1초 → autoTime 실행
+      // 1초 → autoTime 실행
+  </script>
+  <!-- <h1>
+    <span id="year">0000</span>년
+    <span id="month">00</span>월
+    <span id="date">00</span>일
+    <span id="nday">0</span>요일
+    <span id="hour">00</span>시
+    <span id="minute">00</span>분
+    <span id="second">00</span>초
+  </h1> -->
+</body>
+</html>

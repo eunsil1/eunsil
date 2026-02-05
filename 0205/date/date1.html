@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var today = new Date(); //현재 날짜 정보
+    // alert(today);
+    var year = today.getFullYear();
+    var month = today.getMonth()+1; //0~11 나오기때문에 +1을 붙여줘야함
+    var date = today.getDate();
+    var day = today.getDay();
+    document.write(year + " " + month + " " + date + " " + day + "<br/>");
+    document.write(`${year} ${month} ${date} ${day}`);
+    // today.getDay(); 0~6 : 일요일~토요일
+    // if(day == 0){
+    //   day = "일요일";
+    // }else if(day == 1){
+    //   day = "월요일";
+    // } else if (day == 2) {
+    //   day = "화요일";
+    // } else if (day == 3) {
+    //   day = "수요일";
+    // } else if (day == 4) {
+    //   day = "목요일";
+    // } else if (day == 5) {
+    //   day = "금요일";
+    // } else if (day == 6) {
+    //   day = "토요일";
+    // }
+    //  /*switch (day) {
+    //          case 0:
+    //              day ="일요일"
+    //              break;
+    //          case 1:
+    //              day ="월요일"
+    //              break;
+    //          case 2:
+    //              day ="화요일"
+    //              break;
+    //          case 3:
+    //              day ="수요일"
+    //              break;
+    //          case 4:
+    //              day ="목요일"
+    //              break;
+    //          case 5:
+    //              day ="금요일"
+    //              break;
+    //          case 6:
+    //              day ="토요일"
+    //              break;
+         
+    //          default:
+    //              day ="에러"
+    //      }*/
+      let days = ["일","월","화","수","목","금","토"];
+      let dataName = days[day];
+
+      var hour = today.getHours();
+      var min = today.getMinutes();
+      var sec = today.getSeconds();
+
+      document.write(`${year}년 ${month}월 ${date}일 ${dataName}요일 ${hour}시 ${min}분 ${sec}초`);
+  </script>
+</body>
+</html>

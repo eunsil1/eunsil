@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id ="bgBtn">배경색 변경</button>
+</body>
+</html>
+<script>
+  //배열이용한 배경색 변경
+  let colors = ["yellow", "pink", "lightblue", "lightgreen"];
+  let index = 0;
+
+  let btn = document.getElementById("bgBtn");
+  btn.addEventListener('click',function(){
+    document.body.style.backgroundColor = colors[index];
+    index++;
+    if(index >= colors.length){
+      index = 0;
+    }
+  });
+  
+</script>

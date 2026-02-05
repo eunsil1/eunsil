@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script>
+  let colors = ["#f8b195", "#f67280", "#c06c84", "#6c5b7b", "#355c7d"];
+  index = 0;
+  function changeBodyBg(){ //매개변수
+    document.body.style.backgroundColor = colors[index];
+    index++; //index = index + 1;
+    if(index >= colors.length){
+      index = 0;
+    }
+  }
+</script>
+</head>
+<body>
+  <p id="text">색상이 변합니다.</p>
+  <!-- 인라인 onclick (html안에 이벤트 삽입) - 3. 스타일 변경하기 -->
+  <button onclick="changeBodyBg()">배경색 변경</button>
+</body>
+</html>

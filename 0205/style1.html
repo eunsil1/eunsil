@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script>
+  //구형방법
+  window.onload = function(){ //html, css, 이미지까지 모든 리소스가 로딩 완료 후 실행
+    // document.getElementById('box').style.backgroundColor = 'red';
+    var box = document.getElementById('box');
+    box.style.backgroundColor = 'red';
+    box.style.color = 'white';
+    box.style.width = "200px"; //크기변경
+    box.style.height = "150px";
+    box.style.transform = "translateX(100px)"
+    box.style.transform = "translateY(50px)"
+    box.style.transform = "scale(1.5)";
+    box.style.transform = "scale(0.7)";
+    box.style.transform = "rotate(45deg)";
+    box.style.transform = "rotate(-30deg)";
+    box.style.opacity = "0.5";   // 반투명
+    box.style.opacity = "1";     // 원래대로
+    box.style.border = "3px solid black";
+    text.style.fontSize = "24px";
+    text.style.fontWeight = "bold";
+    box.style.display = "none";   // 숨김
+    box.style.display = "block";  // 보임
+    box.style.transition = "all 0.5s";
+    box.style.transform = "scale(1.2)";
+
+
+  }
+  document.addEventListener('DOMContentLoaded',function(){ //html 구조가 모두 만들어진 후 실행
+
+  });
+</script>
+</head>
+<body>
+  <div id="box">
+    나는 박스1입니다.
+  </div>
+</body>
+</html>

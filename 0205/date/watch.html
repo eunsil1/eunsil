@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  #clock{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 50px auto 0;
+    border: 1px solid black;
+  }
+  #clock img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <h1>전자시계</h1>
+  <h1>
+    <span id="year">0000</span>년
+    <span id="month">00</span>월
+    <span id="date">00</span>일
+    <span id="nday">0</span>요일
+    <span id="hour">00</span>시
+    <span id="minute">00</span>분
+    <span id="second">00</span>초
+  </h1>
+
+  <h2>아날로그 시계</h2>
+  <div id="clock">
+    <img src="images/clock.png" alt="시계" id="clock1">
+    <img src="images/h.png" alt="시" id="hour1">
+    <img src="images/m.png" alt="분" id="minute1">
+    <img src="images/s.png" alt="초" id="second1">
+  </div>
+  
+  <script>
+  function autoTime(){
+    var today = new Date(); //현재 날짜 정보
+    // alert(today);
+    var year = today.getFullYear();
+    var month = today.getMonth()+1; //0~11 나오기때문에 +1을 붙여줘야함
+    var date = today.getDate();
+    var day = today.getDay();
+    
+      let days = ["일","월","화","수","목","금","토"];
+      let dataName = days[day];
+
+      var hour = today.getHours();
+      var min = today.getMinutes();
+      var sec = today.getSeconds();
+      // if(sec < 10){
+      //   sec = '0' + sec;
+      // }
+
+      // document.write(`${year}년 ${month}월 ${date}일 ${dataName}요일 ${hour}시 ${min}분 ${sec}초`);
+      document.getElementById('year').innerHTML = year;
+      document.getElementById('month').innerHTML = month;
+      document.getElementById('date').innerHTML = date;
+      document.getElementById('nday').innerHTML = dataName;
+      document.getElementById('hour').innerHTML = hour;
+      document.getElementById('minute').innerHTML = min;
+      document.getElementById('second').innerHTML = sec;
+
+      var si = document.getElementById('hour1'); //시침을 가리키는 id
+      var bun = document.getElementById('minute1');
+      var cho = document.getElementById('second1');
+
+      if(hour > 12){
+        hour = hour - 12;
+      }
+      
+      var ds = sec * 6; //초당 6도씩 이동해야 6 * 60 = 360도
+      // var dm = (min * 6);
+      var dm = (min * 6) + (sec / 12);
+      var dh = (hour * 30) + (min / 2);
+
+      si.style.transform = `rotate(${dh}deg)`;
+      bun.style.transform = `rotate(${dm}deg)`;
+      cho.style.transform = `rotate(${ds}deg)`;
+
+    }
+      autoTime();
+
+      setInterval(autoTime,1000);
+      // 1초 → autoTime 실행
+      // 1초 → autoTime 실행
+      // 1초 → autoTime 실행
+  </script>
+  <!-- <h1>
+    <span id="year">0000</span>년
+    <span id="month">00</span>월
+    <span id="date">00</span>일
+    <span id="nday">0</span>요일
+    <span id="hour">00</span>시
+    <span id="minute">00</span>분
+    <span id="second">00</span>초
+  </h1> -->
+</body>
+</html>

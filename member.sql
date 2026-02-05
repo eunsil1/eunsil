@@ -2,7 +2,7 @@
   num int not null auto_increment,
   id  char(20) not null,
   name char(20) not null,
-  gender char(1),
+  gender char(1),member
   post_num char(8),
   address char(80),
   tel char(20),
