@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+
+  *{margin: 0; padding: 0;}
+    img{
+        vertical-align: top;
+    }
+    #galleryWrap{
+        position: relative;
+        top: 1000px;
+        width: 530px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    #galleryWrap img{
+        vertical-align: middle;
+    }
+
+</style>
+</head>
+<body>
+
+  <div id="galleryWrap">
+    <h2>이미지 넘기기</h2>
+    <a href="#" onclick="return preGallery()"><img src="images/left_btn.png" alt="이전"></a>
+    <img src="images/img1.jpg" alt="갤러리그림" id="gallery">
+    <a href="#" onclick="return nextGallery()"><img src="images/right_btn.png" alt="다음"></a>
+
+  </div>
+
+<script>
+  // herf = "#" 기본적으로 클릭하면 맨위로 이동
+  // return false -> a herf에 걸린 기본동작 취소
+  let num = 1;
+  function nextGallery(){
+    console.log(num);
+    num++;
+    if(num > 7){
+      num = 1;
+    }
+    document.getElementById('gallery').src="images/img" + num +".jpg";
+    return false;
+  }
+
+  function preGallery() {
+      console.log(num);
+      num--;
+      if(num < 1){
+        num = 7;
+      }
+      document.getElementById('gallery').src = `images/img${num}.jpg`;
+      return false; // a 링크 막아줌
+    }
+</script>
+</body>
+</html>

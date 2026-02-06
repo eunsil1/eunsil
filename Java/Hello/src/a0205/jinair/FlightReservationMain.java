@@ -39,6 +39,14 @@ public class FlightReservationMain {
         case 3:
           fm.checkReservation();
           break;
+        
+        case 4:
+          fm.ticketSave();
+          break;
+
+        case 5:
+          fc.upload();
+          break;
 
         default:
           break;

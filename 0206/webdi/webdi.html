@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  *{margin: 0; padding: 0;}
+  .container{
+    width: 33.33%;
+    height: 200px;
+    float: left;
+  }
+  .tab-container{
+    display: flex;
+  }
+  .tab{
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #333;
+    margin-right: 5px;
+    border-bottom: 0;
+  }
+  .tab.active-tab{
+    border-color: #000;
+    border-bottom: 0;
+  }
+  .tab-content{
+    display: none;
+  }
+  .tab-content.active-content{
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+  <div class="tab-container">
+    <div id="menutab1" class="tab active-tab" onclick="changeTab('tab1')">공지사항</div>
+    <div id="menutab2" class="tab" onclick="changeTab('tab2')">갤러리</div>
+  </div>
+    <div id="tab1" class="tab-content active-content">
+      <p>네번째 공지사항입니다.&nbsp;2019.05.21</p>
+      <p>세번째 공지사항입니다.&nbsp;2019.04.20</p>
+      <p>두번째 공지사항입니다.&nbsp;2019.05.21</p>
+      <p>첫번째 공지사항입니다.&nbsp;2019.02.25</p>
+    </div>
+
+    <div id="tab2" class="tab-content">
+      <img src="images/g1.png" alt="">
+      <img src="images/g2.png" alt="">
+      <img src="images/g3.png" alt="">
+    </div>
+  </div>
+  <script>
+    function changeTab(tabId){
+      const allTabs = document.querySelectorAll('.tab');
+      const allContent = document.querySelectorAll('.tab-content');
+
+      allTabs.forEach(function(a){
+        a.classList.remove('active-tab');
+      });
+      allContent.forEach(function(a){
+        a.classList.remove('active-content');
+      });
+
+      const selectedTab = document.getElementById("menu" + tabId);
+      selectedTab.classList.add('active-tab');
+
+      const selectedContent = document.getElementById(tabId);
+      selectedContent.classList.add('active-content');
+    }
+  </script>
+</body>
+</html>

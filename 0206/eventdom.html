@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  #counter{
+    font-size: 32px;
+    margin: 30px 0;
+  }
+  button{
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+  <h1>클릭카운터</h1>
+  <div id="counter">클릭 횟수: 0</div>
+  <button id="btn">클릭</button>
+  <button id="resetBtn">리셋</button>
+  <script>
+    let count = 0;
+    const counter = document.getElementById('counter');
+    const btn = document.getElementById('btn');
+    const resetBtn = document.getElementById('resetBtn');
+    
+    // 클릭 이벤트
+    btn.addEventListener('click',function(){
+      count++;
+      counter.textContent =  `클릭 횟수: ${count}`;
+      // counter.innerHTML = `클릭 횟수: ${count}`;
+    });
+    resetBtn.addEventListener('click', function () {
+        count = 0;
+        counter.textContent = `클릭 횟수: ${count}`;
+        // counter.innerHTML = `클릭 횟수: ${count}`;
+    });
+  </script>
+</body>
+</html>

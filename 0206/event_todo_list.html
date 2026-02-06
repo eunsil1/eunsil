@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body{
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+
+  h1{
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .input-group{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  #todoInput{
+    flex: 1;
+    /* 남는 공간 전체 차지 */
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+  }
+
+  #todoInput:focus{
+    outline: none;
+    border-color: #007bff;
+  }
+
+  button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+      background-color: #0056b3;
+  }
+
+  ul{list-style: none;}
+  
+  li{
+    padding: 15px; 
+    /* 간격 */
+    margin: 10px 0;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+
+  li:hover{
+    background-color: #e9ecef;
+  }
+
+.delete {
+    color: #dc3545;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.delete:hover {
+    background-color: #dc3545;
+    color: white;
+}
+.empty {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+}
+
+</style>
+</head>
+<body>
+
+  <h1>할 일 목록</h1>
+  <div class="input-group">
+    <input type="text" id="todoInput" placeholder="할 일을 입력하세요">
+    <button id="addBtn">추가</button>
+  </div>
+  <ul id="todoList">
+    <li class="empty">할 일이 없습니다. 추가해보세요!</li>
+    
+  </ul>
+
+</body>
+</html>
+<script>
+  const todoInput = document.getElementById('todoInput'); //글자를 쓸수 있는 input
+  const addBtn = document.getElementById('addBtn');
+  const todoList = document.getElementById('todoList');
+  
+  //추가 버튼 클릭
+  addBtn.addEventListener('click',function(){
+    addTodo();
+  });
+
+  todoInput.addEventListener('keypress',function(event){ //키보드 입력
+    if(event.key === 'Enter'){
+      addTodo();
+    }
+  });
+
+  function addTodo(){
+    const text = todoInput.value.trim(); //input 창의 입력한 내용을 공백없이 text로 대입
+    // console.log(text);
+    if(text === ''){
+      alert('할일을 입력하세요');
+      return;
+    }
+
+    // 빈메시지 제거
+    const emptyMsg = todoList.querySelector('.empty');
+    if(emptyMsg){
+      emptyMsg.remove(); //요소제거
+    }
+
+    //새로운 li 요소 생성
+    const li = document.createElement('li'); // 현재문서에 li를 생성
+    
+    //텍스트 추가
+    const span = document.createElement('span');
+    span.textContent = text;
+    //<li></li> <span></span> -> <li><span>dfdf</span></li>
+    li.appendChild(span);
+
+    //삭제 버튼 추가
+    const deleteBtn = document.createElement('span');
+    deleteBtn.textContent = '삭제';
+    deleteBtn.className = 'delete'; //삭제버튼 만들고 삭제라는 글씨 추가 class이름 delete
+    deleteBtn.addEventListener('click',function(){
+      li.remove();
+      //모든 항목이 삭제되면 빈 메세지 표시
+      if(todoList.children.length === 0){
+        const emptyMsg = document.createElement('li');
+        emptyMsg.className = 'empty';
+        emptyMsg.textContent = '할 일이 없습니다. 추가해보세요';
+        todoList.appendChild(emptyMsg);
+      }
+    });
+    li.appendChild(deleteBtn);
+
+    //목록에 추가
+    //<ul><li><span>dfdf</span></li></ul>
+    todoList.appendChild(li);
+
+    //입력 필드 초기화
+    todoInput.value = '';
+    todoInput.focus();
+  }
+</script>

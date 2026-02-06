@@ -12,6 +12,7 @@ public class Passenger {
   public Passenger(String name, int birthDate) {
     this.name = name;
     this.birthDate = birthDate;
+    
   }
 
   public Passenger(String name, int birthDate, String pw) {

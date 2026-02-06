@@ -8,9 +8,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class FlightManager {
-  private static ArrayList<Flight> flights; //항공정보
+  private static ArrayList<Flight> flights; //항공편 정보 하나만 존재 static
+  public static ArrayList<Flight> getFlights(){ //
+    return flights;
+  }
+  //항공편 목록을 외부에서 접근하는 getter 메서드
   private static ArrayList<Passenger> passengers; //예약된 승객정보
-
+  // FlightManager fm = new FlightManager();
   //승객을 키로 하고, 예약된 항공편을 값으로 가지는 Map
   private static Map<String, Flight> reservationMap = new HashMap<>();
 
@@ -132,6 +136,7 @@ public class FlightManager {
     System.out.print("이름 : ");
     String name = sc.next();
     System.out.printf("생년월일(6자리):");
+    while(true){
     try {
       int birthDate = Integer.parseInt(sc.next());
       Passenger p = new Passenger(name, birthDate);
@@ -140,11 +145,13 @@ public class FlightManager {
       }else{
         System.out.println("결제 비밀 번호");
         String pw = sc.next();
-        p = new Passenger(name, birthDate);
+        p = new Passenger(name, birthDate, pw);
         passengers.add(p); //항공 예약 명단에 추가
+        break; //성공했을때 종료
       }
     } catch (DateTimeException e) {
       System.out.println("생년월일을 6자리로 입력해 주세요 ex)010225");
+    }
     }
    }
 
@@ -206,6 +213,13 @@ public class FlightManager {
       }
      }
      return index;
+   }
+
+
+   public void ticketSave() {
+    int index = search("티켓조회");
+    checkPassword(index);
+    fc.ticketSaveFile(reservationMap, passengers.get(index).getName());
    }
 
 }
