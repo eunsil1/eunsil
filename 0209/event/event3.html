@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container">
+    <img src="images/cup-1.png" alt="" id="cup">
+  </div>
+  <script>
+    // var cup = document.getElementById('cup');
+    var cup = document.querySelector('#cup');
+    cup.onclick= function(e){ //이벤트 객체 e
+      alert(`이벤트 유형 : ${e.type}, 이벤트 발생위치 : ${e.pageX}, ${e.pageY}`)
+    }
+  </script>
+</body>
+</html>

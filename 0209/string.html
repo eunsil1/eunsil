@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+     var str = "Javascript";
+      console.log(str.charAt(5));
+      //인덱스 번호 5번을 추출해서 보여줌
+
+      var str = "Javascript";
+      console.log(str.indexOf('a'));
+      //a가 포함되어있는지 확인 포함되면 나오는 첫 수의 인덱스 번호 아니면 -1을 반환
+      console.log(str.indexOf('k'));
+
+      // lastIndexOf()
+      var str = 'Javascript'
+      console.log(str.lastIndexOf('a'));
+      //뒤에서 부터 찾는거라 중복되는 수의 맨 뒤의 인덱스 번호
+
+      console.log(str.includes('script'));
+      //포함된 단어를 찾을때 사용
+
+      var str = 'http://icoxpublish.com';
+      console.log(str.substring(0, 4)); //http
+      //0부터 4이전까지 즉 0~3의 인덱스 자리;
+      console.log(str.substring(7)); //icoxpublish.com
+      //7번자리부터 끝까지
+
+      var str = 'http://icoxpublish.com';
+      console.log(str.substr(7, 4));
+      //7번부터 4글자 7~10까지란 소리
+
+      var str = 'Javascript_jQuery';
+      var division = str.split('_');
+      // '_'를 기준으로 잘라서 배열로 만들어줌
+      console.log(division[0] + ", " + division[1])
+      console.log(division)
+
+      var str = 'm_out_.gif';
+      console.log(str.replace('out', 'over'));
+      //단어를 대상으로 교체
+
+      var str1 = 'nav';
+      var str2 = '_bg';
+      console.log(str1.concat(str2));
+      //변수를 합쳐서 하나로 만듬
+
+      var str = " removeblank ";
+      console.log(str.trim());
+      //공백제거
+
+      var str = "LoWerCase";
+      console.log(str.toLowerCase());
+      var str = "UppErCase";
+      console.log(str.toUpperCase());
+      
+  </script>
+</body>
+</html>

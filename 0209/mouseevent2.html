@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #m1{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 50px;
+      left: 30px;
+    }
+
+    #m2{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 300px;
+      right: 30px;
+    }
+
+    #m3{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      bottom: 80px;
+      left: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="m1"><img src="img/1.png" alt=""></div>
+    <div id="m2"><img src="img/2.png" alt=""></div>
+    <div id="m3"><img src="img/3.png" alt=""></div>
+  
+    
+  </div>
+  <script>
+    document.addEventListener('mousemove',function(e){
+      var x = e.pageX; //x좌표
+      var y = e.pageY; //y좌표
+      var kitym = document.getElementById('m1');
+
+      kitym.style.top = (y-50) + 'px';
+      kitym.style.left = (x-50) + 'px';
+      //마우스를 따라다니는 이벤트 -50 해준건 이미지 중앙으로 이동하려고
+      
+    });
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // map(가공해서 새배열 만들기)
+    let numbers = [1, 2, 3];
+    let doubled = numbers.map(n => n * 2);
+    console.log(doubled);  //[2,4,6]
+
+    // filter(조건으로 걸러내기)
+    let numbers1 = [1, 2, 3, 4, 5];
+    let even = numbers1.filter(n => n % 2 === 0);
+    console.log(even); // [2, 4]
+
+    // find / findIndex(하나만 찾기)
+    let users = [
+      {id : 1, name : "철수"},
+      {id : 2, name : "영희"}
+    ];
+    
+    users.forEach(user => {console.log(`회원번호: ${user.id}, 이름: ${user.name}`)});
+    let user = users.find(u => u.id === 2);
+    console.log(user); //{id: 2, name: '영희'}
+
+    let idx = users.findIndex(u => u.name === "철수");
+    console.log(idx); // 0
+
+    //includes(포함 여부)
+    let fruits = ["사과", "바나나", "딸기"];
+
+    console.log(fruits.includes("바나나")); // true
+    console.log(fruits.includes("포도"));   // false
+
+    let arr = ["Java", "Script"];
+    let str = arr.join(" ");
+
+    console.log(str); // "Java Script"
+
+    let text = "a,b,c";
+    let arr1 = text.split(",");
+
+    console.log(arr1); // ["a","b","c"]
+
+    let nums = [10, 2, 5, 1];
+
+    nums.sort((a, b) => a - b);
+    console.log(nums); // [1, 2, 5, 10]
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #cat-container{
+    position: relative;
+  }
+
+  #cat{
+    width: 100px;
+    position: absolute;
+    transition: transform 0.3s ease-in-out;
+  }
+</style>
+</head>
+<body>
+  <div id="cat-container">
+    <img src="img/1.png" alt="" id="cat">
+  </div>
+  <script>
+    let cat = document.getElementById('cat');
+    let currentX = 0;
+    let currentY = 0;
+
+    document.addEventListener('keydown',function(e){
+      moveCat(e.key);
+    });
+    function moveCat(e){
+      const step = 20;
+      switch(e){
+        case 'ArrowUp':
+          currentY = currentY - step;
+          break;
+
+        case 'ArrowDown':
+          currentY = currentY + step;
+          break;
+
+        case 'ArrowLeft':
+          currentX = currentX - step;
+          break;
+
+        case 'ArrowRight':
+          currentX = currentX + step;
+          break;
+        
+        default: 
+          break;
+      }
+
+      //누적값으로 이동
+      cat.style.transform = `translate(${currentX}px,${currentY}px)`;
+    };
+  </script>
+</body>
+</html>
