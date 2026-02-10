@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  *{margin: 0; padding: 0;}
+  ul,li{list-style: none;}
+  body{background-color: #333;}
+
+  #wrap{
+    width: 640px;
+    margin: 100px auto 0;
+  }
+
+  #nav{
+    display: flex;
+  }
+
+  #nav li a{
+    display: block;
+    border: 2px solid #999;
+    margin: 0 6px 10px 0;
+    border-radius: 5px;
+  }
+
+  #nav li a img{width: 70px;}
+  #window{}
+  #nav li a.active{
+    border: 2px solid #fff;
+  }
+
+</style>
+</head>
+<body>
+  <div id="wrap">
+    <ul id="nav">
+      <li><a class="active" href="img/lop0.jpg"><img src="img/thumb0.jpg" alt="호랑이1"></a></li>
+      <li><a href="img/lop1.jpg"><img src="img/thumb1.jpg" alt="호랑이2"></a></li>
+      <li><a href="img/lop2.jpg"><img src="img/thumb2.jpg" alt="호랑이3"></a></li>
+      <li><a href="img/lop3.jpg"><img src="img/thumb3.jpg" alt="호랑이4"></a></li>
+      <li><a href="img/lop4.jpg"><img src="img/thumb4.jpg" alt="호랑이5"></a></li>
+      <li><a href="img/lop5.jpg"><img src="img/thumb5.jpg" alt="호랑이6"></a></li>
+      <li><a href="img/lop6.jpg"><img src="img/thumb6.jpg" alt="호랑이7"></a></li>
+      <li><a href="img/lop7.jpg"><img src="img/thumb7.jpg" alt="호랑이8"></a></li>
+    </ul>
+    <div id="window"><img src="img/lop0.jpg" alt="큰사진"></div>
+  </div>
+  <script>
+    // const navLink = document.querySelectorAll('#nav li a');
+    // navLink.forEach(function(a){ //모든 a태그 클릭 가능하게 만들기
+    //   a.addEventListener('click',function(e){
+    //     e.preventDefault(); //return false 비슷 - 이벤트를 막아서 링크 금지
+    //     let img_url = a.getAttribute('href');
+    //     // alert(img_url);
+    //     document.querySelector('#window img').setAttribute('src',img_url);
+    //     navLink.forEach(function(link){
+    //         link.classList.remove('active');
+    //     });
+    //     a.classList.add('active');
+    //   });
+    // });
+
+    const navLink = document.querySelectorAll("#nav li a");
+
+      navLink.forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          let img_url = e.currentTarget.getAttribute('href');
+
+          document
+            .querySelector("#window img")
+            .setAttribute('src', img_url);
+
+          navLink.forEach(link => link.classList.remove('active'));
+          e.currentTarget.classList.add('active');
+        });
+      });
+  </script>
+</body>
+</html>

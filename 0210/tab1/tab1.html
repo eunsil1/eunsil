@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/tab1.css">
+  <script src="js/tab1.js" defer></script>
+  <!-- html 분석이 끝난뒤 실행 -->
+</head>
+<body>
+  <div class="content">
+    <div class="tab-container">
+      <div id="menutab1" class="tab active-tab" onclick="changeTab('tab1')">공지사항</div>
+      <div id="menutab2" class="tab" onclick="changeTab('tab2')">갤러리</div>      
+    </div>
+    <div id="tab1" class="tab-content active-content">
+      <p><span class="left">네번째 공지사항입니다.</span><span class="right">2026.02.09</span></p>
+      <p><span class="left">세번째 공지사항입니다.</span><span class="right">2026.01.31</span></p>
+      <p><span class="left">두번째 공지사항입니다.</span><span class="right">2026.01.15</span></p>
+      <p><span class="left">첫번째 공지사항입니다.</span><span class="right">2026.01.03</span></p>
+    </div>
+    <div id="tab2" class="tab-content">
+      <div class="photo photo1">
+        <img src="images/g1.png" alt="">
+      </div>
+      <div class="photo photo2">
+        <img src="images/g2.png" alt="">
+      </div>
+      <div class="photo photo3">
+        <img src="images/g3.png" alt="">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

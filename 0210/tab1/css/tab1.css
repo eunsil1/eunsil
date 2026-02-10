@@ -1,0 +1,71 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+.content{
+  width: 400px;
+  height: 200px;
+  border: 1px solid #000;
+  margin: 100px auto 0;
+}
+
+.tab-container{ 
+/* tab menu 2개를 감싸는 박스 */
+  height: 38px;
+  /* overflow: hidden; */
+}
+
+.tab{
+  float: left;
+  text-align: center;
+  height: 38px;
+  line-height: 38px;
+  width: 50%;
+  border-bottom: 1px solid #333;
+}
+
+.tab.active-tab{
+  border-bottom: none;
+}
+
+.tab:nth-child(1){
+  border-right: 1px solid #333;
+}
+
+.tab-content{
+  display: none;
+}
+
+.tab-content.active-content{
+  display: block;
+}
+
+.tab-content p{
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #333;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.tab-content p span.left{
+  float: left;
+}
+
+.tab-content p span.right{
+  float: right;
+}
+
+/* .tab-content p:nth-child(4) */
+.tab-content p:last-child{
+  border-bottom: 0;
+}
+
+#tab2 > div{
+  float: left;
+  width: 32%;
+  margin-left: 1%;
+}
+
+#tab2 > div img{
+  display: block;
+  width: 100%;
+}
