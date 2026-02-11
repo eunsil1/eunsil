@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  *{margin: 0; padding: 0;}
+  ul{list-style: none;}
+  a{text-decoration: none;}
+  header{
+    width: 1200px;
+    height: 200px;
+    margin: 0 auto;
+    background-color: #ccc;
+  }
+  #img_slider{
+    position: relative;
+    width: 1200px;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  #img_slider ul{
+    width: 4800px;
+    height: 300px;
+  }
+  #img_slider ul li{
+    float: left;
+  }
+  
+  #img_slider p a{
+    position: absolute;
+    width: 38px;
+    height: 36px;
+    top: 40%;
+  }
+
+  #img_slider p a.prev{
+    left: 20px;
+  }
+
+  #img_slider p a.next{
+    right: 20px;
+  }
+</style>
+</head>
+<body>
+  <header></header>
+  <div id="img_slider">
+    <ul id="banner">
+      <li><a href="#"><img src="images/slide1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/slide2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/slide3.jpg" alt=""></a></li>
+    </ul>
+    <p>
+      <a href="#" class="prev">
+        <img src="images/prev_btn.png" alt="">
+      </a>
+      <a href="#" class="next">
+        <img src="images/next_btn.png" alt="">
+      </a>
+    </p>
+  </div>
+<script>
+  let list = document.getElementById('banner');
+  let listLi = document.querySelectorAll('#banner li');
+  let total = listLi.length;
+  let li_width = 1200;
+  for(let i = 0; i < 2; i++){
+    let copyobj = listLi[i].cloneNode(true);
+    list.append(copyobj);
+  }
+
+  let num = 0;
+  let next = document.querySelector('.next');
+  let prev = document.querySelector('.prev');
+
+  next.addEventListener('click',function(e){
+    e.preventDefault();
+    if(num === total){
+      num = 0;
+      list.style.transition = 'none';
+      list.style.marginLeft = 0;
+    }
+
+    setTimeout(function(){
+      num++;
+      list.style.transition = 'margin-left 0.5s';
+      list.style.marginLeft = -li_width * num + 'px';
+    });
+  });
+
+  prev.addEventListener('click',function(e){
+    e.preventDefault();
+    if (num === 0) {
+      num = total;
+      list.style.transition = 'none';
+      list.style.marginLeft = -li_width * num + 'px';
+    }
+
+    setTimeout(function () {
+      num--;
+      list.style.transition = 'margin-left 0.5s';
+      list.style.marginLeft = -li_width * num + 'px';
+    }, 50);
+  });
+
+  function autoPlay(){
+    if(num === total){
+      num = 0;
+      list.style.transition = 'none';
+      list.style.marginLeft = 0;
+    }
+
+    setTimeout(function(){
+      num++;
+      list.style.transition = 'margin-left 0.5s';
+      list.style.marginLeft = -li_width * num + 'px';
+    },50);
+  }
+
+  setInterval(autoPlay, 3000);
+</script>
+</body>
+</html>
