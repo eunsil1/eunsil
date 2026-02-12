@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>심플 수직 메뉴 - 클래스 토글 방식</title>
+  <style>
+    /* 기본 스타일 초기화 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .m_menu {
+      width: 200px;
+      margin: 50px auto;
+      border: 1px solid #ddd;
+    }
+
+    /* 메인 메뉴 스타일 */
+    .m_menu>li>a {
+      display: block;
+      height: 45px;
+      line-height: 45px;
+      background-color: #390;
+      color: #fff;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      transition: background-color 0.3s;
+    }
+
+    .m_menu>li>a:hover,
+    .m_menu>li.active>a {
+      background-color: #2a7a00;
+      /* 활성화 시 색상 변경 */
+    }
+
+    /* 서브 메뉴 스타일 (핵심) */
+    .m_menu .sub {
+      max-height: 0;
+      /* 높이를 0으로 숨김 */
+      overflow: hidden;
+      background-color: #f4f4f4;
+      opacity: 0;
+      /* max-height로 애니메이션 처리 */
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+
+    /* li에 active 클래스가 붙었을 때 서브메뉴 표시 */
+    .m_menu li.active .sub {
+      max-height: 200px;
+      /* 서브메뉴가 충분히 펼쳐질 수 있는 넉넉한 높이 */
+      opacity: 1;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .m_menu .sub li a {
+      display: block;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 14px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .m_menu .sub li a:hover {
+      background-color: #e9e9e9;
+      color: #390;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul class="m_menu">
+    <li>
+      <a href="#">회사소개</a>
+      <ul class="sub">
+        <li><a href="#">인사말</a></li>
+        <li><a href="#">오시는 길</a></li>
+        <li><a href="#">연혁</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">제품소개</a>
+      <ul class="sub">
+        <li><a href="#">신제품</a></li>
+        <li><a href="#">베스트 상품</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">커뮤니티</a>
+      <ul class="sub">
+        <li><a href="#">공지사항</a></li>
+        <li><a href="#">자유게시판</a></li>
+        <li><a href="#">질문답변</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const mainMenuLinks = document.querySelectorAll('.m_menu > li > a');
+
+      mainMenuLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const parentLi = this.parentElement;
+
+          // 1. 나를 제외한 다른 메뉴의 'active' 클래스 제거 (다른 메뉴 닫기)
+          document.querySelectorAll('.m_menu > li').forEach(li => {
+            if (li !== parentLi) {
+              li.classList.remove('active');
+            }
+          });
+
+          // 2. 클릭한 메뉴의 'active' 클래스 토글 (열고 닫기)
+          parentLi.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

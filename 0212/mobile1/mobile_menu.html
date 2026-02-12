@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>햄버거모바일</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    body {
+      /* overflow-x: hidden; */
+    }
+
+    header {
+      width: 100%;
+      height: 70px;
+      position: relative;
+      background-color: skyblue;
+    }
+
+    header h1 {
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+    }
+
+    header .ham {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 10px;
+      right: 10px;
+      border: 1px solid #333;
+      /* 메뉴글씨 숨기기 */
+      text-indent: -9999px;
+      background: url(./images/ham.png) no-repeat 50% 50%;
+      cursor: pointer;
+    }
+
+    header .ham.on {
+      background: url(./images/bar.png) no-repeat 50% 50%;
+      /* X 이미지 */
+    }
+
+    nav {
+      width: 200px;
+      background-color: lime;
+      position: absolute;
+      /* height:200px; */
+      top: 70px;
+      right: -200px;
+      transition: all 0.3s;
+    }
+
+    nav ul li {
+      /* height: 40px; */
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    nav ul li>a {
+      display: block;
+      cursor: pointer;
+    }
+
+    /* 서브메뉴 초기 숨김 */
+    nav .sub {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    nav .sub li {
+      background-color: #cf9;
+    }
+
+    nav .sub li:hover {
+      background-color: #cf09;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>더조은</h1>
+    <p class="ham">메뉴바</p>
+  </header>
+  <nav>
+    <ul>
+      <li>
+        <a href="#">회사소개</a>
+        <ul class="sub">
+          <li><a href="#">submenu1</a></li>
+          <li><a href="#">submenu2</a></li>
+          <li><a href="#">submenu3</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">제품소개</a>
+        <ul class="sub">
+          <li><a href="#">submenu1</a></li>
+          <li><a href="#">submenu2</a></li>
+          <li><a href="#">submenu3</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">커뮤니티</a>
+        <ul class="sub">
+          <li><a href="#">submenu1</a></li>
+          <li><a href="#">submenu2</a></li>
+          <li><a href="#">submenu3</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">다운로드</a>
+        <ul class="sub">
+          <li><a href="#">submenu1</a></li>
+          <li><a href="#">submenu2</a></li>
+          <li><a href="#">submenu3</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</body>
+
+</html>
+<script>
+  // DOM이 로드된 후 실행
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // 서브메뉴 숨기기 (초기화)
+    const subMenus = document.querySelectorAll('nav .sub');
+    subMenus.forEach(function (sub) {
+      sub.style.height = '0px';
+      sub.style.opacity = '0';
+    });
+
+    // 메뉴 클릭시 서브메뉴가 나오고, 다시 클릭시 서브메뉴가 들어감
+    const mainMenuLinks = document.querySelectorAll('nav > ul > li > a');
+
+    //서브메누가 열려있는지 확인하는 함수
+    function isSubmenuOpen(subMenu) {//서브메뉴 높이가 존재하면 true
+      return subMenu.style.height !== '0px' && subMenu.style.height !== '';
+    }
+
+    // 서브메뉴 슬라이드 다운 함수
+    function slideDown(element) {
+      element.style.height = '0px';
+      element.style.opacity = '0';
+      element.offsetHeight; // 리플로우 강제
+      const height = element.scrollHeight; //108 현재높이로 열림
+      element.style.height = height + 'px';
+      element.style.opacity = '1';
+    }
+
+    //서브메뉴 슬라이드 업 함수 (height=0 ) -> 슬라이드 닫히게
+    function slideUp(element) {
+      element.style.height = element.scrollHeight + 'px'; //열린슬라이드 높이108
+      element.offsetHeight; // 리플로우 강제
+      element.style.height = '0px';
+      element.style.opacity = '0';
+    }
+
+
+
+    mainMenuLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const subMenu = this.nextElementSibling; //a클릭(this) 다음에있는 .sub
+        if (subMenu && subMenu.classList.contains('sub')) {
+          if (!isSubmenuOpen(subMenu)) { //클릭한 다음서브메뉴(현재)가 닫혀있으며
+            subMenus.forEach(function (sub) {//열린 나머지 서브닫기
+              if (isSubmenuOpen(sub)) {
+                slideUp(sub);
+              }
+            });
+            //현재 서브메뉴 열기
+            slideDown(subMenu);
+          } else {
+            //모든 서브 메뉴 닫기
+            subMenus.forEach(function () {
+              if (isSubmenuOpen(sub)) {
+                slideUp(sub);
+              }
+            });
+          }
+
+        }
+
+      });
+
+    });
+
+
+
+
+    // 햄버거 메뉴 클릭시 메뉴가 나오고, 다시 클릭시 메뉴가 들어감
+    const hamBtn = document.querySelector('.ham');
+    const nav = document.querySelector('nav');
+
+    hamBtn.addEventListener('click', function () {
+      if (!this.classList.contains('on')) {
+        //메뉴열기
+        nav.style.right = '0px'; // 오른쪽에서 nav나옴
+        this.classList.add('on'); //햄버거매뉴가 X변경
+      } else {
+        nav.style.right = '-200px';
+        this.classList.remove('on');
+        //모든 서브메뉴 닫기
+        subMenus.forEach(function () {
+          if (isSubmenuOpen(sub)) {
+            slideUp(sub);
+          }
+        });
+      }
+
+    });
+
+
+  });
+
+</script>

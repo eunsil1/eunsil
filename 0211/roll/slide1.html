@@ -124,3 +124,66 @@
 </script>
 </body>
 </html>
+
+<!--  <script>
+        let list = document.querySelector('#banner');
+        let listLi = document.querySelectorAll('#banner li');
+        let total = listLi.length;
+        // let li_length = 1200;
+        let li_length = document.querySelector("#banner > li").offsetWidth;
+        let copyObj = listLi[0].cloneNode(true);
+        let num = 0;
+        let intervalId;
+
+        list.append(copyObj);
+        document.querySelector('.next').addEventListener("click",function(e){
+            e.preventDefault();
+            clearInterval(intervalId);
+            restartPlay();
+            if(num == total){
+                num = 0;
+                list.style.transition = 'none';
+                list.style.marginLeft = 0;
+            }
+            setTimeout(function(){
+                num++;
+                list.style.transition = 'margin-left 0.5s';
+                list.style.marginLeft = -li_length * num + "px";
+            },50);
+        });
+
+        document.querySelector('.prev').addEventListener("click",function(e){
+            e.preventDefault();
+            clearInterval(intervalId);
+            restartPlay();
+            if(num == 0){
+                num = total;
+                list.style.transition = 'none';
+                list.style.marginLeft = -li_length * num + "px";
+            }
+            setTimeout(function(){
+                num--;
+                list.style.transition = 'margin-left 0.5s';
+                list.style.marginLeft = -li_length * num + "px";
+            },50);
+        });
+
+        function autoplay(){
+            if(num == total){
+                num = 0;
+                list.style.transition = 'none';
+                list.style.marginLeft = 0;
+            }
+            setTimeout(function(){
+                num++;
+                list.style.transition = 'margin-left 0.5s';
+                list.style.marginLeft = -li_length * num + "px";
+            },50);
+        }
+
+        intervalId = setInterval(autoplay,3000);
+
+        function restartPlay(){
+            intervalId = setInterval(autoplay,3000);
+        }
+    </script> -->

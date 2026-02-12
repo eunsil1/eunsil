@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .m_menu {
+    width: 200px;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  .m_menu>li>a {
+    display: block;
+    height: 36px;
+    background-color: #390;
+    line-height: 36px;
+    border-top: 1px dotted #fff;
+    color: #fff;
+  }
+
+  .m_menu .sub li {
+    background-color: #cf9;
+  }
+
+  .m_menu .sub li a {
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    color: #222;
+  }
+
+  .m_menu .sub li a:hover {
+    background-color: #cf09;
+  }
+</style>
+
+<body>
+  <ul class="m_menu">
+    <li>
+      <a href="#">회사소개</a>
+      <ul class="sub">
+        <li><a href="#">submenu1</a></li>
+        <li><a href="#">submenu2</a></li>
+        <li><a href="#">submenu3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">제품소개</a>
+      <ul class="sub">
+        <li><a href="#">submenu1</a></li>
+        <li><a href="#">submenu2</a></li>
+        <li><a href="#">submenu3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">커뮤니티</a>
+      <ul class="sub">
+        <li><a href="#">submenu1</a></li>
+        <li><a href="#">submenu2</a></li>
+        <li><a href="#">submenu3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">다운로드</a>
+      <ul class="sub">
+        <li><a href="#">submenu1</a></li>
+        <li><a href="#">submenu2</a></li>
+        <li><a href="#">submenu3</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    $(function () {
+      // $(".m_menu li ul").css('display','none')
+      $('.sub').hide();
+
+      // $('.sub').eq(0).show;
+      $('.m_menu li ul').eq(0).show();
+      //처음 메뉴만 보이게 설정
+
+      $('.m_menu li a').click(function () {
+        let kkk = $(this).next('.sub').css('display');
+        //클릭한 a 다음에 .sub의 diplay 상태 확인
+        if (kkk == 'none') {
+          $('.sub').slideUp();
+          //모든 서브메뉴 닫기
+          $(this).next('.sub').slideDown();
+          //클릭한 a 다음요소인 .sub 열기
+        }
+
+        return false;
+        //a태그 기능 막기
+      })
+    })
+  </script>
+</body>
+
+</html>
