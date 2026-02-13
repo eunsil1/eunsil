@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //1. 함수 선언식
+    //함수 이름 필수
+    //- 호이스팅됨(코드 실행전에 메모리에 등록)
+    //어디서든 호출 가능
+
+    // function greeting(name){
+    //   return "안녕하세요, " + name + "님";
+    // }
+    // console.log(greeting("홍길동"));
+
+    //2. 함수표현식 - 익명함수
+    //함수 이름이 없음
+    //변수에 할당됨
+    //호이스팅 안됨(선언 전에 호출 불가)
+    // const greeting = function(name) {
+    //   return "안녕하세요, " + name + "님";
+    // }
+    // console.log(greeting("홍길동"));
+
+    //3. 화살표 함수
+    //function 키워드 대신 '=>' 사용
+    //더 간결한 문법
+    //this 바인딩이 다름
+    // const greeting = (name) => {return "안녕하세요, " + name + "님";}
+    // console.log(greeting("홍길동"));
+
+    const greeting = (name) => { return "안녕하세요, " + name + "님"; }
+    
+
+    setInterval(function(){
+      const result = greeting("홍길동");
+      console.log(result);
+    }, 1000);
+
+  </script>
+</body>
+</html>

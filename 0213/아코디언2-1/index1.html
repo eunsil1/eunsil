@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  *{margin: 0; padding: 0;}
+  body{
+    background: #252422;
+  }
+  div{
+    width: 395px;
+    height: 160px;
+    margin: 50px auto;
+    overflow: hidden;
+  }
+
+  dl{
+    width: 395px;
+    height: 160px;
+  }
+
+  dt{
+    width: 25px;
+    height: 160px;
+    float: left;
+  }
+
+  dt span{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-indent: -9999px;
+  }
+
+  dt span.selected{
+    cursor: default;
+  }
+
+  dd{
+    width: 320px;
+    height: 160px;
+    float: left;
+    background: #d4d0c8;
+    overflow: hidden;
+  }
+
+  dd img{
+    float: left;
+    width: 320px;
+    height: 160px;
+  }
+
+  dt{
+    background: url(images/blue01.png) no-repeat 0 0;
+  }
+
+  dt span:hover{
+    cursor: pointer;
+    background: url(images/pink01.png) no-repeat 0 0;
+  }
+
+  dt span.selected{
+    background: url(images/orange01.png) no-repeat 0 0;
+  }
+</style>
+</head>
+<body>
+  <div>
+    <dl>
+      <dt>
+        <span class="selected">step</span>
+      </dt>
+      <dd style="width: 320px;"><img src="images/menuimg01.jpg" alt=""></dd>
+
+      <dt><span>step</span></dt>
+      <dd style="width: 0px;"><img src="images/menuimg02.jpg" alt=""></dd>
+
+      <dt><span>step</span></dt>
+      <dd style="width: 0px;"><img src="images/menuimg03.jpg" alt=""></dd>
+    </dl>
+  </div>
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ddList = document.querySelectorAll('dd');
+    var dtList = document.querySelectorAll('dl dt');
+    var ddListSpan = document.querySelectorAll('dl dt span');
+
+    for(var i = 1; i < ddList.length; i++){
+      ddList[i].style.width = '0px';
+    }
+    dtListSpan[0].classList.add('selected');
+
+    for(var i = 0; i < dtList.length; i++){
+      dtList[i].addEventListener('click',function(){
+        var nextDD = this.nextElementSibling;
+        if(nextDD.style.width == '0px' || nextDD.style.width === ''){
+          for(var j = 0; j < ddList.length; j++){
+            ddList[j].style.width = '0px';
+          }
+        }
+        nextDD.style.width = '320px';
+        for (var k = 0; k < dtList.length; k++) { 
+          dtListSpan[k].classList.remove('selected');
+        }
+        this.querySelector('span').classList.add('selected');
+      });
+    }
+  });
+</script>
+</body>
+</html>

@@ -29,9 +29,35 @@ public class ReservationManager {
 
   public void hotelReservation() {
     System.out.print("호텔명 입력: ");
-    String hotel = sc.nextLine();
+    String name = sc.nextLine();
     System.out.print("사용자 이름 입력: ");
     String userName = sc.nextLine();
     Hotel hotel = getHotel(name);
+
+    if (hotel == null) {
+      System.out.println("해당 호텔이 없습니다.");
+      return;
+    }
+    hotel.getRoom().displayRooms();
+    System.out.print("객실 번호 선택: ");
+    int roomNumber = Integer.parseInt(sc.nextLine());
+
+    if (bookRoom(userName,name,roomNumber)) {
+      
+    }
+  }
+
+  private boolean bookRoom(String userName, String name, int roomNumber) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'bookRoom'");
+  }
+
+  public Hotel getHotel(String name) {
+    for(Hotel hotel : hotels){
+      if (hotel.getName().equals(name)) {
+        return hotel;
+      }
+    }
+    return null;
   }
 }
