@@ -15,6 +15,10 @@ public class ReservationManager {
     sc = new Scanner(System.in);
   }
 
+  public void addHotel(Hotel hotel) {
+    hotels.add(hotel);
+  }
+
   public void showHotels() {
     System.out.println("\n호텔 목록");
     for(Hotel hotel : hotels){
@@ -22,9 +26,7 @@ public class ReservationManager {
     }
   }
 
-  public void addHotel(Hotel hotel) {
-    hotels.add(hotel);
-  }
+  
 
   public void hotelReservation() {
     System.out.print("호텔명 입력: ");
@@ -80,7 +82,7 @@ public class ReservationManager {
     return true;
   }
 
-  private User getUser(String userName) {
+  public User getUser(String userName) {
     for(User user : users){
       if (user.getName().equals(userName)) {
         return user;
@@ -90,13 +92,25 @@ public class ReservationManager {
   }
 
   public Hotel getHotel(String name) {
-    String input = name.replaceAll("\\s+", "").toLowerCase();
     for(Hotel hotel : hotels){
-      String hotelName = hotel.getName().replaceAll("\\s+", "").toLowerCase();
-      if (hotel.getName().equalsIgnoreCase(name)) {
+      if (hotel.getName().equals(name)) {
         return hotel;
       }
     }
     return null;
+  }
+
+  public void checkReservation() {
+    System.out.print("사용자 이름 입력: ");
+    String userName = sc.nextLine();
+    User user = getUser(userName);
+    if (user != null && !user.getReservedHotels().isEmpty()) {
+      for(int i = 0; i < user.getReservedHotels().size(); i++){
+        System.out.println("예약번호: " + user.getReservationNumbers().get(i) + " | 호텔명: " + user.getReservedHotels().get(i) + " | 객실 번호: " + user.getReservedRooms().get(i));
+      }
+      System.out.println("총 결제 금액: " + user.getTotalPaid() + "원");
+    }else{
+      System.out.println("예약된 내역이 없습니다.");
+    }
   }
 }

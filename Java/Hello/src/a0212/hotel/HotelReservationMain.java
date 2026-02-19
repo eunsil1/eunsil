@@ -68,8 +68,13 @@ public class HotelReservationMain {
           manager.showHotels();
           manager.hotelReservation();
           break;
-        default:
+        case 3:
+          manager.checkReservation();
           break;
+        case 0:
+          break End;
+        default:
+          System.out.println("잘못된 입력입니다. 다시 선택해주세요");
       }
     }
   }
