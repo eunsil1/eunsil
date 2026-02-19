@@ -41,6 +41,15 @@ public class User {
     return totalPaid;
   }
 
+  public void addTotalPaid(int amount) {
+    totalPaid += amount;
+  }
+
+  public void addReservation(String name, int roomNumber){
+    reservedHotels.add(name);
+    reservedRooms.add(roomNumber);
+    reservationNumbers.add(reservationCounter++);
+  }
   
 
   

@@ -62,10 +62,10 @@ public class HotelReservationMain {
 
       switch (choice) {
         case 1:
-          manager.showHoels();
+          manager.showHotels();
           break;
         case 2:
-          manager.showHoels();
+          manager.showHotels();
           manager.hotelReservation();
           break;
         default:

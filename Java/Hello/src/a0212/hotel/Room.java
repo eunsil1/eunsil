@@ -8,23 +8,21 @@ public class Room {
   public Room(int roomCount){
     rooms = new ArrayList<>();
     for(int i = 1; i <= roomCount; i++){
-      rooms.add(String.valueOf(i));
+      rooms.add((i + 1) + "");
     }
   }
 
   public int getAvailableRooms() {
     int count = 0;
     for(String room : rooms){
-      if (!room.equals("X")) {
-        count++;
-      }
+      if (!room.equals("X")) count++;
     }
     return count;
   }
 
   public void displayRooms(){
     for(int i = 0; i < rooms.size(); i++){
-      System.out.print(rooms.get(i) + "\t");
+      System.out.printf("%2s", rooms.get(i));
       if ((i + 1) % 10 == 0) {
         System.out.println();
       }
@@ -33,29 +31,12 @@ public class Room {
   }
 
   public boolean reserveRoom(int roomNumber){
-    if(roomNumber < 1 || roomNumber > rooms.size()){
-      return false;
-    }
-
-    int index = roomNumber - 1;
-    if(rooms.get(index).equals("X")){
-      return false;
-    }else{
-      rooms.set(index, "X");
+    if(roomNumber > 0 && roomNumber <= rooms.size() && !rooms.get(roomNumber - 1).equals("X")){
+      rooms.set(roomNumber - 1, "X");
       return true;
     }
+    return false;
   }
 
-  public boolean cancelRoom(int roomNumber){
-    if (roomNumber < 1 || roomNumber > rooms.size()) {
-      return false;
-    }
-    int index = roomNumber - 1;
-    if (rooms.get(index).equals("X")) {
-      rooms.set(index, String.valueOf(roomNumber));
-      return true;
-    }else{
-      return false;
-    }
-  }
+
 }
