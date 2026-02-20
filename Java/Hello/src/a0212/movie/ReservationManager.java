@@ -323,7 +323,6 @@ public class ReservationManager {
         // 미 입력시 원상태로
       }
     } catch (Exception e) {
-      // TODO: handle exception
       System.out.println("잘못된 입력입니다. 좌석 수는 숫자여야 합니다.");
       return;
     }

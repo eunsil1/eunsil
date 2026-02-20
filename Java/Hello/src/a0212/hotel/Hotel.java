@@ -39,7 +39,8 @@ public class Hotel {
   @Override
   public String toString() {
     String formattedpriceFormat = priceFormat.format(price);
-    return "호텔 이름: {" + name + "} | 위치: {" + location + "} | 가격: {" + formattedpriceFormat + "} | 남은 방: {" + room.getAvailableRooms() + "}개";
+    int availableRooms = room.getAvailableRooms();
+    return "호텔 이름: {" + name + "} | 위치: {" + location + "} | 가격: {" + formattedpriceFormat + "} | 남은 방: {" + availableRooms + "}개";
   }
 
   

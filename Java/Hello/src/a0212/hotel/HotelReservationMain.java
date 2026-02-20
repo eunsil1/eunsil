@@ -36,16 +36,62 @@ public class HotelReservationMain {
         case "1":
           userMenu(manager, sc);
           break;
-        
-      
-        default:
+        case "2":
+          adminLogin(manager, ticket, sc);
           break;
+        case "0":
+          System.out.println("시스템을 종료합니다.");
+          return;
+        default:
+          System.out.println("잘못된 선택입니다.");
       }
     }
 
 
   }
 
+  private static void adminLogin(ReservationManager manager, ReservationTicket ticket, Scanner sc) {
+    System.out.println("운영자 비밀번호를 입력하세요: ");
+    String password = sc.nextLine();
+    if (!password.equals("admin123")) {
+      System.out.println("비밀번호가 틀렸습니다.");
+      return;
+    }
+  
+
+  while(true) {
+    System.out.println("\n=== 운영자 메뉴 ===");
+    System.out.println("1. 호텔 삭제");
+    System.out.println("2. 호텔 목록 갱신");
+    System.out.println("3. 호텔 정보 수정");
+    System.out.println("4. 호텔 추가");
+    System.out.println("5. 할인율 설정");
+    System.out.println("0. 뒤로가기");
+    String choice = sc.nextLine();
+
+    switch (choice) {
+      case "1":
+        manager.showHotels();
+        manager.deleteHotel(sc);
+        break;
+      case "2":
+        // ticket.updateHotelList();
+        System.out.println("호텔 목록이 갱신되었습니다.");
+        break;
+      case "3":
+        manager.showHotels();
+        // manager.modifyHotelInfo(sc);
+        break;
+      case "4":
+        // manager.setDiscountRate(sc);
+        break;
+      case "0":
+        return;
+      default:
+        break;
+    }
+  }
+}
   private static void userMenu(ReservationManager manager, Scanner sc) {
     End:while (true) {
       System.out.println("\n=== 호텔 예매 시스템 ===");
@@ -70,6 +116,15 @@ public class HotelReservationMain {
           break;
         case 3:
           manager.checkReservation();
+          break;
+        case 4:
+          manager.cancelReservation();
+          break;
+        case 5:
+          manager.cancelAllReservation();
+          break;
+        case 6:
+          manager.printTicket();
           break;
         case 0:
           break End;

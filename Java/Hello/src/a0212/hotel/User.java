@@ -33,24 +33,50 @@ public class User {
     return reservedRooms;
   }
 
-  public static int getReservationCounter() {
-    return reservationCounter;
+  public void addTotalPaid(int amount) {
+    totalPaid += amount;
   }
 
   public int getTotalPaid() {
     return totalPaid;
   }
 
-  public void addTotalPaid(int amount) {
-    totalPaid += amount;
-  }
-
   public void addReservation(String name, int roomNumber){
     reservedHotels.add(name);
     reservedRooms.add(roomNumber);
-    reservationNumbers.add(reservationCounter++);
+    reservationNumbers.add(reservationCounter);
+
+    System.out.println("예약번호: " + reservationCounter + "번 예약 완료");
+
+    reservationCounter++;
   }
-  
+
+  public void cancelReservation(String hotelName, int roomNumber) {
+    int index = reservedHotels.indexOf(hotelName);
+    if (index != -1 && reservedRooms.get(index) == roomNumber) {
+      reservedHotels.remove(index);
+      reservedRooms.remove(index);
+      reservationNumbers.remove(index);
+    }
+  }
+
+  public void clearReservations() {
+    reservedHotels.clear();
+    reservedRooms.clear();
+    reservationNumbers.clear();
+  }
+
+  public void removeRservationsByHotel(String hotelName) {
+    for(int i = reservedHotels.size() -1; i >=0; i--){
+      if (reservedHotels.get(i).equals(hotelName)) {
+        reservedHotels.remove(i);
+        reservedRooms.remove(i);
+        reservationNumbers.remove(i);
+      }
+    }
+  }
+
+
 
   
 

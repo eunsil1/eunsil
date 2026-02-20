@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="banner">
+    <img src="img_map.jpg" alt="이미지맵" usemap="#banner1">
+    <map name="banner1" id="banner1">
+      <area shape="rect" coords="130,730,920,847" href="https://nate.com" alt="">
+      <area shape="circle" coords="554,412,90" href="https://www.starbucks.co.kr/" alt="">
+      <area shape="poly" coords="553,130,392,170,556,207,708,162" href="https://paikdabang.com/" alt="">
+
+      
+    </map>
+  </div>
+</body>
+</html>
+<!-- 이미지맵 - 이미지 안에 내비게이션 (하나의 이미지 안에 여러개의 클릭 가능한 영역 만들기) -->
+
+<!-- 이미지맵의 핵심 태그 3가지
+이미지맵을 만들려면 세 가지 태그가 톱니바퀴처럼 맞물려야 합니다.
+
+<img>: 화면에 보여줄 이미지를 불러옵니다. 이때 usemap="#이름" 속성을 넣어 "나는 이 맵을 사용할 거야!"라고 선언해야 합니다.
+
+<map>: 이미지맵의 본체입니다. name="이름" 속성으로 이미지와 연결됩니다.
+
+<area>: 실제 클릭이 일어나는 '영역'을 정의합니다. -->
+
+<!-- 모양 (shape),특징,좌표 (coords) 설정 방식
+rect,사각형,"x1, y1, x2, y2 (왼쪽 상단 꼭짓점, 오른쪽 하단 꼭짓점)"
+circle,원형,"x, y, r (원의 중심점 좌표, 반지름)"
+poly,다각형,"x1, y1, x2, y2, x3, y3... (각 꼭짓점의 좌표를 순서대로 입력)" -->
