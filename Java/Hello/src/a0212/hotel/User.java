@@ -9,6 +9,7 @@ public class User {
   private ArrayList<Integer> reservedRooms;
   private static int reservationCounter = 1;
   private int totalPaid = 0;
+
   
   public User(String name) {
     this.name = name;
@@ -16,69 +17,30 @@ public class User {
     this.reservedHotels = new ArrayList<>();
     this.reservedRooms = new ArrayList<>();
   }
-
   public String getName() {
     return name;
   }
-
   public ArrayList<Integer> getReservationNumbers() {
     return reservationNumbers;
   }
-
   public ArrayList<String> getReservedHotels() {
     return reservedHotels;
   }
-
   public ArrayList<Integer> getReservedRooms() {
     return reservedRooms;
   }
-
-  public void addTotalPaid(int amount) {
-    totalPaid += amount;
+  public static int getReservationCounter() {
+    return reservationCounter;
   }
-
   public int getTotalPaid() {
     return totalPaid;
   }
-
-  public void addReservation(String name, int roomNumber){
+  
+  public void addReservation(String name, int roomNumber) {
     reservedHotels.add(name);
     reservedRooms.add(roomNumber);
-    reservationNumbers.add(reservationCounter);
-
-    System.out.println("예약번호: " + reservationCounter + "번 예약 완료");
-
-    reservationCounter++;
+    reservationNumbers.add(reservationCounter++);
   }
-
-  public void cancelReservation(String hotelName, int roomNumber) {
-    int index = reservedHotels.indexOf(hotelName);
-    if (index != -1 && reservedRooms.get(index) == roomNumber) {
-      reservedHotels.remove(index);
-      reservedRooms.remove(index);
-      reservationNumbers.remove(index);
-    }
-  }
-
-  public void clearReservations() {
-    reservedHotels.clear();
-    reservedRooms.clear();
-    reservationNumbers.clear();
-  }
-
-  public void removeRservationsByHotel(String hotelName) {
-    for(int i = reservedHotels.size() -1; i >=0; i--){
-      if (reservedHotels.get(i).equals(hotelName)) {
-        reservedHotels.remove(i);
-        reservedRooms.remove(i);
-        reservationNumbers.remove(i);
-      }
-    }
-  }
-
-
-
-  
 
   
 

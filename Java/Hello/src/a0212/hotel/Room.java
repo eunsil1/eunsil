@@ -5,56 +5,43 @@ import java.util.ArrayList;
 public class Room {
   private ArrayList<String> rooms;
 
-  public Room(int roomCount){
+  public Room(int roomCount) {
     rooms = new ArrayList<>();
-    for(int i = 1; i <= roomCount; i++){
-      rooms.add(String.valueOf(i));
+    for(int i = 0; i < roomCount; i++){
+      rooms.add((i+1) + "");
     }
   }
 
-  public int getAvailableRooms() {
+  public int getavailableRooms() {
     int count = 0;
     for(String room : rooms){
-      if (!room.equals("X")) count++;
+      if (!room.equals("X")) {
+        count++;
+      }
     }
     return count;
   }
 
-  public void displayRooms(){
+  public void displayRooms() {
+    System.out.println("\n객실 위치 (예약된 좌석: X)");
     for(int i = 0; i < rooms.size(); i++){
-      System.out.printf("%-4s", rooms.get(i));
-      if ((i + 1) % 10 == 0) {
+      System.out.printf("%2s",rooms.get(i));
+      if ((i+1) % 10 == 0) {
         System.out.println();
       }
     }
-    System.out.println();
   }
 
-  public boolean reserveRoom(int roomNumber){
-    if(roomNumber < 1 || roomNumber > rooms.size()){
-      return false;
+  public boolean reserveRoom(int roomNumber) {
+    if (roomNumber > 0 && roomNumber <= rooms.size() && !rooms.get(roomNumber -1).equals("X")) {
+      rooms.set(roomNumber -1, "X");
+      return true;
     }
-
-    if (rooms.get(roomNumber - 1).equals("X")) {
-      return false;
-    }
-
-    rooms.set(roomNumber - 1, "X");
-    return true;
+    return false;
   }
+  
 
-  public boolean cancelRoom(int roomNumber) {
-    if (roomNumber < 1 || roomNumber > rooms.size()) {
-      return false;
-    }
 
-    if (!rooms.get(roomNumber - 1).equals("X")) {
-      return false; // 예약되지 않은 방
-    }
 
-    // 원래 번호로 복원
-    rooms.set(roomNumber - 1, String.valueOf(roomNumber));
-    return true;
-  }
 
 }
