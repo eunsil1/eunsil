@@ -39,6 +39,12 @@ public class Room {
     }
     return false;
   }
+
+  public void cancelRoom(int roomNumber) {
+    if (roomNumber > 0 && roomNumber <= rooms.size() && rooms.get(roomNumber - 1).equals("X")) {
+      rooms.set(roomNumber -1, String.valueOf(roomNumber));
+    }
+  }
   
 
 
