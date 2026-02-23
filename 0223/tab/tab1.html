@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../jquery-4.0.0.js"></script>
+<style>
+  *{margin: 0; padding: 0;}
+  ul{list-style: none;}
+  #tab{
+    width: 280px;
+    height: 200px;
+    border: 1px solid #333;
+  }
+
+  .tab_menu{
+    display: flex;
+    gap: 10px;
+    height: 50px;
+  }
+
+  .tab_menu li{
+    line-height: 50px;
+    text-align: center;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+
+  .tab_menu li.on{
+    background-color: brown;
+    color: #fff;
+  }
+
+  .tab_list li{
+    line-height: 35px;
+    display: none;
+  }
+
+  .tab_list li.on{
+    display: block;
+  }
+
+</style>
+</head>
+<body>
+  <div id="tab">
+    <ul class="tab_menu">
+      <li class="on">공지사항</li> <!-- index 0 -->
+      <li>갤러리</li> <!--index 1-->
+      <li>정보마당</li> <!-- index 2-->
+    </ul>
+    <ul class="tab_list">
+      <li class="on">
+        <div>공지 사항입니다.</div> <!-- index 0 -->
+        <div>공지 사항입니다.</div>
+        <div>공지 사항입니다.</div>
+        <div>공지 사항입니다.</div>
+      </li>
+      <li>
+        <div>갤러리입니다.</div> <!--index 1-->
+        <div>갤러리입니다.</div>
+        <div>갤러리입니다.</div>
+        <div>갤러리입니다.</div>
+      </li>
+      <li>
+        <div>정보마당입니다.</div> <!-- index 2-->
+        <div>정보마당입니다.</div>
+        <div>정보마당입니다.</div>
+        <div>정보마당입니다.</div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
+<script>
+  $(function(){
+    $('.tab_menu li').click(function(){
+     var i = $(this).index();
+      // alert(i);
+
+      $('.tab_menu li').removeClass('on');
+      $('.tab_menu li').eq(i).addClass('on');
+      $('.tab_list li').removeClass('on');
+      $('.tab_list li').eq(i).addClass('on');
+      
+    });
+
+
+  });
+</script>
