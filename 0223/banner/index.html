@@ -129,50 +129,66 @@
 </body>
 </html>
 <script>
-  $(function(){
-    var num = 0;
-    var li_w = $('.ban li').eq(0).width(); //198
-    var total = $('.ban li').length; //20장
+  $(function () {
 
-    // 1. 6장 복제(0~5)
-    let copy1 = $('.ban li:lt(6)').clone();
-    
-    // 2. 추가(append)
-    $('.ban').append(copy1);
-    // 3.
-    // prev
-    $('#banner li:nth-child(1)').click(function (e) {
-     e.preventDefault();
-     if(num <= 0){
-      num = total;
-      $('.ban').css('margin-left', -li_w * num);
-     }
-     num--;
-     $('.ban').animate({'marginLeft': -li_w * num},500);
-    });
-    // next
-    $('#banner li:nth-child(3)').click(function (e) {
-      e.preventDefault();
 
-      num++;
+      var num = 0;
+      var li_w = $(".ban li").eq(0).width(); //198
+      //alert(li_w);
+      var total = $(".ban li").length;//복제하기전 사진의 전체 갯수 20장
+      //alert(total);
+      var copy = $(".ban li:lt(6)").clone(); //0~5 까지 사진 복사
+      $(".ban").append(copy); //뒤로 붙여넣기(추가하기)
 
-      $('.ban').animate({
-        marginLeft: -li_w * num
-      }, 400);
+      $("#banner li:nth-child(3)").click(function () {
+        if (num == total) {
+          num = 0;
+          $(".ban").css("margin-left", "0");
+        }
+        num++;
+        $(".ban").stop().animate({ "margin-left": -li_w * num }, 500);
+      });
 
-      if (num >= total) {
-        num = 0;
-        $('.ban').css('margin-left', 0);
+      $("#banner li:nth-child(1)").click(function () {
+        if (num == 0) {
+          num = total;
+          $(".ban").css("margin-left", -li_w * num);
+        }
+        num--;
+        $(".ban").stop().animate({ "margin-left": -li_w * num }, 500);
+      });
+
+
+
+      $("#banner li:nth-child(2)").click(function () {
+        var k = $(this).hasClass('on');
+        //alert(k);
+        if (k === false) {
+          $(this).addClass('on');  //stopbtn -> playbtn
+          clearInterval(id);
+        } else {
+          $(this).removeClass("on")
+          id = setInterval(auto, 2000);
+        }
+
+      });
+
+
+      var id = setInterval(auto, 2000);
+      function auto() {
+        if (num == total) {
+          num = 0;
+          $(".ban").css("margin-left", "0");
+        }
+        num++;
+        $(".ban").stop().animate({ "margin-left": -li_w * num }, 500);
       }
+
+
+
+
+
     });
 
-    $('#banner li:nth-child(2)').click(function(){
-      var k = $(this).hasClass('on');
-      if(k === false){
-        $(this).addClass('on');
-      }else{
-        $(this).removeClass('on');
-      }
-    });
-  });
+  
 </script>
