@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/jquery.bxslider3.css">
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/jquery.bxslider.js"></script>
+<style>
+  *{margin: 0; padding: 0;}
+  section{
+    width: 1920px;
+    height: 620px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+</style>
+<script>
+  $(function(){
+    $('.slider1').bxSlider({
+      auto: true,
+      pause:3000,
+    });
+  });
+</script>
+</head>
+<body>
+  <section>
+      <ul class="slider1">
+        <li><img src="image/c1.jpg"></li>
+        <li><img src="image/c2.jpg" alt=""></li>
+        <li><img src="image/c3.jpg" alt=""></li>
+        <li><img src="image/c4.png" alt=""></li>
+        <li><img src="image/c5.jpg" alt=""></li>
+      </ul>
+  </section>
+</body>
+</html>

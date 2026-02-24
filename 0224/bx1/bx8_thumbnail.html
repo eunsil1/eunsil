@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/jquery.bxslider.css">
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/jquery.bxslider.js"></script>
+<style>
+  *{margin: 0; padding: 0;}
+  header{
+    width: 960px;
+    height: 200px;
+    margin: 0 auto;
+    background-color: pink;
+  }
+  section{
+    width: 960px;
+    height: 800px;
+    margin: 0 auto;
+    border: 1px solid red;
+  }
+  
+</style>
+<script>
+  $(function(){
+    $('.slider1').bxSlider({ //옵션을 작성하려면 {} 중괄호 안에 작성
+      
+      auto:true, //자동 슬라이드 기본(false)
+      pagerCustom:'#bx-pager',
+      //id에 있는 작은 사진을 클릭 시 사진 이동
+      
+    });
+  });
+//https://bxslider.com/options - 옵션 수정 가능
+</script>
+</head>
+<body>
+  <header>헤더</header>
+  <section>
+    <ul class="slider1">
+      <li><img src="img/w1.JPG" alt="사진1"></li>
+      <li><img src="img/w2.JPG" alt="사진2"></li>
+      <li><img src="img/w3.JPG" alt="사진3"></li>
+      <li><img src="img/w4.JPG" alt="사진4"></li>
+      <li><img src="img/w5.JPG" alt="사진5"></li>
+    </ul>
+    <div id="bx-pager" style="text-align: center;">
+      <a data-slide-index="0" href=""><img src="img/t1.jpg" /></a>
+      <a data-slide-index="1" href=""><img src="img/t2.jpg" /></a>
+      <a data-slide-index="2" href=""><img src="img/t3.jpg" /></a>
+      <a data-slide-index="3" href=""><img src="img/t4.jpg" /></a>
+      <a data-slide-index="4" href=""><img src="img/t5.jpg" /></a>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/slick.css">
+  <link rel="stylesheet" href="css/slick-theme.css">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <script src="js/slick.js"></script>
+<style>
+  *{margin: 0; padding: 0;}
+  #s_wrap{
+    /* padding-top: 30px; */
+    width: 100%;
+  }
+  .slider{
+    width: 80%;
+    margin: 100px auto;
+  }
+  .slick-slide{
+    margin: 0 20px;
+    transition: all 0.3 ease-in-out;
+    opacity: 0.2;
+  }
+  .slick-active{
+    opacity: 0.5;
+  }
+  .slick-current{
+    opacity: 1;
+  }
+  .slick-slide img{
+    width: 100%;
+  }
+  .slick-prev:before,
+  .slick-next:before{
+    color: black;
+  }
+
+  .slick-center{
+    transform: scale(1.3);
+    z-index: 999;
+    position: relative;
+    /* max-width: 10% !important;
+    max-height: 20% !important; */
+  }
+
+  .slick-list{
+    padding: 45px 60px !important;
+    /* margin-left: 30px !important; */
+  }
+</style>
+<script>
+  $(function(){
+    $('.slick').slick({
+      autoplay:true,
+      // autoplaySpeed:2000,
+      // dots:true,
+      // infinity:true,
+      centerMode:true,
+      centerPadding:'60px',
+      slidesToShow:3,
+      slidesToScroll:1,
+
+      responsive:[{
+        breakpoint:768,
+        settings:{
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          // dots:true,
+          centerMode: true,
+          centerPadding: '40px',
+        }
+      },{
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          // dots: false,
+          centerMode: true,
+          centerPadding: '40px',
+        }
+      }]
+    });
+  });
+
+
+</script>
+
+</head>
+<body>
+  <div id="s_wrap">
+    <div class="slick slider">
+      <div>
+        <img src="images/images1.jpg" alt="">
+      </div>
+
+      <div>
+        <img src="images/images2.jpg" alt="">
+      </div>
+
+      <div>
+        <img src="images/images3.jpg" alt="">
+      </div>
+
+      <div>
+        <img src="images/images4.jpg" alt="">
+      </div>
+
+      <div>
+        <img src="images/images5.jpg" alt="">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

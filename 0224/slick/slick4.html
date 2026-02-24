@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/slick.css">
+  <link rel="stylesheet" href="css/slick-theme.css">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/xeicon.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <script src="js/slick.js"></script>
+<style>
+  *{margin: 0; padding: 0;}
+  body{overflow: hidden;}
+  #s_wrap{
+    width: 100%;
+    height: 100vh;
+  }
+  .slick5 .slick-slide img{width: 100%; height: 100%;}
+  .slick5{position: relative;}
+  .slick5 button{
+      position: absolute;
+      z-index: 100;
+      top:50%;
+      transform:translate(0,-50%);
+      width:71px;
+      height:71px;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      font-size: 0;
+      color: transparent;
+      border-radius: 50%;
+  }
+  .slick-prev{left:50px;z-index: 999;}
+  .slick-next{right:50px;z-index: 999;}
+
+  .slick-prev:before,
+  .slick-next:before{
+      color:black;
+  }
+
+  .slick5 button::before{
+      font-family: 'xeicon';
+      color:#fff;
+      font-size: 45px;
+  }
+  .slick-prev:before{
+      content:"\e93d";
+      }
+      .slick-next:before{
+          content:"\e940";
+      }
+</style>
+<script>
+  $(function(){
+    $('.slick5').slick({
+      autoplay:true,
+      autoplaySpeed:2000,
+      infinity:true,
+    });
+  });
+
+
+</script>
+
+</head>
+<body>
+  <div id="s_wrap">
+    <div class="slick5 slider">
+      <div>
+        <img src="images/main_visual_1.jpg" alt="">
+      </div>
+
+      <div>
+        <img src="images/main_visual_2.jpg" alt="">
+      </div>
+
+      <div>
+        <img src="images/main_visual_3.jpg" alt="">
+      </div>
+
+      <div>
+        <img src="images/main_visual_4.jpg" alt="">
+      </div>
+
+      <div>
+        <img src="images/main_visual_5.jpg" alt="">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
