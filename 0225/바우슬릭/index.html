@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href="css/slick.css"/>
+  <link rel='stylesheet' href="css/slick-theme.css"/>
+  <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+  <script src="js/slick.js"></script>
+<style>
+  *{margin: 0;padding: 0;}
+  ul{list-style: none;}
+  .cf:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+section{
+	position:relative;
+	width:100%;
+	height:auto;
+}
+.pc-slide{position: relative;}
+.pc-slide ul{
+  position: relative;
+  width:100%;
+  height:auto;
+  margin: 0 auto;
+}
+
+.pc-slide ul li{
+  position: relative;
+  
+  height:auto;
+}
+.pc-slide ul li a{display: block;width:100%;}
+.pc-slide ul li a img{display: block;width:100%;height:auto;}
+.pc-slide .prev-btn{
+  position: absolute;
+  top:50%;
+  left:50px;
+  transform: translateY(-50%);
+  cursor:pointer;
+}
+.pc-slide .next-btn{
+  position: absolute;
+  top:50%;
+  right:50px;
+  transform: translateY(-50%);
+  cursor:pointer;
+}
+/*
+.pc-slide .slick-dots{position:absolute;right:265px;bottom:30px;height:10px;font-size: 0;z-index: 9999;}
+.pc-slide .slick-dots li{display:inline-block; width:10px; height:10px; border-radius:50%; background-color:red; margin-left:20px; text-indent:-9999px;}
+.pc-slide .slick-dots li.slick-active:before {content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%;border:1px solid red;}
+*/
+.pc-slide  ul.slick-dots{bottom: 50px;width:200px;position: absolute;
+left:50px;}
+.slick-dots li{width:50px;}
+.slick-dots li button{width:50px;}
+.slick-dots li button:before{
+  width:50px;
+  background-color: grey;
+}
+.play a{
+  display: block;
+  margin-top:10px;
+  margin-left: 10px;
+  width:11px;
+  height:13px;
+  background: url(img/notice_bn_stop.png);
+}
+.play.on a{
+ 
+  background: url(img/notice_bn_play.png);
+}
+
+
+
+.mo-slide{position: relative;}
+.mo-slide ul{
+  position: relative;
+  width:100%;
+  height:auto;
+  margin: 0 auto;
+}
+
+.mo-slide ul li{
+  position: relative;
+  /* width:100%;
+  height:auto; */
+}
+.mo-slide ul li a{display: block;width:100%;}
+.mo-slide ul li a img{display: block;width:100%;height:auto;}
+.mo-slide .prev-btn{
+  position: absolute;
+  top:50%;
+  left:50px;
+  transform: translateY(-50%);
+  cursor:pointer;
+}
+.mo-slide .next-btn{
+  position: absolute;
+  top:50%;
+  right:50px;
+  transform: translateY(-50%);
+  cursor:pointer;
+}
+.mo-slide{
+  display: none;
+}
+
+@media screen and (max-width:800px){
+  .pc-slide{
+    display: none;
+  }
+  .mo-slide{
+    display: block;
+  }
+}
+
+
+
+
+
+
+</style>
+<script>
+  $(function(){
+    var pc_prev = $('.pc-slide .prev-btn');
+    var pc_next = $('.pc-slide .next-btn');
+    var mo_prev = $('.mo-slide .prev-btn');
+    var mo_next = $('.mo-slide .next-btn');
+    var $slick =  $('.pc-slide ul');
+    $slick.slick({
+      autoplay:true,
+      autoplaySpeed:3000,
+      infinite:true,
+      //fade:true,
+      speed:1000,
+      pauseOnHover:true,
+      draggable:true,
+      prevArrow:pc_prev,
+      nextArrow:pc_next,
+      dots:true,
+    });
+    $('.mo-slide ul').slick({
+      autoplay:true,
+      autoplaySpeed:4000,
+      infinite:true,
+      speed:1000,
+      pauseOnHover:true,
+      draggable:true,
+      prevArrow:mo_prev,
+      nextArrow:mo_next,
+    });
+
+$(window).resize(function(){
+  var w = $(this).width();
+  if(w >= 800){
+    mo_prev.hide();
+		mo_next.hide();
+  }else{
+    mo_prev.show();
+		mo_next.show();
+  }
+});
+$(window).trigger("resize");
+
+
+
+
+$slick.on('init',function(event, slick){
+			
+    }); // slick 슬라이드 최초실행할때 
+    
+$slick.on('afterChange',function(event, slick, currentSlide){
+    //currentSlide 현재 바뀐 슬라이드 번호
+    $('.num p strong').html(currentSlide + 1);
+
+    }); // slick 슬라이드가 바뀔때
+
+    $('.play').click(function(){
+      if($(this).hasClass('on')==false){
+        $(this).addClass('on');
+        $slick.slick('slickPause');
+        //slick 슬라이드를 멈춤
+      }else{
+        $(this).removeClass('on');
+        $slick.slick('slickPlay');
+          //slick  슬라이드 재시작
+      }
+      return false;
+    });
+
+
+
+
+
+  });
+
+</script>
+
+
+
+</head>
+<body>
+  <section>
+    <div class="pc-slide">
+      <ul class="cf">
+        <li><a href="#"><img src="images/main-slide1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/main-slide2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/main-slide3.jpg" alt=""></a></li>
+      </ul>
+      <div class="prev-btn"><img src="images/left_arrow.png" alt=""></div>
+      <div class="next-btn"><img src="images/right_arrow.png" alt=""></div>
+      <div class="num">
+        <p><strong>1</strong>/<span>3</span></p>
+      </div>
+      <p class="play"><a href=""></a></p>
+    </div>
+    <div class="mo-slide">
+      <ul class="cf">
+        <li><a href="#"><img src="images/mo_main_slide1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/mo_main_slide2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/mo_main_slide3.jpg" alt=""></a></li>
+      </ul>
+      <div class="prev-btn"><img src="images/left_arrow.png" alt=""></div>
+      <div class="next-btn"><img src="images/right_arrow.png" alt=""></div>
+    </div>
+  </section>
+</body>
+</html>

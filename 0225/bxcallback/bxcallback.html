@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/jquery.bxslider.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/jquery.bxslider.js"></script>
+  <title>Document</title>
+<style>
+
+  *{margin:0;padding:0;}
+   ul,li{list-style:none;}
+  #img_slider{
+      width:640px;
+      margin:0 auto;
+      position: relative;
+    }
+  #btn p{
+    position: absolute;
+    top: 40%;
+  }
+  #btn p.left_btn{
+    left: 20px;
+  }
+  #btn p.right_btn{
+    right: 20px;
+  }
+
+  #btn p i{
+    font-size: 30px;
+    color: #000;
+  }
+
+  #btn p i:hover{
+    font-size: 30px;
+    color: #bbb;
+  }
+
+  .slider li{
+    position: relative;
+  }
+
+  .slider li h1{
+    position: absolute;
+    left: 20px;
+    top: 60px;
+    opacity: 0;
+    transition: all 0.6s;
+    z-index: 999;
+    transform:translateY(60px);
+  }
+
+  .slider li h1.on{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+</style>
+</head>
+<body>
+  <!-- <h1><i class="fa fa-twitter" aria-hidden="true"></i></h1> -->
+  <div id="img_slider">
+    <ul class="slider">
+      <li>
+        <a href="#"><img src="./images/01.JPG" alt=""></a>
+        <h1 class="text0 on">fashion style1</h1>
+      </li>
+      <li>
+        <a href="#"><img src="./images/02.JPG" alt=""></a>
+        <h1 class='text1'>fashion style2</h1>
+      </li>
+      <li>
+        <a href="#"><img src="./images/03.JPG" alt=""></a>
+        <h1 class='text2'>fashion style3</h1>
+      </li>
+      <li>
+        <a href="#"><img src="./images/04.JPG"></a>
+        <h1 class="text3">fashion style4</h1>
+      </li>
+      <li>
+        <a href="#"><img src="./images/05.JPG"></a>
+        <h1 class="text4">fashion style5</h1>
+      </li>
+      <li>
+        <a href="#"><img src="./images/06.JPG"></a>
+        <h1 class="text5">fashion style6</h1>
+      </li>
+      <li>
+        <a href="#"><img src="./images/07.JPG"></a>
+        <h1 class="text6">fashion style7</h1>
+      </li>
+    </ul>
+    <div id="btn">
+      <p class="left_btn">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </p>
+      <p class="right_btn">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  $(function(){
+    var slider = $('.slider').bxSlider({
+      auto:true,
+      controls:false,
+      autoHover:true,
+      onSlideAfter:function($slideElement,oldIndex,newIndex){
+        var k = slider.getCurrentSlide();
+        console.log(k);
+        $('.slider li').find('h1').removeClass('on');
+        // $('.slider li').eq(k).find('h1').addClass('on');
+        // $('.slider li .text'+k).addClass('on'); 1번방법
+        $slideElement.find('h1').addClass('on'); //2번방법
+      }
+    });
+    
+    $('.left_btn').click(function(){
+      slider.goToPrevSlide();
+      return false;
+    });
+
+    $('.right_btn').click(function () {
+      slider.goToNextSlide();
+      return false;
+    });
+  });
+</script>

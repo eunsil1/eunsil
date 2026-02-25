@@ -1,0 +1,102 @@
+*{margin: 0;padding: 0;}
+ul{list-style: none;}
+.contents{
+  width:1200px;
+  margin: 0 auto;
+  height:800px;
+  border: 1px solid #333;
+}
+.c_group1{
+	width:718px;
+	height:425px;
+	float:left;
+}
+.pop_slide{
+  width:718px;
+  height:385px;
+  position: relative;
+}
+
+/* Slick Slider 기본 스타일 오버라이드 */
+.slick-slider {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slick-slider li {
+  list-style: none;
+  width: 100%;
+  height: 385px;
+}
+
+.slick-slider li a{
+  display: block;
+  width:100%;
+  height:100%;
+}
+
+.slick-slider li a img{
+  display: block;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+/* Slick 슬라이더 초기화 전에도 첫 번째 슬라이드 보이기 */
+.slick-slider:not(.slick-initialized) li:not(:first-child) {
+  display: none;
+}
+
+.slick-slider:not(.slick-initialized) li:first-child {
+  display: block;
+}
+
+/* Slick 트랙 및 리스트 높이 설정 */
+.slick-slider .slick-list,
+.slick-slider .slick-track {
+  height: 385px;
+}
+
+.slick-slider .slick-slide {
+  height: 385px;
+}
+
+.slide_but{
+  width:100%;
+  height:40px;
+  line-height: 40px;
+  background-color: #394f79;
+  position: relative;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+.slide_but > p{
+  float: left;
+  color:#fff;
+  height:40px;
+  line-height: 40px;
+  margin-left: 5px;
+}
+.slide_but > p >a{
+  float: left;
+  width:20px;height:20px;
+  margin-top: 12px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.slide_but > p >a.prev{
+  background: url(../img/main_bn_prev.png) no-repeat 0 0;
+}
+.slide_but > p >a.pause{
+  background: url(../img/main_bn_stop.png) no-repeat 0 2px;
+}
+.slide_but > p >a.pause.on{
+  background: url(../img/main_bn_play.png) no-repeat 0 2px;
+}
+
+.slide_but > p >a.next{
+  background: url(../img/main_bn_next.png) no-repeat 0 0;
+}

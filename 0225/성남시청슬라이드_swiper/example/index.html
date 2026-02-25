@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiper 예제 모음</title>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .example-section {
+            margin-bottom: 60px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .example-title {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #555;
+            border-left: 4px solid #007bff;
+            padding-left: 15px;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .swiper-slide:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .swiper-slide:nth-child(3) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .swiper-slide:nth-child(4) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .swiper-slide:nth-child(5) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .swiper-slide:nth-child(6) {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        /* 페이드 효과용 스타일 */
+        .swiper-fade .swiper-slide {
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .swiper-fade .swiper-slide-active {
+            opacity: 1;
+        }
+
+        /* 커스텀 네비게이션 */
+        .custom-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .custom-nav button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .custom-nav button:hover {
+            background: #0056b3;
+        }
+
+        .slide-counter {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* 썸네일 갤러리 */
+        .thumb-swiper {
+            height: 100px;
+            margin-top: 20px;
+        }
+
+        .thumb-swiper .swiper-slide {
+            opacity: 0.4;
+            cursor: pointer;
+        }
+
+        .thumb-swiper .swiper-slide-thumb-active {
+            opacity: 1;
+        }
+
+        .thumb-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        /* 중앙 정렬 모드용 스타일 */
+        .swiper-centered .swiper-slide {
+            width: 80%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Swiper 예제 모음</h1>
+
+        <!-- 예제 1: 기본 슬라이더 -->
+        <div class="example-section">
+            <h2 class="example-title">예제 1: 기본 슬라이더</h2>
+            <div class="swiper swiper-basic">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <!-- 예제 2: 자동 재생 -->
+        <div class="example-section">
+            <h2 class="example-title">예제 2: 자동 재생 슬라이더</h2>
+            <div class="swiper swiper-autoplay">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!-- 예제 3: 페이드 효과 -->
+        <div class="example-section">
+            <h2 class="example-title">예제 3: 페이드 효과</h2>
+            <div class="swiper swiper-fade swiper-fade-effect">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!-- 예제 4: 여러 슬라이드 표시 -->
+        <div class="example-section">
+            <h2 class="example-title">예제 4: 여러 슬라이드 표시 (3개씩)</h2>
+            <div class="swiper swiper-multiple">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">Slide 5</div>
+                    <div class="swiper-slide">Slide 6</div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <!-- 예제 5: 반응형 슬라이더 -->
+        <div class="example-section">
+            <h2 class="example-title">예제 5: 반응형 슬라이더</h2>
+            <div class="swiper swiper-responsive">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">Slide 5</div>
+                    <div class="swiper-slide">Slide 6</div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <!-- 예제 6: 커스텀 네비게이션 -->
+        <div class="example-section">
+            <h2 class="example-title">예제 6: 커스텀 네비게이션</h2>
+            <div class="swiper swiper-custom">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                </div>
+            </div>
+            <div class="custom-nav">
+                <button class="custom-prev">이전</button>
+                <span class="slide-counter">1 / 4</span>
+                <button class="custom-next">다음</button>
+            </div>
+        </div>
+
+        <!-- 예제 7: 무한 루프 -->
+        <div class="example-section">
+            <h2 class="example-title">예제 7: 무한 루프</h2>
+            <div class="swiper swiper-loop">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <!-- 예제 8: 중앙 정렬 모드 -->
+        <div class="example-section">
+            <h2 class="example-title">예제 8: 중앙 정렬 모드</h2>
+            <div class="swiper swiper-centered">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">Slide 5</div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // 예제 1: 기본 슬라이더
+        const swiperBasic = new Swiper('.swiper-basic', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-basic .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-basic .swiper-button-next',
+                prevEl: '.swiper-basic .swiper-button-prev',
+            },
+        });
+
+        // 예제 2: 자동 재생
+        const swiperAutoplay = new Swiper('.swiper-autoplay', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-autoplay .swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        // 예제 3: 페이드 효과
+        const swiperFade = new Swiper('.swiper-fade-effect', {
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            autoplay: {
+                delay: 3000,
+            },
+            pagination: {
+                el: '.swiper-fade-effect .swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        // 예제 4: 여러 슬라이드 표시
+        const swiperMultiple = new Swiper('.swiper-multiple', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-multiple .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-multiple .swiper-button-next',
+                prevEl: '.swiper-multiple .swiper-button-prev',
+            },
+        });
+
+        // 예제 5: 반응형 슬라이더
+        const swiperResponsive = new Swiper('.swiper-responsive', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 40,
+                },
+            },
+            pagination: {
+                el: '.swiper-responsive .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-responsive .swiper-button-next',
+                prevEl: '.swiper-responsive .swiper-button-prev',
+            },
+        });
+
+        // 예제 6: 커스텀 네비게이션
+        const swiperCustom = new Swiper('.swiper-custom', {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: false,
+            speed: 500,
+            on: {
+                init: function () {
+                    updateCustomCounter(this);
+                },
+                slideChange: function () {
+                    updateCustomCounter(this);
+                }
+            }
+        });
+
+        function updateCustomCounter(swiper) {
+            const current = swiper.activeIndex + 1;
+
+            // loop:false일 경우 안전한 전체 개수 계산
+            const total = swiper.slides.length;
+
+            const counter = document.querySelector('.slide-counter');
+            if (counter) {
+                counter.textContent = `${current} / ${total}`;
+            }
+        }
+
+        document.querySelector('.custom-prev').addEventListener('click', function (e) {
+            e.preventDefault();
+            swiperCustom.slidePrev();
+        });
+
+        document.querySelector('.custom-next').addEventListener('click', function (e) {
+            e.preventDefault();
+            swiperCustom.slideNext();
+        });
+
+
+
+        // 예제 7: 무한 루프
+        const swiperLoop = new Swiper('.swiper-loop', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            speed: 500,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-loop .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-loop .swiper-button-next',
+                prevEl: '.swiper-loop .swiper-button-prev',
+            },
+        });
+
+        // 예제 8: 중앙 정렬 모드
+        const swiperCentered = new Swiper('.swiper-centered', {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 30,
+            loop: true,
+            speed: 500,
+            pagination: {
+                el: '.swiper-centered .swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+
+</html>

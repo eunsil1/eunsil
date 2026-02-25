@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bxSlider 예제</title>
+    
+    <!-- bxSlider CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .slider {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        /* 슬라이더 컨테이너 여백 조정 */
+        .slider-wrapper {
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .slider li {
+            list-style: none;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        
+        /* 페이드 모드 슬라이드 높이 조정 */
+        .slider-fade li {
+            height: 600px !important;
+        }
+        
+        /* 티커 모드 전용 스타일 */
+        .slider-ticker .bx-wrapper .bx-viewport {
+            overflow: visible !important;
+        }
+        
+        .slider-ticker .bx-wrapper .bx-viewport .bxslider {
+            transition-duration: 2s !important;
+        }
+        
+        .slide-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .slide-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .slide-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .slide-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .slide-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .slide-6 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        
+        .example-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #555;
+            border-left: 4px solid #007bff;
+            padding-left: 15px;
+        }
+        
+        /* bxSlider 기본 스타일 보존 및 커스터마이징 */
+        .bx-wrapper {
+            margin: 0 auto 50px;
+            position: relative;
+        }
+        
+        /* 화살표 버튼 스타일 */
+        .bx-wrapper .bx-controls-direction a {
+            position: absolute;
+            top: 50%;
+            margin-top: -16px;
+            outline: 0;
+            width: 32px;
+            height: 32px;
+            text-indent: -9999px;
+            z-index: 9999 !important; /* 페이드 모드에서도 보이도록 높은 z-index */
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: block !important; /* 항상 표시 */
+            visibility: visible !important; /* 항상 보이도록 */
+            opacity: 1 !important; /* 투명도 유지 */
+        }
+        
+        .bx-wrapper .bx-controls-direction a:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .bx-wrapper .bx-controls-direction a.bx-prev {
+            left: 10px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 20px;
+        }
+        
+        .bx-wrapper .bx-controls-direction a.bx-next {
+            right: 10px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 20px;
+        }
+        
+        /* 페이드 모드에서 화살표가 보이도록 추가 스타일 */
+        .slider-fade .bx-wrapper .bx-controls-direction a {
+            z-index: 9999 !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .slider-fade .bx-wrapper {
+            position: relative;
+            height: 600px !important;
+        }
+        
+        .slider-fade .bx-wrapper .bx-viewport {
+            position: relative !important;
+            width: 100% !important;
+            height: 600px !important;
+            overflow: hidden;
+        }
+        
+        .slider-fade .bx-wrapper .bx-viewport .bxslider {
+            position: relative !important;
+            width: 100% !important;
+            height: 600px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .slider-fade .bx-wrapper .bx-viewport .bxslider li {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 600px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        /* 기본 pager 스타일 (점 형태) */
+        .bx-wrapper .bx-pager {
+            text-align: center !important;
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            align-items: center !important;
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+        }
+        
+        /* 기본 점 형태 pager - 모든 기본 pager에 적용 */
+        .bx-wrapper .bx-pager.bx-default-pager {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            align-items: center !important;
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+        }
+        
+        .bx-wrapper .bx-pager.bx-default-pager a {
+            background: #666 !important;
+            text-indent: -9999px !important;
+            display: inline-block !important;
+            width: 10px !important;
+            height: 10px !important;
+            margin: 0 5px !important;
+            outline: 0;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            overflow: hidden !important;
+            color: transparent !important;
+            font-size: 0 !important;
+            line-height: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            float: none !important;
+            vertical-align: middle;
+            flex-shrink: 0 !important;
+        }
+        
+        .bx-wrapper .bx-pager.bx-default-pager a:hover,
+        .bx-wrapper .bx-pager.bx-default-pager a.active {
+            background: #007bff !important;
+            width: 30px !important;
+        }
+        
+        /* 기본 슬라이더의 pager는 확실히 점 형태로 */
+        .slider-basic .bx-wrapper .bx-pager.bx-default-pager,
+        .slider-fade .bx-wrapper .bx-pager.bx-default-pager,
+        .slider-multiple .bx-wrapper .bx-pager.bx-default-pager,
+        .slider-autoplay .bx-wrapper .bx-pager.bx-default-pager,
+        .slider-vertical .bx-wrapper .bx-pager.bx-default-pager {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            align-items: center !important;
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+        }
+        
+        .slider-basic .bx-wrapper .bx-pager.bx-default-pager a,
+        .slider-fade .bx-wrapper .bx-pager.bx-default-pager a,
+        .slider-multiple .bx-wrapper .bx-pager.bx-default-pager a,
+        .slider-autoplay .bx-wrapper .bx-pager.bx-default-pager a,
+        .slider-vertical .bx-wrapper .bx-pager.bx-default-pager a {
+            background: #666 !important;
+            text-indent: -9999px !important;
+            display: inline-block !important;
+            width: 10px !important;
+            height: 10px !important;
+            color: transparent !important;
+            font-size: 0 !important;
+            float: none !important;
+            vertical-align: middle;
+            flex-shrink: 0 !important;
+        }
+        
+        .slider-basic .bx-wrapper .bx-pager.bx-default-pager a:hover,
+        .slider-basic .bx-wrapper .bx-pager.bx-default-pager a.active,
+        .slider-fade .bx-wrapper .bx-pager.bx-default-pager a:hover,
+        .slider-fade .bx-wrapper .bx-pager.bx-default-pager a.active,
+        .slider-multiple .bx-wrapper .bx-pager.bx-default-pager a:hover,
+        .slider-multiple .bx-wrapper .bx-pager.bx-default-pager a.active,
+        .slider-autoplay .bx-wrapper .bx-pager.bx-default-pager a:hover,
+        .slider-autoplay .bx-wrapper .bx-pager.bx-default-pager a.active,
+        .slider-vertical .bx-wrapper .bx-pager.bx-default-pager a:hover,
+        .slider-vertical .bx-wrapper .bx-pager.bx-default-pager a.active {
+            background: #007bff !important;
+            width: 30px !important;
+        }
+        
+        /* 짧은 형태 pager 스타일 (1 / 4) - pagerType: 'short' 사용 시에만 */
+        .slider-number .bx-wrapper .bx-pager.bx-default-pager {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            align-items: center !important;
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+        }
+        
+        .slider-number .bx-wrapper .bx-pager.bx-default-pager a.bx-pager-link {
+            display: inline-block !important;
+            width: auto !important;
+            height: auto !important;
+            text-indent: 0 !important;
+            background: transparent !important;
+            color: #333 !important;
+            font-weight: bold;
+            font-size: 14px !important;
+            padding: 5px;
+            margin: 0;
+            overflow: visible !important;
+            line-height: normal !important;
+            float: none !important;
+            vertical-align: middle;
+            flex-shrink: 0 !important;
+        }
+        
+        .slider-number .bx-wrapper .bx-pager.bx-default-pager a.bx-pager-link.active {
+            color: #007bff !important;
+        }
+        
+        /* 예제 1-2 화살표 버튼이 보이도록 강제 */
+        .slider-number .bx-wrapper .bx-controls-direction {
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        .slider-number .bx-wrapper .bx-controls-direction a {
+            z-index: 9999 !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: absolute !important;
+            cursor: pointer !important;
+        }
+        
+        .slider-number .bx-wrapper .bx-controls-direction a.bx-prev {
+            left: 10px !important;
+        }
+        
+        .slider-number .bx-wrapper .bx-controls-direction a.bx-next {
+            right: 10px !important;
+        }
+        
+        /* 커스텀 숫자 pager 스타일 */
+        .custom-pager {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+        }
+        
+        .custom-pager a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            margin: 0 5px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .custom-pager a:hover,
+        .custom-pager a.active {
+            background: #007bff;
+            transform: scale(1.1);
+        }
+        
+        /* 커스텀 컨트롤 스타일 */
+        .custom-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 30px;
+            pointer-events: auto;
+        }
+        
+        /* 예제 7 슬라이더 높이 조정 */
+        .slider-custom-controls .bx-wrapper {
+            margin-bottom: 0;
+            height: 300px;
+        }
+        
+        .slider-custom-controls .bx-wrapper .bx-viewport {
+            height: 300px;
+        }
+        
+        .play-pause-btn,
+        .prev-btn-custom,
+        .next-btn-custom {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            z-index: 1000;
+            position: relative;
+            pointer-events: auto;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .play-pause-btn:hover,
+        .prev-btn-custom:hover,
+        .next-btn-custom:hover {
+            background: #fff;
+            transform: scale(1.1);
+        }
+        
+        .play-pause-btn:active,
+        .prev-btn-custom:active,
+        .next-btn-custom:active {
+            transform: scale(0.95);
+        }
+        
+        .slide-counter {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .slider-custom-controls .bx-wrapper {
+            margin-bottom: 0;
+        }
+        
+        .slider-custom-controls .bx-wrapper .bx-controls-direction {
+            display: none; /* 기본 화살표 숨기기 */
+        }
+        
+        .slider-custom-controls .bx-wrapper .bx-pager {
+            display: none; /* 기본 pager 숨기기 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>bxSlider 예제 모음</h1>
+        
+        <!-- 예제 1: 기본 슬라이더 (점 형태) -->
+        <div class="example-title">예제 1: 기본 슬라이더 (점 형태)</div>
+        <div class="slider-wrapper">
+            <ul class="slider slider-basic">
+                <li class="slide-1">Slide 1</li>
+                <li class="slide-2">Slide 2</li>
+                <li class="slide-3">Slide 3</li>
+                <li class="slide-4">Slide 4</li>
+            </ul>
+        </div>
+        
+        <!-- 예제 1-2: 숫자 형태 pager -->
+        <div class="example-title">예제 1-2: 숫자 형태 pager (1 / 4)</div>
+        <div class="slider-wrapper">
+            <ul class="slider slider-number">
+                <li class="slide-1">Slide 1</li>
+                <li class="slide-2">Slide 2</li>
+                <li class="slide-3">Slide 3</li>
+                <li class="slide-4">Slide 4</li>
+            </ul>
+        </div>
+        
+        <!-- 예제 1-3: 커스텀 숫자 pager -->
+        <div class="example-title">예제 1-3: 커스텀 숫자 pager (1, 2, 3, 4)</div>
+        <div class="slider-wrapper">
+            <ul class="slider slider-custom-number">
+                <li class="slide-1">Slide 1</li>
+                <li class="slide-2">Slide 2</li>
+                <li class="slide-3">Slide 3</li>
+                <li class="slide-4">Slide 4</li>
+            </ul>
+            <div id="custom-pager" class="custom-pager"></div>
+        </div>
+        
+        <!-- 예제 2: 페이드 효과 -->
+        <div class="example-title">예제 2: 페이드 효과</div>
+        <div class="slider-wrapper">
+            <ul class="slider slider-fade">
+                <li class="slide-1">Slide 1</li>
+                <li class="slide-2">Slide 2</li>
+                <li class="slide-3">Slide 3</li>
+                <li class="slide-4">Slide 4</li>
+            </ul>
+        </div>
+        
+        <!-- 예제 3: 여러 슬라이드 표시 -->
+        <div class="example-title">예제 3: 여러 슬라이드 표시 (3개씩)</div>
+        <div class="slider-wrapper">
+            <ul class="slider slider-multiple">
+                <li class="slide-1">Slide 1</li>
+                <li class="slide-2">Slide 2</li>
+                <li class="slide-3">Slide 3</li>
+                <li class="slide-4">Slide 4</li>
+                <li class="slide-5">Slide 5</li>
+                <li class="slide-6">Slide 6</li>
+            </ul>
+        </div>
+        
+        <!-- 예제 4: 자동 재생 -->
+        <div class="example-title">예제 4: 자동 재생 슬라이더</div>
+        <div class="slider-wrapper">
+            <ul class="slider slider-autoplay">
+                <li class="slide-1">Slide 1</li>
+                <li class="slide-2">Slide 2</li>
+                <li class="slide-3">Slide 3</li>
+                <li class="slide-4">Slide 4</li>
+            </ul>
+        </div>
+        
+        <!-- 예제 5: 세로 슬라이더 -->
+        <div class="example-title">예제 5: 세로 슬라이더</div>
+        <div class="slider-wrapper">
+            <ul class="slider slider-vertical">
+                <li class="slide-1">Slide 1</li>
+                <li class="slide-2">Slide 2</li>
+                <li class="slide-3">Slide 3</li>
+                <li class="slide-4">Slide 4</li>
+            </ul>
+        </div>
+        
+        <!-- 예제 6: 티커 모드 -->
+        <div class="example-title">예제 6: 티커 모드 (연속 스크롤)</div>
+        <div class="slider-wrapper">
+            <ul class="slider slider-ticker">
+                <li class="slide-1">Slide 1</li>
+                <li class="slide-2">Slide 2</li>
+                <li class="slide-3">Slide 3</li>
+                <li class="slide-4">Slide 4</li>
+                <li class="slide-5">Slide 5</li>
+            </ul>
+        </div>
+        
+        <!-- 예제 7: 커스텀 컨트롤 (Play/Stop, Next/Prev, 슬라이드 번호) -->
+        <div class="example-title">예제 7: 커스텀 컨트롤 (Play/Stop 토글, Next/Prev, 슬라이드 번호)</div>
+        <div class="slider-wrapper">
+            <div class="custom-controls">
+                <button class="play-pause-btn" id="playPauseBtn">⏸</button>
+                <button class="prev-btn-custom" id="prevBtnCustom">‹</button>
+                <div class="slide-counter" id="slideCounter">1 / 5</div>
+                <button class="next-btn-custom" id="nextBtnCustom">›</button>
+            </div>
+            <ul class="slider slider-custom-controls">
+                <li class="slide-1">Slide 1</li>
+                <li class="slide-2">Slide 2</li>
+                <li class="slide-3">Slide 3</li>
+                <li class="slide-4">Slide 4</li>
+                <li class="slide-5">Slide 5</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- bxSlider -->
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            // 예제 1: 기본 슬라이더 (점 형태)
+            $('.slider-basic').bxSlider({
+                pager: true,
+                pagerType: 'full', // 명시적으로 full 타입 지정 (점 형태)
+                controls: true
+            });
+            
+            // 예제 1-2: 숫자 형태 pager (1 / 4)
+            $('.slider-number').bxSlider({
+                pager: true,
+                pagerType: 'short',
+                pagerShortSeparator: ' / ',
+                controls: true
+            });
+            
+            // 예제 1-3: 커스텀 숫자 pager (1, 2, 3, 4)
+            // 먼저 커스텀 pager HTML 생성
+            var slideCount = $('.slider-custom-number li').length;
+            var pagerHtml = '';
+            for (var i = 0; i < slideCount; i++) {
+                pagerHtml += '<a href="#" data-slide-index="' + i + '">' + (i + 1) + '</a>';
+            }
+            $('#custom-pager').html(pagerHtml);
+            
+            // 슬라이더 초기화
+            var customSlider = $('.slider-custom-number').bxSlider({
+                pagerCustom: '#custom-pager',
+                controls: true,
+                onSlideAfter: function($slideElement, oldIndex) {
+                    // 활성 슬라이드 표시 업데이트
+                    $('#custom-pager a').removeClass('active');
+                    $('#custom-pager a').eq(oldIndex).addClass('active');
+                }
+            });
+            
+            // 커스텀 pager 클릭 이벤트
+            $('#custom-pager a').on('click', function(e) {
+                e.preventDefault();
+                var slideIndex = $(this).data('slide-index');
+                customSlider.goToSlide(slideIndex);
+            });
+            
+            // 첫 번째 슬라이드 활성화
+            $('#custom-pager a').first().addClass('active');
+            
+            // 예제 2: 페이드 효과
+            $('.slider-fade').bxSlider({
+                mode: 'fade',
+                auto: true,
+                pause: 3000,
+                speed: 1000,
+                pager: true,
+                controls: true,
+                adaptiveHeight: false, // 높이 자동 조정 비활성화
+                slideHeight: 600 // 슬라이드 높이 명시적 설정
+            });
+            
+            // 예제 3: 여러 슬라이드 표시
+            $('.slider-multiple').bxSlider({
+                minSlides: 1,
+                maxSlides: 3,
+                slideWidth: 300,
+                slideMargin: 10,
+                pager: true,
+                controls: true
+            });
+            
+            // 예제 4: 자동 재생
+            $('.slider-autoplay').bxSlider({
+                auto: true,
+                autoHover: true,
+                pause: 2000,
+                pager: true,
+                controls: true
+            });
+            
+            // 예제 5: 세로 슬라이더
+            $('.slider-vertical').bxSlider({
+                mode: 'vertical',
+                slideHeight: 200,
+                minSlides: 2,
+                maxSlides: 3,
+                moveSlides: 1,
+                auto: true,
+                pause: 3000,
+                pager: true,
+                controls: true
+            });
+            
+            // 예제 6: 티커 모드
+            $('.slider-ticker').bxSlider({
+                mode: 'horizontal',
+                ticker: true,
+                tickerHover: true,
+                tickerSpeed: 20000, // 20초로 느리게 설정 (각 슬라이드당 시간)
+                speed: 2000, // 각 슬라이드 전환 속도 (2초) - 부드럽게
+                minSlides: 1,
+                maxSlides: 1,
+                pager: false,
+                controls: false,
+                useCSS: true, // CSS transition 사용
+                easing: 'linear' // 선형 애니메이션 (일정한 속도)
+            });
+            
+            // 예제 7: 커스텀 컨트롤 (Play/Stop, Next/Prev, 슬라이드 번호)
+            var isPlaying = true;
+            var playPauseBtn = $('#playPauseBtn');
+            var prevBtn = $('#prevBtnCustom');
+            var nextBtn = $('#nextBtnCustom');
+            var slideCounter = $('#slideCounter');
+            var currentSlideIndex = 0;
+            var totalSlides = $('.slider-custom-controls li').length;
+            
+            // 슬라이드 번호 업데이트 함수
+            function updateSlideCounter(index) {
+                if (index !== undefined) {
+                    currentSlideIndex = index;
+                }
+                slideCounter.text((currentSlideIndex + 1) + ' / ' + totalSlides);
+            }
+            
+            var customControlSlider = $('.slider-custom-controls').bxSlider({
+                auto: true,
+                pause: 3000,
+                pager: false,
+                controls: false, // 기본 컨트롤 숨기기
+                onSliderLoad: function(currentIndex) {
+                    currentSlideIndex = currentIndex;
+                    updateSlideCounter(currentIndex);
+                },
+                onSlideAfter: function($slideElement, oldIndex) {
+                    currentSlideIndex = oldIndex;
+                    updateSlideCounter(oldIndex);
+                }
+            });
+            
+            // 초기 슬라이드 번호 표시
+            updateSlideCounter(0);
+            
+            // Play/Pause 버튼
+            playPauseBtn.on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (isPlaying) {
+                    customControlSlider.stopAuto();
+                    playPauseBtn.text('▶');
+                    isPlaying = false;
+                } else {
+                    customControlSlider.startAuto();
+                    playPauseBtn.text('⏸');
+                    isPlaying = true;
+                }
+                return false;
+            });
+            
+            // Prev 버튼
+            prevBtn.on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                customControlSlider.goToPrevSlide();
+                // 수동 클릭 시 자동 재생 재시작
+                if (isPlaying) {
+                    customControlSlider.stopAuto();
+                    setTimeout(function() {
+                        customControlSlider.startAuto();
+                    }, 100);
+                }
+                return false;
+            });
+            
+            // Next 버튼
+            nextBtn.on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                customControlSlider.goToNextSlide();
+                // 수동 클릭 시 자동 재생 재시작
+                if (isPlaying) {
+                    customControlSlider.stopAuto();
+                    setTimeout(function() {
+                        customControlSlider.startAuto();
+                    }, 100);
+                }
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slick Slider 커스텀 컨트롤</title>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .slider-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .slider .slide {
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .slide-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .slide-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .slide-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .slide-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .slide-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        
+        /* 커스텀 컨트롤 스타일 */
+        .custom-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 15px;
+            border-radius: 25px;
+        }
+        
+        .custom-controls button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+        
+        .custom-controls button:hover {
+            opacity: 0.7;
+        }
+        
+        /* slickButton.png 스프라이트 이미지 사용 */
+        /* 이미지 구조: [Stop] [Pause] [Play] [Prev <] [Next >] [Menu] [Grid] */
+        
+        .prev-btn {
+            background-image: url('../../slickButton.png');
+            background-position: -48px 0; /* 왼쪽 화살표 (<) 위치 - 필요시 조정 */
+            background-size: auto 20px;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+        
+        /* 이미지가 안 보일 경우를 대비한 폴백 */
+        .prev-btn::before {
+            content: '‹';
+            display: block;
+            text-indent: 0;
+            font-size: 24px;
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+        }
+        
+        .play-pause-btn {
+            background-image: url('../../slickButton.png');
+            background-position: -32px 0; /* Play (▶) 위치 - 필요시 조정 */
+            background-size: auto 20px;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+        
+        .play-pause-btn::before {
+            content: '▶';
+            display: block;
+            text-indent: 0;
+            font-size: 16px;
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+        }
+        
+        .play-pause-btn.paused {
+            background-position: -16px 0; /* Pause (||) 위치 - 필요시 조정 */
+        }
+        
+        .play-pause-btn.paused::before {
+            content: '⏸';
+        }
+        
+        .next-btn {
+            background-image: url('../../slickButton.png');
+            background-position: -64px 0; /* 오른쪽 화살표 (>) 위치 - 필요시 조정 */
+            background-size: auto 20px;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+        
+        .next-btn::before {
+            content: '›';
+            display: block;
+            text-indent: 0;
+            font-size: 24px;
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+        }
+        
+        /* 이미지가 로드되면 텍스트 숨기기 */
+        .prev-btn:not([style*="background-image: none"]),
+        .play-pause-btn:not([style*="background-image: none"]),
+        .next-btn:not([style*="background-image: none"]) {
+            background-color: transparent;
+        }
+        
+        .slide-counter {
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            min-width: 50px;
+            text-align: center;
+            margin: 0 5px;
+        }
+        
+        /* 기본 Slick 컨트롤 숨기기 */
+        .slider-container .slick-arrow {
+            display: none !important;
+        }
+        
+        .slider-container .slick-dots {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="slider">
+                <div class="slide slide-1">Slide 1</div>
+                <div class="slide slide-2">Slide 2</div>
+                <div class="slide slide-3">Slide 3</div>
+                <div class="slide slide-4">Slide 4</div>
+                <div class="slide slide-5">Slide 5</div>
+            </div>
+        </div>
+        
+        <!-- 커스텀 컨트롤 -->
+        <div class="custom-controls">
+            <button class="prev-btn" id="prevBtn" title="이전"></button>
+            <button class="play-pause-btn" id="playPauseBtn" title="일시정지"></button>
+            <div class="slide-counter" id="slideCounter">1 / 5</div>
+            <button class="next-btn" id="nextBtn" title="다음"></button>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            var slider = $('.slider');
+            var playPauseBtn = $('#playPauseBtn');
+            var prevBtn = $('#prevBtn');
+            var nextBtn = $('#nextBtn');
+            var slideCounter = $('#slideCounter');
+            var isPlaying = true;
+            
+            // 슬라이더 초기화
+            slider.on('init', function(event, slick){
+                updateSlideCounter(slick);
+            });
+            
+            slider.on('afterChange', function(event, slick, currentSlide){
+                updateSlideCounter(slick);
+            });
+            
+            slider.slick({
+                autoplay: true,
+                autoplaySpeed: 3000,
+                dots: false,
+                arrows: false,
+                infinite: true,
+                speed: 500,
+                pauseOnHover: false
+            });
+            
+            // 슬라이드 번호 업데이트 함수
+            function updateSlideCounter(slick) {
+                if (slick) {
+                    var current = slick.currentSlide + 1;
+                    var total = slick.slideCount;
+                    slideCounter.text(current + ' / ' + total);
+                }
+            }
+            
+            // Play/Pause 버튼
+            playPauseBtn.on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (isPlaying) {
+                    slider.slick('slickPause');
+                    playPauseBtn.addClass('paused');
+                    playPauseBtn.attr('title', '재생');
+                    isPlaying = false;
+                } else {
+                    slider.slick('slickPlay');
+                    playPauseBtn.removeClass('paused');
+                    playPauseBtn.attr('title', '일시정지');
+                    isPlaying = true;
+                }
+                return false;
+            });
+            
+            // Prev 버튼
+            prevBtn.on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                slider.slick('slickPrev');
+                // 수동 클릭 시 자동 재생 재시작
+                if (isPlaying) {
+                    slider.slick('slickPause');
+                    setTimeout(function() {
+                        slider.slick('slickPlay');
+                    }, 100);
+                }
+                return false;
+            });
+            
+            // Next 버튼
+            nextBtn.on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                slider.slick('slickNext');
+                // 수동 클릭 시 자동 재생 재시작
+                if (isPlaying) {
+                    slider.slick('slickPause');
+                    setTimeout(function() {
+                        slider.slick('slickPlay');
+                    }, 100);
+                }
+                return false;
+            });
+            
+            // 초기 슬라이드 번호 표시
+            setTimeout(function() {
+                var slick = slider.slick('getSlick');
+                if (slick) {
+                    updateSlideCounter(slick);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

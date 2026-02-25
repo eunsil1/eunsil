@@ -1,0 +1,80 @@
+*{margin: 0;padding: 0;}
+ul{list-style: none;}
+.contents{
+  width:1200px;
+  margin: 0 auto;
+  height:800px;
+  border: 1px solid #333;
+}
+.c_group1{
+	width:718px;
+	height:425px;
+	float:left;
+}
+.pop_slide{
+  width:718px;
+  height:385px;
+  position: relative;
+}
+
+/* Swiper 기본 스타일 설정 */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide a{
+  display: block;
+  width:100%;
+  height:100%;
+}
+
+.swiper-slide a img{
+  display: block;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+.slide_but{
+  width:100%;
+  height:40px;
+  line-height: 40px;
+  background-color: #394f79;
+  position: relative;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+.slide_but > p{
+  float: left;
+  color:#fff;
+  height:40px;
+  line-height: 40px;
+  margin-left: 5px;
+}
+.slide_but > p >a{
+  float: left;
+  width:20px;height:20px;
+  margin-top: 12px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.slide_but > p >a.prev{
+  background: url(../img/main_bn_prev.png) no-repeat 0 0;
+}
+.slide_but > p >a.pause{
+  background: url(../img/main_bn_stop.png) no-repeat 0 2px;
+}
+.slide_but > p >a.pause.on{
+  background: url(../img/main_bn_play.png) no-repeat 0 2px;
+}
+
+.slide_but > p >a.next{
+  background: url(../img/main_bn_next.png) no-repeat 0 0;
+}

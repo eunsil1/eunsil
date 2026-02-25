@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성남시청 슬라이더 - Swiper jQuery 버전</title>
+  <!-- jQuery -->
+  <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    *{margin: 0;padding: 0;}
+    ul{list-style: none;}
+    .contents{
+      width:1200px;
+      margin: 0 auto;
+      height:800px;
+      border: 1px solid #333;
+    }
+    .c_group1{
+      width:718px;
+      height:425px;
+      float:left;
+    }
+    .pop_slide{
+      width:718px;
+      height:385px;
+      position: relative;
+    }
+
+    /* Swiper 기본 스타일 설정 */
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide a{
+      display: block;
+      width:100%;
+      height:100%;
+    }
+
+    .swiper-slide a img{
+      display: block;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+
+    .slide_but{
+      width:100%;
+      height:40px;
+      line-height: 40px;
+      background-color: #394f79;
+      position: relative;
+      box-sizing: border-box;
+      padding-left: 10px;
+    }
+    .slide_but > p{
+      float: left;
+      color:#fff;
+      height:40px;
+      line-height: 40px;
+      margin-left: 5px;
+    }
+    .slide_but > p >a{
+      float: left;
+      width:20px;height:20px;
+      margin-top: 12px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+
+    .slide_but > p >a.prev{
+      background: url(../img/main_bn_prev.png) no-repeat 0 0;
+    }
+    .slide_but > p >a.pause{
+      background: url(../img/main_bn_stop.png) no-repeat 0 2px;
+    }
+    .slide_but > p >a.pause.on{
+      background: url(../img/main_bn_play.png) no-repeat 0 2px;
+    }
+
+    .slide_but > p >a.next{
+      background: url(../img/main_bn_next.png) no-repeat 0 0;
+    }
+  </style>
+</head>
+<body>
+  <section class="contents">
+    <article class="c_group1">
+      <div class="left pop_slide">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href="#"><img src="../img/s1.jpg" alt="슬라이드 1"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s2.jpg" alt="슬라이드 2"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s3.jpg" alt="슬라이드 3"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s4.jpg" alt="슬라이드 4"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s5.png" alt="슬라이드 5"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s6.png" alt="슬라이드 6"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s7.png" alt="슬라이드 7"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s8.jpg" alt="슬라이드 8"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s9.jpg" alt="슬라이드 9"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s10.jpg" alt="슬라이드 10"></a></div>
+            <div class="swiper-slide"><a href="#"><img src="../img/s11.png" alt="슬라이드 11"></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="slide_but">
+        <p><strong id="current-slide">1</strong> / <span id="total-slides">11</span></p>
+        <p>
+          <a href="#" class="prev"></a>
+          <a href="#" class="pause"></a>
+          <a href="#" class="next"></a>
+        </p>
+      </div>
+      <div class="smenu"><a href="#"></a></div>
+    </article>
+  </section>
+  
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    $(function(){
+      var swiper = new Swiper('.swiper', {
+        // 기본 설정
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: false,
+        
+        // 자동 재생 설정
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+        
+        // 전환 효과
+        speed: 500,
+        effect: 'slide',
+        
+        // 이벤트 콜백
+        on: {
+          init: function() {
+            // 초기화 시 전체 슬라이드 개수 표시
+            var totalSlides = this.slides.length;
+            $('#total-slides').text(totalSlides);
+          },
+          slideChange: function() {
+            // 슬라이드 변경 시 현재 슬라이드 번호 업데이트
+            var currentIndex = this.realIndex + 1;
+            $('#current-slide').text(currentIndex);
+          }
+        }
+      });
+
+      // 이전 버튼
+      $('.prev').click(function(e){
+        e.preventDefault();
+        swiper.slidePrev();
+        return false;
+      });
+
+      // 다음 버튼
+      $('.next').click(function(e){
+        e.preventDefault();
+        swiper.slideNext();
+        return false;
+      });
+
+      // 일시정지/재생 버튼
+      var isPaused = false;
+      $('.pause').click(function(e){
+        e.preventDefault();
+        if(!isPaused){
+          swiper.autoplay.stop();
+          $(this).addClass('on');
+          isPaused = true;
+        } else {
+          swiper.autoplay.start();
+          $(this).removeClass('on');
+          isPaused = false;
+        }
+        return false;
+      });
+    });
+  </script>
+</body>
+</html>

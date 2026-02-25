@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slick Slider 예제</title>
+    
+    <!-- Slick CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .slider {
+            margin-bottom: 50px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .slider .slide {
+            padding: 20px;
+            height: 300px;
+            min-height: 300px;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 8px;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        /* Slick Slider 초기화 전 슬라이드가 보이도록 */
+        .slider:not(.slick-initialized) .slide {
+            display: flex !important;
+        }
+        
+        .slide-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .slide-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .slide-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .slide-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .slide-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .slide-6 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        
+        .example-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #555;
+            border-left: 4px solid #007bff;
+            padding-left: 15px;
+        }
+        
+        /* Slick Slider 뷰포트 및 트랙 보이기 */
+        .slider .slick-list,
+        .slider .slick-track {
+            height: 300px;
+        }
+        
+        .slider .slick-slide {
+            height: 300px;
+        }
+        
+        .slider .slick-slide > div {
+            height: 100%;
+        }
+        
+        /* 기본 슬라이더 특별 스타일 */
+        .slider-basic {
+            min-height: 300px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .slider-basic .slide {
+            width: 100%;
+        }
+        
+        /* Slick 초기화 전에도 슬라이드 보이기 */
+        .slider-basic:not(.slick-initialized) .slide:first-child {
+            display: flex !important;
+        }
+        
+        /* Slick 화살표와 도트 보이기 */
+        .slider .slick-arrow {
+            z-index: 10;
+        }
+        
+        .slider .slick-dots {
+            bottom: -40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Slick Slider 예제 모음</h1>
+        
+        <!-- 예제 1: 기본 슬라이더 -->
+        <div class="example-title">예제 1: 기본 슬라이더</div>
+        <div class="slider slider-basic">
+            <div class="slide slide-1">Slide 1</div>
+            <div class="slide slide-2">Slide 2</div>
+            <div class="slide slide-3">Slide 3</div>
+            <div class="slide slide-4">Slide 4</div>
+        </div>
+        
+        <!-- 예제 2: 여러 슬라이드 표시 -->
+        <div class="example-title">예제 2: 여러 슬라이드 표시 (3개씩)</div>
+        <div class="slider slider-multiple">
+            <div class="slide slide-1">Slide 1</div>
+            <div class="slide slide-2">Slide 2</div>
+            <div class="slide slide-3">Slide 3</div>
+            <div class="slide slide-4">Slide 4</div>
+            <div class="slide slide-5">Slide 5</div>
+            <div class="slide slide-6">Slide 6</div>
+        </div>
+        
+        <!-- 예제 3: 자동 재생 -->
+        <div class="example-title">예제 3: 자동 재생 슬라이더</div>
+        <div class="slider slider-autoplay">
+            <div class="slide slide-1">Slide 1</div>
+            <div class="slide slide-2">Slide 2</div>
+            <div class="slide slide-3">Slide 3</div>
+            <div class="slide slide-4">Slide 4</div>
+        </div>
+        
+        <!-- 예제 4: 페이드 효과 -->
+        <div class="example-title">예제 4: 페이드 효과</div>
+        <div class="slider slider-fade">
+            <div class="slide slide-1">Slide 1</div>
+            <div class="slide slide-2">Slide 2</div>
+            <div class="slide slide-3">Slide 3</div>
+            <div class="slide slide-4">Slide 4</div>
+        </div>
+        
+        <!-- 예제 5: 반응형 슬라이더 -->
+        <div class="example-title">예제 5: 반응형 슬라이더</div>
+        <div class="slider slider-responsive">
+            <div class="slide slide-1">Slide 1</div>
+            <div class="slide slide-2">Slide 2</div>
+            <div class="slide slide-3">Slide 3</div>
+            <div class="slide slide-4">Slide 4</div>
+            <div class="slide slide-5">Slide 5</div>
+            <div class="slide slide-6">Slide 6</div>
+        </div>
+    </div>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Slick Slider -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            // 예제 1: 기본 슬라이더
+            if ($('.slider-basic').length > 0) {
+                $('.slider-basic').slick({
+                    dots: true,
+                    arrows: true,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                });
+            }
+            
+            // 예제 2: 여러 슬라이드 표시
+            $('.slider-multiple').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                dots: true,
+                arrows: true
+            });
+            
+            // 예제 3: 자동 재생
+            $('.slider-autoplay').slick({
+                autoplay: true,
+                autoplaySpeed: 2000,
+                dots: true,
+                arrows: true,
+                pauseOnHover: true
+            });
+            
+            // 예제 4: 페이드 효과
+            $('.slider-fade').slick({
+                fade: true,
+                cssEase: 'linear',
+                autoplay: true,
+                autoplaySpeed: 2000,
+                dots: true,
+                arrows: true
+            });
+            
+            // 예제 5: 반응형 슬라이더
+            $('.slider-responsive').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true,
+                arrows: true,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            arrows: false
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>
