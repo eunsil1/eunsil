@@ -61,51 +61,51 @@ $(function(){
   $('.item').each(function(index){
     $(this).css('transition-delay',(index+0.1) +'s');
   });
-  // 'transition-delay : 0;, transition-delay: 0.1;, transition-delay: 0.2;
+  'transition-delay : 0;, transition-delay: 0.1;, transition-delay: 0.2;
 
 
-  // $(window).on('scroll resize',function(){
-  //   $('.item').each(function(){
-  //     // 요소의 위치 정보
-  //     var elementTop = $(this).offset().top;
-  //     var elementBottom = elementTop + $(this).outerHeight();
+  $(window).on('scroll resize',function(){
+    $('.item').each(function(){
+      // 요소의 위치 정보
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
 
-  //     var viewportTop = $(window).scrollTop();
+      var viewportTop = $(window).scrollTop();
       
-  //     // 요소가 뷰포트 안에 보이는지 확인
-  //     if(elementBottom > viewportTop && elementTop < viewportBottom){
-  //       // 보이면 페이드인 효과 적용
-  //       $(this).css({
-  //         'opacity': '1',
-  //         'transform': 'translateY(0)'
-  //       });
-  //     }
+      // 요소가 뷰포트 안에 보이는지 확인
+      if(elementBottom > viewportTop && elementTop < viewportBottom){
+        // 보이면 페이드인 효과 적용
+        $(this).css({
+          'opacity': '1',
+          'transform': 'translateY(0)'
+        });
+      }
 
-
-  //   });
-    
-  // });
-
-  $(window).on('scroll', function() {
-
-    $('item').each(function() {
-
-        // 🔹 요소 위치
-        var elementTop = $(this).offset().top;
-        var elementHeight = $(this).outerHeight();
-
-        // 🔹 화면(뷰포트) 위치
-        var viewportTop = $(window).scrollTop();
-        var viewportBottom = viewportTop + $(window).height();
-
-        // 🔹 요소의 중간 지점
-        var elementMiddle = elementTop + (elementHeight / 2);
-
-        // 🔥 요소의 중간이 화면 아래쪽보다 위에 오면 실행
-        if (elementMiddle < viewportBottom) {
-  
-        }
 
     });
-});
+    
+  });
+
+//   $(window).on('scroll', function() {
+
+//     $('item').each(function() {
+
+//         // 🔹 요소 위치
+//         var elementTop = $(this).offset().top;
+//         var elementHeight = $(this).outerHeight();
+
+//         // 🔹 화면(뷰포트) 위치
+//         var viewportTop = $(window).scrollTop();
+//         var viewportBottom = viewportTop + $(window).height();
+
+//         // 🔹 요소의 중간 지점
+//         var elementMiddle = elementTop + (elementHeight / 2);
+
+//         // 🔥 요소의 중간이 화면 아래쪽보다 위에 오면 실행
+//         if (elementMiddle < viewportBottom) {
+  
+//         }
+
+//     });
+// });
 });
