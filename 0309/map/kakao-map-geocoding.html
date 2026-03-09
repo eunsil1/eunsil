@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카카오맵 - 주소 검색 예제</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .search-box input:focus {
+            border-color: #667eea;
+        }
+        
+        .search-box button {
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: #764ba2;
+        }
+        
+        #map {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .result-box {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .result-box h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .result-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .result-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .result-item strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .result-item span {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .quick-search {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .quick-btn {
+            padding: 8px 15px;
+            background: #f0f0f0;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .quick-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 카카오맵 - 주소 검색 예제</h1>
+        <p class="subtitle">주소를 입력하면 해당 위치를 지도에 표시합니다.</p>
+        
+        <div class="quick-search">
+            <button class="quick-btn" onclick="searchAddress('서울시청')">서울시청</button>
+            <button class="quick-btn" onclick="searchAddress('명동')">명동</button>
+            <button class="quick-btn" onclick="searchAddress('남산타워')">남산타워</button>
+            <button class="quick-btn" onclick="searchAddress('강남역')">강남역</button>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" id="addressInput" placeholder="주소를 입력하세요 (예: 서울시청)" 
+                   onkeypress="if(event.key === 'Enter') searchAddress()">
+            <button onclick="searchAddress()">검색</button>
+        </div>
+        
+        <div id="map"></div>
+        
+        <div class="result-box" id="resultBox" style="display:none;">
+            <h3>📍 검색 결과</h3>
+            <div id="resultList"></div>
+        </div>
+    </div>
+    
+    <!-- 카카오맵 API 스크립트 -->
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e04fcffdbc97a1c4f812f2ded69a2258"></script>
+    <script>
+        var map;
+        var marker;
+        var geocoder;
+        
+        // 지도 초기화
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(37.5665, 126.9780),
+            level: 3
+        };
+        map = new kakao.maps.Map(container, options);
+        
+        // Geocoder 초기화
+        geocoder = new kakao.maps.services.Geocoder();
+        
+        // 주소 검색 함수
+        function searchAddress(address) {
+            // 파라미터로 주소가 전달되지 않으면 입력창에서 가져오기
+            if (!address) {
+                address = document.getElementById('addressInput').value;
+            }
+            
+            if (!address) {
+                alert('주소를 입력하세요.');
+                return;
+            }
+            
+            // 입력창 업데이트
+            document.getElementById('addressInput').value = address;
+            
+            // 주소 검색
+            geocoder.addressSearch(address, function(result, status) {
+                if (status === kakao.maps.services.Status.OK) {
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                    
+                    // 지도 중심 이동
+                    map.setCenter(coords);
+                    map.setLevel(3);
+                    
+                    // 기존 마커 제거
+                    if (marker) {
+                        marker.setMap(null);
+                    }
+                    
+                    // 새 마커 생성
+                    marker = new kakao.maps.Marker({
+                        position: coords
+                    });
+                    marker.setMap(map);
+                    
+                    // 결과 표시
+                    displayResults(result);
+                } else {
+                    alert('주소를 찾을 수 없습니다.');
+                    document.getElementById('resultBox').style.display = 'none';
+                }
+            });
+        }
+        
+        // 검색 결과 표시 함수
+        function displayResults(results) {
+            var resultList = document.getElementById('resultList');
+            resultList.innerHTML = '';
+            
+            results.forEach(function(result, index) {
+                var item = document.createElement('div');
+                item.className = 'result-item';
+                item.onclick = function() {
+                    var coords = new kakao.maps.LatLng(result.y, result.x);
+                    map.setCenter(coords);
+                    map.setLevel(2);
+                };
+                
+                item.innerHTML = `
+                    <strong>${result.address_name}</strong>
+                    <span>위도: ${result.y}, 경도: ${result.x}</span>
+                `;
+                
+                resultList.appendChild(item);
+            });
+            
+            document.getElementById('resultBox').style.display = 'block';
+        }
+        
+        // 초기 주소 검색
+        searchAddress('서울시청');
+    </script>
+</body>
+</html>
