@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube 간단 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 비율 */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .info h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        
+        .info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .info li {
+            margin: 5px 0;
+            color: #555;
+        }
+        
+        .test-videos {
+            margin-top: 30px;
+        }
+        
+        .test-videos button {
+            margin: 5px;
+            padding: 10px 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .test-videos button:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 YouTube 동영상 테스트</h1>
+        
+        <div class="video-wrapper">
+            <iframe 
+                id="youtubeFrame"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                title="YouTube 동영상">
+            </iframe>
+        </div>
+        
+        <div class="test-videos">
+            <h3>다른 동영상 테스트:</h3>
+            <button onclick="changeVideo('dQw4w9WgXcQ')">Rick Astley</button>
+            <button onclick="changeVideo('jNQXAC9IVRw')">Me at the zoo</button>
+            <button onclick="changeVideo('9bZkp7q19f0')">Gangnam Style</button>
+        </div>
+        
+        <div class="info">
+            <h3>🔍 문제 해결 체크리스트</h3>
+            <ul>
+                <li>동영상이 보이지 않으면 브라우저 콘솔(F12)을 확인하세요</li>
+                <li>네트워크 연결을 확인하세요</li>
+                <li>동영상이 임베드 허용되어 있는지 확인하세요</li>
+                <li>다른 브라우저에서 테스트해보세요</li>
+                <li>방화벽이나 보안 프로그램이 YouTube를 차단하지 않는지 확인하세요</li>
+            </ul>
+        </div>
+        
+        <div class="info" style="background: #fff3cd; border-left-color: #ffc107;">
+            <h3 style="color: #856404;">⚠️ 동영상이 여전히 안 보이면:</h3>
+            <ul>
+                <li>브라우저 주소창에 직접 입력: <code>https://www.youtube.com/embed/dQw4w9WgXcQ</code></li>
+                <li>이 URL이 작동하면 iframe 코드에 문제가 있는 것입니다</li>
+                <li>이 URL도 안 되면 네트워크나 방화벽 문제일 수 있습니다</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function changeVideo(videoId) {
+            var iframe = document.getElementById('youtubeFrame');
+            iframe.src = 'https://www.youtube.com/embed/' + videoId;
+        }
+        
+        // 페이지 로드 시 확인
+        window.addEventListener('load', function() {
+            var iframe = document.getElementById('youtubeFrame');
+            console.log('YouTube iframe src:', iframe.src);
+            console.log('Iframe width:', iframe.offsetWidth);
+            console.log('Iframe height:', iframe.offsetHeight);
+            
+            // iframe 로드 이벤트
+            iframe.addEventListener('load', function() {
+                console.log('YouTube iframe 로드 완료');
+            });
+            
+            // iframe 에러 이벤트
+            iframe.addEventListener('error', function() {
+                console.error('YouTube iframe 로드 실패');
+            });
+        });
+    </script>
+</body>
+</html>

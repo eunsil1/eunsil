@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube 반응형 - 기본 예제</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        /* 방법 1: aspect-ratio 사용 (최신 브라우저) */
+        .video-container-modern {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .video-container-modern iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* 방법 2: padding-bottom 트릭 (호환성 높음) */
+        .video-container-compat {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 비율 */
+            height: 0;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .video-container-compat iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .method-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 40px 0 20px 0;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        
+        .code-example {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-example pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .note {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .note strong {
+            color: #1976d2;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .video-container-modern,
+            .video-container-compat {
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎥 YouTube 반응형 삽입 예제</h1>
+        <p class="subtitle">두 가지 방법으로 반응형 YouTube 동영상을 삽입하는 방법을 보여줍니다.</p>
+        
+        <div class="method-title">방법 1: CSS aspect-ratio 사용 (최신 브라우저)</div>
+        
+        <div class="video-container-modern">
+            <iframe 
+                id="video1"
+                src="https://www.youtube.com/embed/nzqhud2pWSA?enablejsapi=1" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                title="YouTube 동영상"
+                loading="lazy">
+            </iframe>
+        </div>
+        
+        <div id="debug1" style="text-align: center; margin-top: 10px; font-size: 12px; color: #666;"></div>
+        
+        <div class="code-example">
+            <pre>&lt;style&gt;
+.video-container-modern {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.video-container-modern iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+&lt;/style&gt;
+
+&lt;div class="video-container-modern"&gt;
+    &lt;iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</pre>
+        </div>
+        
+        <div class="note">
+            <strong>💡 장점:</strong> 코드가 간단하고 최신 브라우저에서 완벽하게 작동합니다.<br>
+            <strong>⚠️ 단점:</strong> 구형 브라우저(IE 등)에서는 지원되지 않습니다.
+        </div>
+        
+        <div class="method-title">방법 2: Padding-bottom 트릭 (모든 브라우저 호환)</div>
+        
+        <div class="video-container-compat">
+            <iframe 
+                id="video2"
+                src="https://www.youtube.com/embed/jNQXAC9IVRw?enablejsapi=1" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                title="YouTube 동영상"
+                loading="lazy">
+            </iframe>
+        </div>
+        
+        <div id="debug2" style="text-align: center; margin-top: 10px; font-size: 12px; color: #666;"></div>
+        
+        <div class="code-example">
+            <pre>&lt;style&gt;
+.video-container-compat {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 비율 (9/16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.video-container-compat iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+&lt;/style&gt;
+
+&lt;div class="video-container-compat"&gt;
+    &lt;iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</pre>
+        </div>
+        
+        <div class="note">
+            <strong>💡 장점:</strong> 모든 브라우저에서 작동하며 호환성이 높습니다.<br>
+            <strong>📐 작동 원리:</strong> padding-bottom: 56.25%는 부모 요소 너비의 56.25%를 의미하며, 16:9 비율을 만듭니다.
+        </div>
+        
+        <div class="note">
+            <strong>📱 테스트 방법:</strong><br>
+            1. 브라우저 창 크기를 조절해보세요<br>
+            2. 개발자 도구(F12)에서 모바일 뷰로 전환해보세요<br>
+            3. 동영상이 항상 올바른 비율을 유지하는지 확인하세요
+        </div>
+        
+        <div class="note" style="background: #fff3cd; border-left-color: #ffc107;">
+            <strong style="color: #856404;">🔍 동영상이 안 보이면:</strong><br>
+            1. F12를 눌러 개발자 도구를 열고 Console 탭을 확인하세요<br>
+            2. 아래 디버그 정보를 확인하세요<br>
+            3. 네트워크 연결을 확인하세요<br>
+            4. 방화벽이나 보안 프로그램이 YouTube를 차단하지 않는지 확인하세요
+        </div>
+    </div>
+    
+    <script>
+        // 디버깅 정보 표시
+        function checkVideoStatus() {
+            var video1 = document.getElementById('video1');
+            var video2 = document.getElementById('video2');
+            var debug1 = document.getElementById('debug1');
+            var debug2 = document.getElementById('debug2');
+            
+            // 비디오 1 상태 확인
+            setTimeout(function() {
+                var info1 = [];
+                info1.push('Iframe src: ' + video1.src);
+                info1.push('Width: ' + video1.offsetWidth + 'px');
+                info1.push('Height: ' + video1.offsetHeight + 'px');
+                info1.push('Display: ' + window.getComputedStyle(video1).display);
+                debug1.innerHTML = '<strong>비디오 1 상태:</strong> ' + info1.join(' | ');
+            }, 1000);
+            
+            // 비디오 2 상태 확인
+            setTimeout(function() {
+                var info2 = [];
+                info2.push('Iframe src: ' + video2.src);
+                info2.push('Width: ' + video2.offsetWidth + 'px');
+                info2.push('Height: ' + video2.offsetHeight + 'px');
+                info2.push('Display: ' + window.getComputedStyle(video2).display);
+                debug2.innerHTML = '<strong>비디오 2 상태:</strong> ' + info2.join(' | ');
+            }, 1000);
+            
+            // 콘솔에 상세 정보 출력
+            console.log('=== YouTube 동영상 디버깅 정보 ===');
+            console.log('비디오 1:', {
+                src: video1.src,
+                width: video1.offsetWidth,
+                height: video1.offsetHeight,
+                display: window.getComputedStyle(video1).display,
+                visibility: window.getComputedStyle(video1).visibility
+            });
+            console.log('비디오 2:', {
+                src: video2.src,
+                width: video2.offsetWidth,
+                height: video2.offsetHeight,
+                display: window.getComputedStyle(video2).display,
+                visibility: window.getComputedStyle(video2).visibility
+            });
+            
+            // iframe 로드 이벤트
+            video1.addEventListener('load', function() {
+                console.log('비디오 1 로드 완료');
+                debug1.innerHTML += ' | ✅ 로드 완료';
+            });
+            
+            video2.addEventListener('load', function() {
+                console.log('비디오 2 로드 완료');
+                debug2.innerHTML += ' | ✅ 로드 완료';
+            });
+            
+            // 에러 이벤트
+            video1.addEventListener('error', function() {
+                console.error('비디오 1 로드 실패');
+                debug1.innerHTML += ' | ❌ 로드 실패';
+            });
+            
+            video2.addEventListener('error', function() {
+                console.error('비디오 2 로드 실패');
+                debug2.innerHTML += ' | ❌ 로드 실패';
+            });
+        }
+        
+        // 페이지 로드 시 확인
+        window.addEventListener('load', checkVideoStatus);
+        
+        // 네트워크 에러 확인
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IFRAME') {
+                console.error('Iframe 로드 에러:', e);
+            }
+        }, true);
+    </script>
+</body>
+</html>

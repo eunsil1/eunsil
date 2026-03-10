@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카카오맵 - 커스텀 마커 예제</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        #map {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #764ba2;
+        }
+        
+        .btn.active {
+            background: #764ba2;
+        }
+        
+        .info-box {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .info-box h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .marker-type {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            background: white;
+            border-radius: 5px;
+            border: 2px solid #667eea;
+        }
+        
+        .marker-type strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .marker-type span {
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 카카오맵 - 커스텀 마커 예제</h1>
+        <p class="subtitle">다양한 스타일의 커스텀 마커를 사용하는 방법입니다.</p>
+        
+        <div class="controls">
+            <button class="btn" onclick="changeMarkerType('default', event)">기본 마커</button>
+            <button class="btn" onclick="changeMarkerType('red', event)">빨간 마커</button>
+            <button class="btn" onclick="changeMarkerType('blue', event)">파란 마커</button>
+            <button class="btn" onclick="changeMarkerType('custom', event)">커스텀 마커</button>
+        </div>
+        
+        <div id="map"></div>
+        
+        <div class="info-box">
+            <h3>📍 마커 타입</h3>
+            <div class="marker-type">
+                <strong>기본 마커</strong>
+                <span>카카오맵 기본 마커</span>
+            </div>
+            <div class="marker-type">
+                <strong>빨간 마커</strong>
+                <span>카카오맵 제공 빨간색 마커</span>
+            </div>
+            <div class="marker-type">
+                <strong>파란 마커</strong>
+                <span>카카오맵 제공 파란색 마커</span>
+            </div>
+            <div class="marker-type">
+                <strong>커스텀 마커</strong>
+                <span>직접 만든 이미지 마커</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 카카오맵 API 스크립트 -->
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bceccd594bb478b5533d7d2ec63f8bb0"></script>
+    <script>
+        var map;
+        var markers = [];
+        var currentMarkerType = 'default';
+        
+        // 위치 데이터 (전역 변수로 선언)
+        var positions = [];
+        
+        // 지도 초기화 함수
+        function initMap() {
+            // 카카오맵 API가 로드되었는지 확인
+            if (typeof kakao === 'undefined' || !kakao.maps) {
+                console.error('카카오맵 API가 로드되지 않았습니다.');
+                setTimeout(initMap, 100);
+                return;
+            }
+            
+            // 위치 데이터 초기화
+            positions = [
+                {title: '서울시청', latlng: new kakao.maps.LatLng(37.5665, 126.9780)},
+                {title: '명동', latlng: new kakao.maps.LatLng(37.5636, 126.9826)},
+                {title: '남산타워', latlng: new kakao.maps.LatLng(37.5512, 126.9882)}
+            ];
+            
+            // 지도 초기화
+            var container = document.getElementById('map');
+            if (!container) {
+                console.error('지도 컨테이너를 찾을 수 없습니다.');
+                return;
+            }
+            
+            var options = {
+                center: new kakao.maps.LatLng(37.5665, 126.9780),
+                level: 5
+            };
+            map = new kakao.maps.Map(container, options);
+            
+            // 초기 마커 생성
+            createMarkers('default');
+            
+            // 모든 마커 보기
+            var bounds = new kakao.maps.LatLngBounds();
+            positions.forEach(function(pos) {
+                bounds.extend(pos.latlng);
+            });
+            map.setBounds(bounds);
+        }
+        
+        // 페이지 로드 완료 후 지도 초기화
+        window.onload = function() {
+            initMap();
+        };
+        
+        // Canvas로 마커 이미지 생성 함수
+        function createMarkerCanvas(color) {
+            var canvas = document.createElement('canvas');
+            canvas.width = 50;
+            canvas.height = 50;
+            var ctx = canvas.getContext('2d');
+            
+            // 마커 모양 그리기 (드롭핀 모양)
+            ctx.beginPath();
+            ctx.moveTo(25, 0);
+            ctx.lineTo(45, 45);
+            ctx.lineTo(25, 50);
+            ctx.lineTo(5, 45);
+            ctx.closePath();
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = '#1E40AF';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 중앙 원 그리기
+            ctx.beginPath();
+            ctx.arc(25, 25, 8, 0, Math.PI * 2);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            
+            return canvas.toDataURL();
+        }
+        
+        // 마커 이미지 생성 함수
+        function createMarkerImage(type) {
+            var imageSrc, imageSize, imageOption;
+            
+            switch(type) {
+                case 'red':
+                    imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png';
+                    imageSize = new kakao.maps.Size(50, 50);
+                    imageOption = {offset: new kakao.maps.Point(25, 50)};
+                    break;
+                case 'blue':
+                    // Canvas로 파란 마커 생성
+                    imageSrc = createMarkerCanvas('#3B82F6');
+                    imageSize = new kakao.maps.Size(50, 50);
+                    imageOption = {offset: new kakao.maps.Point(25, 50)};
+                    break;
+                case 'custom':
+                    // Canvas로 별 모양 마커 생성
+                    var canvas = document.createElement('canvas');
+                    canvas.width = 50;
+                    canvas.height = 50;
+                    var ctx = canvas.getContext('2d');
+                    
+                    // 별 모양 그리기
+                    ctx.beginPath();
+                    var centerX = 25, centerY = 25;
+                    var spikes = 5;
+                    var outerRadius = 20;
+                    var innerRadius = 10;
+                    var rot = Math.PI / 2 * 3;
+                    var x = centerX;
+                    var y = centerY;
+                    var step = Math.PI / spikes;
+                    
+                    for (var i = 0; i < spikes; i++) {
+                        x = centerX + Math.cos(rot) * outerRadius;
+                        y = centerY + Math.sin(rot) * outerRadius;
+                        ctx.lineTo(x, y);
+                        rot += step;
+                        
+                        x = centerX + Math.cos(rot) * innerRadius;
+                        y = centerY + Math.sin(rot) * innerRadius;
+                        ctx.lineTo(x, y);
+                        rot += step;
+                    }
+                    ctx.lineTo(centerX, centerY - outerRadius);
+                    ctx.closePath();
+                    ctx.fillStyle = '#FFD700';
+                    ctx.fill();
+                    ctx.strokeStyle = '#FFA500';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    
+                    imageSrc = canvas.toDataURL();
+                    imageSize = new kakao.maps.Size(50, 50);
+                    imageOption = {offset: new kakao.maps.Point(25, 50)};
+                    break;
+                default:
+                    return null; // 기본 마커 사용
+            }
+            
+            return new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+        }
+        
+        // 마커 생성 함수
+        function createMarkers(type) {
+            if (!map) {
+                console.error('지도가 초기화되지 않았습니다.');
+                return;
+            }
+            
+            if (!positions || positions.length === 0) {
+                console.error('위치 데이터가 없습니다.');
+                return;
+            }
+            
+            // 기존 마커 제거
+            markers.forEach(function(marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+            
+            // 마커 이미지 생성
+            var markerImage = createMarkerImage(type);
+            
+            // 새 마커 생성
+            positions.forEach(function(pos) {
+                var markerOptions = {
+                    position: pos.latlng,
+                    title: pos.title
+                };
+                
+                if (markerImage) {
+                    markerOptions.image = markerImage;
+                }
+                
+                var marker = new kakao.maps.Marker(markerOptions);
+                marker.setMap(map);
+                markers.push(marker);
+            });
+            
+            console.log(type + ' 마커 ' + markers.length + '개 생성 완료');
+        }
+        
+        // 마커 타입 변경 함수
+        function changeMarkerType(type, event) {
+            if (!map) {
+                console.error('지도가 초기화되지 않았습니다.');
+                return;
+            }
+            
+            currentMarkerType = type;
+            createMarkers(type);
+            
+            // 버튼 활성화 상태 변경
+            document.querySelectorAll('.btn').forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            
+            if (event && event.target) {
+                event.target.classList.add('active');
+            } else {
+                // event 객체가 없으면 버튼 텍스트로 찾기
+                var buttons = document.querySelectorAll('.btn');
+                buttons.forEach(function(btn) {
+                    if (btn.textContent.includes(getMarkerTypeName(type))) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        }
+        
+        // 마커 타입 이름 반환 함수
+        function getMarkerTypeName(type) {
+            var names = {
+                'default': '기본',
+                'red': '빨간',
+                'blue': '파란',
+                'custom': '커스텀'
+            };
+            return names[type] || '';
+        }
+    </script>
+</body>
+</html>

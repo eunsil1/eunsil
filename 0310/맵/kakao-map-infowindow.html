@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카카오맵 - 인포윈도우 예제</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        #map {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .info-box {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .info-box h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .location-list {
+            list-style: none;
+        }
+        
+        .location-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .location-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .location-list li strong {
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .location-list li span {
+            color: #666;
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💬 카카오맵 - 인포윈도우 예제</h1>
+        <p class="subtitle">마커 클릭 시 정보창을 표시하는 방법입니다.</p>
+        
+        <div id="map"></div>
+        
+        <div class="info-box">
+            <h3>📍 주요 위치</h3>
+            <ul class="location-list" id="locationList">
+                <li onclick="showInfo(0)">
+                    <strong>서울시청</strong>
+                    <span>서울특별시 중구 세종대로 110</span>
+                </li>
+                <li onclick="showInfo(1)">
+                    <strong>명동</strong>
+                    <span>서울특별시 중구 명동</span>
+                </li>
+                <li onclick="showInfo(2)">
+                    <strong>남산타워</strong>
+                    <span>서울특별시 용산구 남산공원길 105</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 카카오맵 API 스크립트 -->
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bceccd594bb478b5533d7d2ec63f8bb0"></script>
+    <script>
+        var map;
+        var markers = [];
+        var infowindows = [];
+        
+        // 위치 데이터
+        var locations = [
+            {
+                title: '서울시청',
+                address: '서울특별시 중구 세종대로 110',
+                latlng: new kakao.maps.LatLng(37.5665, 126.9780),
+                description: '서울특별시의 행정 중심지입니다.'
+            },
+            {
+                title: '명동',
+                address: '서울특별시 중구 명동',
+                latlng: new kakao.maps.LatLng(37.5636, 126.9826),
+                description: '서울의 대표적인 쇼핑 거리입니다.'
+            },
+            {
+                title: '남산타워',
+                address: '서울특별시 용산구 남산공원길 105',
+                latlng: new kakao.maps.LatLng(37.5512, 126.9882),
+                description: '서울의 랜드마크인 남산타워입니다.'
+            }
+        ];
+        
+        // 지도 초기화
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(37.5665, 126.9780),
+            level: 5
+        };
+        map = new kakao.maps.Map(container, options);
+        
+        // 마커와 인포윈도우 생성
+        locations.forEach(function(location, index) {
+            // 마커 생성
+            var marker = new kakao.maps.Marker({
+                position: location.latlng,
+                title: location.title
+            });
+            marker.setMap(map);
+            markers.push(marker);
+            
+            // 인포윈도우 내용
+            var iwContent = `
+                <div style="padding:15px; min-width:200px;">
+                    <h3 style="margin:0 0 10px 0; color:#333; font-size:16px;">${location.title}</h3>
+                    <p style="margin:0 0 5px 0; color:#666; font-size:14px;">${location.address}</p>
+                    <p style="margin:0; color:#999; font-size:12px;">${location.description}</p>
+                </div>
+            `;
+            
+            // 인포윈도우 생성
+            var infowindow = new kakao.maps.InfoWindow({
+                content: iwContent
+            });
+            infowindows.push(infowindow);
+            
+            // 마커 클릭 이벤트
+            kakao.maps.event.addListener(marker, 'click', function() {
+                // 다른 인포윈도우 닫기
+                infowindows.forEach(function(iw) {
+                    iw.close();
+                });
+                // 현재 인포윈도우 열기
+                infowindow.open(map, marker);
+            });
+        });
+        
+        // 리스트 클릭 시 인포윈도우 표시
+        function showInfo(index) {
+            if (markers[index] && infowindows[index]) {
+                // 지도 중심 이동
+                map.setCenter(locations[index].latlng);
+                map.setLevel(3);
+                
+                // 다른 인포윈도우 닫기
+                infowindows.forEach(function(iw) {
+                    iw.close();
+                });
+                
+                // 선택한 인포윈도우 열기
+                infowindows[index].open(map, markers[index]);
+            }
+        }
+        
+        // 초기 로드 시 첫 번째 위치 표시
+        setTimeout(function() {
+            showInfo(0);
+        }, 500);
+    </script>
+</body>
+</html>
