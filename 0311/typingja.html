@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+  
+  <h1 id="text">
+    타이핑 효과 시험 이렇게 쳐보세요 타다 타다 타닥!!
+  </h1>
+
+</body>
+</html>
+<script>
+ 
+  let i = 0;
+  let text = document.getElementById('text');
+  let msg = text.innerText;
+  
+
+  function typing(){
+    text.innerText = msg.substring(0,i);
+    i++;
+    if(i <= msg.length){
+      setTimeout(typing, 100);
+    }else{
+      i = 0;
+      setTimeout(typing, 1000)
+    }
+  }
+
+  typing();
+ 
+
+  
+
+
+
+
+</script>

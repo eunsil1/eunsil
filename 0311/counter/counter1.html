@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+  <h1 id="num">000</h1>
+
+</body>
+<script>
+$(function(){
+  $({percent:0}).animate({percent:111},{
+    duration:3000,
+    progress:function(){
+      var now = this.percent;
+      $('#num').text(Math.ceil(now)); //소수점이하 올림
+      //$('#num').text(Math.floor(now)); 소수점이하 버림
+      //Math.round(now); 소수점이하 반올림
+    }
+  });
+});
+
+
+</script>
+</html>
