@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>커스텀 셀렉트 박스</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 1. 박스 전체를 감싸는 래퍼 */
+    .custom-select-wrapper {
+      position: relative;
+      width: 300px;
+    }
+
+    /* 2. 실제 select 태그 스타일 (기본 화살표 숨기기) */
+    .custom-select {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: white;
+      color: #333;
+
+      /* 브라우저 기본 화살표 제거 */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      cursor: pointer;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .custom-select:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+    }
+
+    /* 3. 보유하신 ic_familysel.svg 적용 */
+    .custom-select-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      /* 세로 중앙 정렬 보정 */
+      transform: translateY(-50%);
+
+      /* 이미지 크기 - 보유하신 SVG 비율에 맞게 조절하세요 */
+      width: 20px;
+      height: 20px;
+
+      /* 파일 경로 적용 */
+      background-image: url('./images/ic_familysel.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+
+      pointer-events: none;
+      /* 화살표 클릭 시에도 select가 열리도록 함 */
+      transition: transform 0.3s ease;
+      /* 회전 애니메이션 */
+    }
+
+    /* 4. 클릭(포커스) 시 화살표 회전 로직 */
+    .custom-select-wrapper:focus-within::after {
+      /* 기존의 중앙정렬(-50%)을 유지하면서 180도 회전 시킴 */
+      transform: translateY(-50%) rotate(180deg);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>배송지 선택</h2>
+
+    <div class="custom-select-wrapper">
+      <select class="custom-select">
+        <option value="" disabled selected>배송지를 선택해주세요</option>
+        <option value="home">우리집 (서울)</option>
+        <option value="office">회사 (경기)</option>
+        <option value="parents">부모님 댁 (부산)</option>
+      </select>
+    </div>
+  </div>
+
+</body>
+
+</html>
