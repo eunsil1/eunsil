@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script>
+  const numbers = [1,2,3,4,5];
+  const doubled = numbers.map(num => num * 2);
+  console.log(doubled);
+
+  const numbers1 = [1,2,3,4,5,6];
+  const evens = numbers1.filter(num => num % 2 == 0);
+  console.log(evens);
+
+  const users = [
+    { id: 1, name: "홍길동" },
+    { id: 2, name: "김철수" },
+    { id: 3, name: "이영희" }
+    ];
+  const user = users.find(u => u.id === 2);
+  console.log(user);
+
+  const fruits = ['사과', '바나나', '오렌지'];
+  fruits.forEach(fruit => {
+    console.log(fruit);
+  });
+
+  const numbers2 = [1,2,3,4,5];
+
+  const sum = numbers2.reduce((acc, num) => acc + num, 0)
+  console.log(sum);
+  //num 현재 배열에서 꺼낸 요소
+  //acc 값을 누적(누산기) - 지금까지 계산된 누적 결과값
+  //0 초기값 reduce - 줄여서 하나의 값을 만드는 함수
+
+  const numbers3 = [1, 2, 3, 4, 5];
+  const hasEven = numbers3.some(num => num % 2 === 0);  // true - 짝수가 하나라도 있나?
+  const allPositive = numbers3.every(num => num > 0);    // true - 모두 양수인가
+  const allPositive1 = numbers3.every(num => num % 2 === 0); //모두 짝수인가
+  console.log(hasEven, allPositive, allPositive1);
+  //조건에 만족하는 요소가 있는지
+
+  //포함여부
+  const fruits1 = ["사과", "바나나", "오렌지"];
+  const hasApple = fruits1.includes("사과");  // true
+  const hasGrape = fruits1.includes("포도");  // false
+
+  const numbers5 = [1,2,3,4,5,6,7,8,9,10];
+  const reault = numbers5
+    .filter(num => num % 2 === 0) //짝수만
+    .map(num => num * 2) //2배 4 8 12 16 20
+    .filter(num => num > 10); //10보다 큰 수만 12 16 20
+
+  
+</script>
+</head>
+<body>
+ 
+</body>
+</html>

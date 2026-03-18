@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6+ 문법 예제</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .example {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        .code {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        .result {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            color: #2e7d32;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ES6+ 문법 예제</h1>
+        <p>브라우저 콘솔(F12)을 열어서 결과를 확인하세요!</p>
+        
+        <h2>1. let과 const</h2>
+        <div class="example">
+            <h3>let (변수 재할당 가능)</h3>
+            <div class="code">
+let name = "홍길동";
+name = "김철수";  // 재할당 가능
+console.log(name);  // "김철수"
+            </div>
+            <button onclick="testLet()">테스트</button>
+            <div id="let-result" class="result"></div>
+        </div>
+        
+        <div class="example">
+            <h3>const (상수, 재할당 불가)</h3>
+            <div class="code">
+const PI = 3.14159;
+// PI = 3.14;  // 에러 발생!
+console.log(PI);  // 3.14159
+            </div>
+            <button onclick="testConst()">테스트</button>
+            <div id="const-result" class="result"></div>
+        </div>
+        
+        <h2>2. 화살표 함수 (Arrow Function)</h2>
+        <div class="example">
+            <h3>기본 문법</h3>
+            <div class="code">
+// 기존 함수
+function add(a, b) {
+    return a + b;
+}
+
+// 화살표 함수
+const add = (a, b) => {
+    return a + b;
+}
+
+// 한 줄일 때 return 생략 가능
+const add = (a, b) => a + b;
+            </div>
+            <button onclick="testArrow()">테스트</button>
+            <div id="arrow-result" class="result"></div>
+        </div>
+        
+        <h2>3. 템플릿 리터럴 (Template Literal)</h2>
+        <div class="example">
+            <h3>문자열 연결</h3>
+            <div class="code">
+const name = "홍길동";
+const age = 25;
+
+// 기존 방식
+const message1 = "이름: " + name + ", 나이: " + age;
+
+// 템플릿 리터럴
+const message2 = `이름: ${name}, 나이: ${age}`;
+            </div>
+            <button onclick="testTemplate()">테스트</button>
+            <div id="template-result" class="result"></div>
+        </div>
+        
+        <h2>4. 기본 매개변수 (Default Parameters)</h2>
+        <div class="example">
+            <h3>함수 매개변수 기본값</h3>
+            <div class="code">
+function greet(name = "손님") {
+    return `안녕하세요, ${name}님!`;
+}
+
+greet();        // "안녕하세요, 손님님!"
+greet("홍길동"); // "안녕하세요, 홍길동님!"
+            </div>
+            <button onclick="testDefault()">테스트</button>
+            <div id="default-result" class="result"></div>
+        </div>
+        
+        <h2>5. 구조 분해 할당 (Destructuring)</h2>
+        <div class="example">
+            <h3>배열 구조 분해</h3>
+            <div class="code">
+const colors = ["빨강", "파랑", "노랑"];
+const [red, blue, yellow] = colors;
+console.log(red);    // "빨강"
+console.log(blue);   // "파랑"
+            </div>
+            <button onclick="testDestructureArray()">테스트</button>
+            <div id="destructure-array-result" class="result"></div>
+        </div>
+        
+        <div class="example">
+            <h3>객체 구조 분해</h3>
+            <div class="code">
+const person = { name: "홍길동", age: 25, city: "서울" };
+const { name, age } = person;
+console.log(name);  // "홍길동"
+console.log(age);   // 25
+            </div>
+            <button onclick="testDestructureObject()">테스트</button>
+            <div id="destructure-object-result" class="result"></div>
+        </div>
+        
+        <h2>6. 스프레드 연산자 (Spread Operator)</h2>
+        <div class="example">
+            <h3>배열 복사 및 합치기</h3>
+            <div class="code">
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+// 배열 복사
+const arr3 = [...arr1];  // [1, 2, 3]
+
+// 배열 합치기
+const arr4 = [...arr1, ...arr2];  // [1, 2, 3, 4, 5, 6]
+            </div>
+            <button onclick="testSpread()">테스트</button>
+            <div id="spread-result" class="result"></div>
+        </div>
+        
+        <h2>7. 삼항 연산자 (Ternary Operator)</h2>
+        <div class="example">
+            <h3>조건부 값 할당</h3>
+            <div class="code">
+const age = 20;
+const status = age >= 18 ? "성인" : "미성년자";
+console.log(status);  // "성인"
+            </div>
+            <button onclick="testTernary()">테스트</button>
+            <div id="ternary-result" class="result"></div>
+        </div>
+        
+        <h2>8. 옵셔널 체이닝 (Optional Chaining)</h2>
+        <div class="example">
+            <h3>안전한 속성 접근</h3>
+            <div class="code">
+const user = { name: "홍길동", address: { city: "서울" } };
+
+// 기존 방식 (에러 발생 가능)
+const city1 = user.address.city;  // user.address가 null이면 에러
+
+// 옵셔널 체이닝 (안전)
+const city2 = user.address?.city;  // undefined 반환 (에러 없음)
+            </div>
+            <button onclick="testOptional()">테스트</button>
+            <div id="optional-result" class="result"></div>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
