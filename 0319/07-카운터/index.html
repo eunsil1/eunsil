@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카운터 - JavaScript</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Malgun Gothic', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f0f4f8; }
+        .counter-box { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center; }
+        h1 { color: #333; margin-bottom: 30px; font-size: 1.5em; }
+        .count { font-size: 3em; font-weight: bold; color: #4CAF50; margin: 20px 0; min-width: 80px; display: inline-block; }
+        .buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 12px 28px; font-size: 1.1em; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .btn-decrease { background: #f44336; color: white; }
+        .btn-decrease:hover { background: #d32f2f; transform: scale(1.05); }
+        .btn-increase { background: #4CAF50; color: white; }
+        .btn-increase:hover { background: #388e3c; transform: scale(1.05); }
+        .btn-reset { background: #9e9e9e; color: white; }
+        .btn-reset:hover { background: #757575; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="counter-box">
+        <h1>🔢 카운터 (JavaScript)</h1>
+        <div class="count" id="count">0</div>
+        <div class="buttons">
+            <button class="btn btn-decrease" id="btnDecrease">− 감소</button>
+            <button class="btn btn-reset" id="btnReset">초기화</button>
+            <button class="btn btn-increase" id="btnIncrease">+ 증가</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
