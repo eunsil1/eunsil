@@ -1,15 +1,15 @@
 import React from 'react'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
-function User({user, onRemove, onToggle}) {
-  useEffect(()=>{
-    console.log('user값이 설정됨');
-    console.log(user);
-    return () => {
-      console.log('user가 바뀌기전');
-      console.log(user);
-    }
-  },[user]);
+const User = React.memo(function User({user, onRemove, onToggle}) {
+  // useEffect(()=>{
+  //   console.log('user값이 설정됨');
+  //   console.log(user);
+  //   return () => {
+  //     console.log('user가 바뀌기전');
+  //     console.log(user);
+  //   }
+  // },[user]);
 
   return (
     <div>
@@ -20,7 +20,7 @@ function User({user, onRemove, onToggle}) {
       <button onClick={()=>onRemove(user.id)}>삭제</button>
     </div>
   )
-}
+})
 
 export default User
 
@@ -41,4 +41,5 @@ export default User
 //     clearInterval(id);
 //   };
 // }, []);
-
+//return -> unmount
+//컴포넌트 사라질때나 다시 실행되기 직전에 -> 실행

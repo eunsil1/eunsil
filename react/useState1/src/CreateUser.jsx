@@ -23,7 +23,7 @@ function CreateUser({username,email,onChange,onCreate}) {
   )
 }
 
-export default CreateUser
+export default React.memo(CreateUser);
 
 //입력폼(UI)만 담당하는 자식 컴포넌트
 //1. 상태(state)

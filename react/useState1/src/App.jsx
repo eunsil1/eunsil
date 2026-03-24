@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Counter from './Counter'
 import InputSample from './InputSample';
 import UserList from './UserList';
 import { useRef } from 'react';
 import CreateUser from './CreateUser';
-import { useState } from 'react';
+import { useState, useCallback} from 'react';
+
+function countActiveUsers(users) {
+  console.log("활성 사용자 수를 세는 중");
+  return users.filter(user => user.active).length;
+}
+
+
+
 
 function App() {
+  console.log("APP 랜더링")
   
   //입력값을 하나의 객체로 관리
   const [inputs,setInputs] = useState({
@@ -44,7 +53,7 @@ function App() {
   ]);
 
   const nextId = useRef(4); //useRef() 사용할 때 파라미터 넣어주면 .current 기본값
-  const onCreate = () => {
+  const onCreate = useCallback( () => {
     //나중에 구현 할 배열에 항목 추가하는 로직
     const user = {
       id : nextId.current,
@@ -52,31 +61,35 @@ function App() {
       email
     }//const user = {id,username,email}
 
+
     setUsers([ 
       ...users, //...users 기존 배열 + 새 데이터(user) -> 불변성 유지
       user
     ]);
+
+    // setUsers(users.concat(user));
 
     setInputs({
       username:'',
       email:''
     }); //입력 초기화
     nextId.current += 1; //다음 사용자 id 준비
-  }
+  },[users,username,email])
 
-  const onRemove = (id) => {
+
+  const onRemove = useCallback( (id) => {
     //id가 일치하는 사용자를 제외하고 새로운 배열을 만들어 state에 넣는다
     setUsers(users.filter(user => user.id !== id));
     //filter는 조건에 만족하는 것만 남김
-  }
+  },[users])
 
-   const onToggle = id => {
+   const onToggle = useCallback( (id) => {
     setUsers(
       users.map(user => //배열을 하나씩 돌면서 새로운 배열 생성
         user.id === id ? { ...user, active: !user.active } : user
       )
     );
-  };
+  },[users])
   //user.id === id 클릭한 사용자
   //id 같으면 -> active 값 뒤집기
 
@@ -85,6 +98,8 @@ function App() {
   //=> setUsers로 상태 업데이트
   //-> 다시 화면 핸더링
 
+  // const count = countActiveUsers(users);
+  const count = useMemo(() => countActiveUsers(users),[users]);
 
   return (
     <div>
@@ -97,6 +112,7 @@ function App() {
       />
       <UserList users={users} onRemove={onRemove} onToggle={onToggle}/>
       {/* users 배열 받아서 리스트 출력 */}
+      <div>활성 사용자 수: {count}</div>
     </div>
   )
 }
