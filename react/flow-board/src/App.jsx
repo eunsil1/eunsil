@@ -36,6 +36,15 @@ function App() {
     setCards(prev => prev.filter(card => card.id !== cardId));
   }
 
+  const moveCard = (cardId, newText) => {
+    setCards(prev =>
+      prev.map(card =>
+        card.id === cardId ? {...card, text: newText} : card
+      )
+    )
+  }
+
+
   const updateCard = (cardId, newText) => {
     setCards(prev =>
       prev.map(card =>
