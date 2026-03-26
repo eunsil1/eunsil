@@ -1,0 +1,30 @@
+.TodoItem{
+  display: flex;
+  /* 내부 요소들(체크박스, 내용, 날짜, 버튼) 가로로 배치 */
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.TodoItem Input{
+  width: 20px;
+}
+
+.TodoItem .content{
+  flex: 1;
+  /* 남는 공간을 모두 차지 */
+}
+
+.TodoItem .date{
+  font-size: 14px;
+  color: gray;
+}
+
+.TodoItem button{
+  cursor: pointer;
+  color: gray;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
