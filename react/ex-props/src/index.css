@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 1.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.app.light {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.app.dark {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.app.dark .badge {
+  background: rgba(96, 165, 250, 0.15);
+  color: #93c5fd;
+}
+
+.panel {
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.app.dark .panel {
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-toggle {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-toggle:hover {
+  filter: brightness(1.05);
+}
+
+.counter {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.note {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  line-height: 1.5;
+}
