@@ -1,15 +1,12 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Layout from './components/Layout'
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import './index.css'
 
-function App() {
+export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout/>}>
-
+      <Route element={<Layout />}>
       </Route>
     </Routes>
-  )
+  );
 }
-
-export default App

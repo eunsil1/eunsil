@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-primary: #000000;
+  --color-secondary: #ff3b30; /* NHN ACE uses a red accent sometimes */
+  --color-ace-blue: #0055ff;
+  --color-bg-gray: #f4f6f8;
+  --color-text-main: #111111;
+  --color-text-muted: #666666;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-text-main font-sans antialiased;
+  }
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-6;
+}
+
+.section-padding {
+  @apply py-20 md:py-32;
+}
+
+.card-shadow {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.input-field {
+  @apply w-full bg-white border border-gray-200 px-4 py-3 focus:border-ace-blue outline-none transition-all text-sm;
+}
+
+.label-text {
+  @apply text-xs font-bold uppercase tracking-wider text-text-muted mb-2 block;
+}
