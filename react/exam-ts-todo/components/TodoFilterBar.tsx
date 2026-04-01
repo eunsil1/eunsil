@@ -1,5 +1,5 @@
 import React from 'react'
-import type {TodoFilter} from '../types/todo';
+import type {TodoFilter} from '../lib/types/todo';
 
 export interface TodoFilterBarProps {
   filter: TodoFilter;

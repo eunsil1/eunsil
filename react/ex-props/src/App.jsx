@@ -34,4 +34,9 @@ export default App
 // onToggleTheme 테마 변경
 // count 현재 숫자
 // onIncrement 숫자 증가함수
-// Toolbar (조작담당)
+// Toolbar (조작담당) -> App의 state 변경
+// Toolbar 상태를 직접 바꾸지 않는다. -> App에 요청
+// ContentPanel (출력담당)
+
+// 전체흐름
+// 버튼클릭(Toolbar) -> App함수 실행 -> state 변경 -> props -> Toolbar/ContentPanel 업데이트

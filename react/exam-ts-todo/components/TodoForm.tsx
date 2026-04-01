@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect, type FormEvent } from 'react';
-import type {Todo} from '../types/todo';
+import type {Todo} from './lib/types/todo';
 
 export interface TodoFormProps {
   editing: Todo | null;

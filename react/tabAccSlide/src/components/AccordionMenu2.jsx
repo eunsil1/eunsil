@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AccordionMenu.css";
 
-export default function AccordionMenu() {
+export default function AccordionMenu2() {
   const [openIndexes, setOpenIndexes] = useState([]);
 
   const accordionItems = [

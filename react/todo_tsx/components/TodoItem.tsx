@@ -1,15 +1,16 @@
 import React from 'react'
 import './TodoItem.css'
-import {Todo} from '../type';
+import type {Todo} from '../type';
 
-interface TodoItemProps extends Todo {
+interface TodoItemProps {
   // 데이터(할 일의 정보)
-  // id : number;
-  // content : string;
-  // isDone : boolean;
-  // createDate : number;
+  id : number;
+  content : string;
+  isDone : boolean;
+  createDate : number;
   // 함수(부모와 소통하는 통로)
-  onUpdate : (id:number) => void; //숫자 id 하나 받아서 아무것도 반환하지 않는 함수
+  onUpdate : (id:number) => void; //숫자 id 하나 받아서 아무것도 반환하지 않는 함수(void)
+  // 체크박스 클릭하면 부모의 onUpdate를 실행
   onDelete : (id:number) => void;
 }
 

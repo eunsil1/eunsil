@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Slider from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; 
 import './App.css'
 import ReactSlick from "react-slick";
+
+// const Slider = typeof ReactSlick === "function" ? ReactSlick : ReactSlick.default;
 
 
 function App() {

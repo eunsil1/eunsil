@@ -1,9 +1,9 @@
-import React, { useState,useRef } from 'react'
+import { useState,useRef } from 'react'
 import './App.css';
 import Header from './component/Header';
 import TodoEditor from './component/TodoEditor';
 import TodoList from './component/TodoList';
-import {Todo} from './type';
+import type {Todo} from './types';
 
 const mockTodo: Todo[] = [
   {

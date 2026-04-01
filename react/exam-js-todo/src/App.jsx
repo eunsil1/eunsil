@@ -15,7 +15,7 @@ function App() {
   ]);
 
   const [editing, setEditing] = useState(null); //수정중인 todos
-  const [filter, setFilter] = useState('all'); //현재 필터
+  const [filter, setFilter] = useState('all'); //현재 필터(all, active, completed)
 
   const visible = useMemo(()=>filterTodos(todos,filter),[todos,filter])
   const {active, completed} = useMemo(() => countByDone(todos), [todos])

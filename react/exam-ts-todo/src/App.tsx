@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useMemo } from 'react';
-import TodoForm from '../components/TodoForm';
-import TodoStats from './components/TodoStats';
+import TodoForm from '../src/components/TodoForm';
+import TodoStats from '../src/components/TodoStats';
 import TodoFilterBar from './components/TodoFilterBar';
 import TodoList from './components/TodoList';
 import { countByDone, filterTodos } from './lib/todoQueries';

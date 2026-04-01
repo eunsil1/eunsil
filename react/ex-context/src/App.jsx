@@ -2,6 +2,8 @@ import React from 'react'
 import { AppProvider, useApp } from './context/AppContext';
 import Toolbar from './components/Toolbar'
 import ContentPanel from './components/ContentPanel';
+//Context 방식 : 상태는 provider 안에 있고
+//자식은 useApp()로 접근합니다.
 
 function AppShell() {
   const {theme} = useApp();

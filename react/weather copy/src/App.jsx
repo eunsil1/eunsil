@@ -32,6 +32,7 @@ function App() {
       console.log("날씨 Api 오류: ", error);
       setError("날씨 정보를 가져올 수 없습니다. 도시 이름 확인 요망")
       setWeather(null);
+      
     } finally{
       setLoading(false);
     }
