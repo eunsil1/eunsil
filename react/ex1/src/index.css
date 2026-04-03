@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    color: #222;
+}
+
+
+
+.app {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+
+.block {
+  width: 380px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px; 
+  border: 1px solid #ddd;
+}
+
+/* 제목 */
+.block h2 {
+  font-size: 1rem;
+    margin: 0 0 16px;
+    color: #0d47a1;
+}
+
+.field {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.confirm{
+  width: 300px;
+}
+
+
+.input {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+
+.btn {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+
+.list {
+  margin-top: 10px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+

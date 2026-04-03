@@ -24,13 +24,6 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      // Provider와 커스텀 훅을 같은 파일에서 export할 때 허용 (Context 패턴)
-      // 컴포넌트만 export해야 안전
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowExportNames: ['useAppContext'] },
-      ],
     },
-    },
-  
+  },
 ])

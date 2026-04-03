@@ -22,6 +22,7 @@ export default function App() {
       <MainContent
         count={count}
         user={user}
+        
         updateUserName={updateUserName}
         updateUserAge={updateUserAge}
         incrementCount={incrementCount}
