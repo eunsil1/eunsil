@@ -67,7 +67,17 @@ export const api = {
     const s = q.toString();
     return request(`/api/posts${s ? `?${s}` : ''}`);
   },
+
+  //get : 글상세 + 댓글(서버에서 조회 수 증가)
+  getPost:(id) =>request(`/api/posts/${id}` ),
+  //post 새글 multipart Formdata(이미지 필드 포함)
   createPost: (formData) => requestForm('/api/posts', 'POST', formData),
+  //post : 해당 글에 댓글 작성 (JSON body)
+  createComment : (postId,body) =>
+    request(`/api/posts/${postId}/comments`, {method: 'POST', json:body}),
+  //get 현재 세션 로그인 여부 회원 정보
+  me: () => request('/api/auth/me'),
+
   login: (body) => request('/api/auth/login', { method: 'POST', json: body }),
   logout: () => request('/api/auth/logout', { method: 'POST' }),
   join: (body) => request('/api/auth/join', { method: 'POST', json: body }),

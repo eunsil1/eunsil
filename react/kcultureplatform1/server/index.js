@@ -71,6 +71,8 @@ app.use(
     },
   })
 );
+/** 업로드 이미지 브라우저 제공 — HomePage 썸네일 등 `/uploads/파일명` */
+app.use('/uploads', express.static(UPLOAD_DIR));
 //DB에서 가져온 한 행에서 api로 내려줄 필드만 골라서 객체로 만듦 - 비밀번호 넣지 않음 - 응답에 비번 나가면 안됨
 function mapMemberRow(row) {
   if (!row) return null;
@@ -299,6 +301,85 @@ app.post('/api/posts', requireAuth, (req, res, next) => {
       ]
     );
     res.status(201).json({ id: result.insertId }); //저장 성공 시 201과 아이디 반환
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'Database error.' });
+  }
+});
+
+/** 게시글 ID 한 건: 상세 컬럼으로 JOIN 조회, 없으면 null */
+//글 1건만 가져오기
+async function loadPostRow(id) {
+  const [rows] = await pool.query(
+    `SELECT ${POST_SELECT_DETAIL}
+      FROM post p JOIN member m ON p.member_id = m.id JOIN category c ON p.category_id = c.id WHERE p.id = ?`,
+    [id]
+  );
+  return rows[0] ?? null;
+}
+//url로 넘어온 숫자 id로 post 한 줄을 찾고, 작성자(member), 카테고리(category) join 같이 붙임
+//POST_SELECT_DETAIL 이라서 목록보다 상세용 컬럼(ex - nationality)이 포함
+//없으면 null 있으면 객체 한개를 돌려줍니다.
+
+/** ---------- post detail (+ view++) ---------- */
+app.get('/api/posts/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id); //숫자 id로 변환
+    if (!id) {// 0 또는 null이면 404
+      res.status(404).json({ error: 'Not found.' });
+      return;
+    }
+    const post = await loadPostRow(id);
+    if (!post) {
+      res.status(404).json({ error: 'Not found.' });
+      return;
+    }
+    //디비 조회수 증가 업데이트
+    await pool.query('UPDATE post SET view_count = view_count + 1 WHERE id = ?', [id]);
+    post.viewCount = (post.viewCount ?? 0) + 1; //클라이언트에 증가해서 보냄
+
+    const [comments] = await pool.query( //특정 게시글 댓글 목록을 db에서 조회
+      `SELECT c.id, c.post_id AS postId, c.member_id AS memberId, c.content, c.created_at AS createdAt,
+        m.name AS memberName, m.nationality
+        FROM comment c JOIN member m ON c.member_id = m.id WHERE c.post_id = ? ORDER BY c.created_at`,
+      [id]
+    );
+    //comment 댓글테이블과 member 작성테이블 join -> 댓글 + 작성자 정보같이 가져옴
+    //조건 where c.post_id =? 해당 게시글의 댓글만 조회
+    //댓글 + 작성자 정보를 join해서 특정 게시글 기준으로 가져오는 쿼리
+
+//     [
+//   {
+//     id: 1,
+//     postId: 10,
+//     memberId: 3,
+//     content: "댓글 내용",
+//     createdAt: "2026-04-09",
+//     memberName: "홍길동",
+//     nationality: "Korea"
+//   }
+// ]
+
+app.post('/api/posts/:id/comments', requireAuth, async(req, res) =>{
+  try{
+    const postId = Number(req.params.id);
+    const {content} = req.body;
+    if(!postId || !content || String(content).trim() === ''){
+      res.status(400).json({error:'content is required.'});
+      return;
+  }
+  const [result] = await pool.query(
+    'INSERT INTO comment (post_id, member_id, content) VALUES (?,?,?)',
+    [postId, req.session.memberId, String(content).trim()]
+  );
+  res.status(201).json({id:result.insertId});
+} catch(e){
+  console.error(e);
+  res.status(500).json({error:'Database error.'});
+}
+  });
+
+    res.json({ post, comments });
   } catch (e) {
     console.error(e);
     res.status(500).json({ error: 'Database error.' });
