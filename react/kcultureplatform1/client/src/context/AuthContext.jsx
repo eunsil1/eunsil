@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-// import { api } from '../api/client';
-import { api } from '../api/loginOnly';
+import { api } from '../api/client';
+// import { api } from '../api/loginOnly';
 //로그인 상태를 context 관리하고, 어디서든 로그인 / 로그아웃 / 회원가입을 이용할 수 있는 구조
 
 const AuthContext = createContext(null);

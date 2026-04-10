@@ -70,13 +70,23 @@ export const api = {
 
   //get : 글상세 + 댓글(서버에서 조회 수 증가)
   getPost:(id) =>request(`/api/posts/${id}` ),
+  //GET : 편집 폼용 글 한 건(본인만, 조회수 증가 없음)
+  getPostForEdit: (id) => request(`/api/posts/${id}/edit`),
+
   //post 새글 multipart Formdata(이미지 필드 포함)
   createPost: (formData) => requestForm('/api/posts', 'POST', formData),
+
+  //PATCH : 글 수정 - FormData로 본문, 이미지 교체/ 삭제
+  updatePost : (id,formData) => requestForm(`/api/posts/${id}`,'PATCH',formData),
+
   //post : 해당 글에 댓글 작성 (JSON body)
   createComment : (postId,body) =>
     request(`/api/posts/${postId}/comments`, {method: 'POST', json:body}),
   //get 현재 세션 로그인 여부 회원 정보
   me: () => request('/api/auth/me'),
+
+  /** DELETE: 글 삭제 */
+  deletePost: (id) => request(`/api/posts/${id}`, { method: 'DELETE' }),
 
   login: (body) => request('/api/auth/login', { method: 'POST', json: body }),
   logout: () => request('/api/auth/logout', { method: 'POST' }),

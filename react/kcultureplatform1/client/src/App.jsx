@@ -6,6 +6,7 @@ import JoinPage from './pages/joinPage';
 import HomePage from './pages/HomePage';
 import WritePage from './pages/WritePage';
 import PostPage from './pages/PostPage';
+import EditPage from './pages/EditPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='join' element={<JoinPage/>}/>
         <Route path='write' element={<WritePage/>}/>
         <Route path='posts/:id' element={<PostPage/>}/>
+        <Route path='posts/:id/edit' element={<EditPage/>}/>
       </Route>
     </Routes>
   )
