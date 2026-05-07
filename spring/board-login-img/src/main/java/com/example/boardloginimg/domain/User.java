@@ -1,0 +1,45 @@
+package com.example.boardloginimg.domain;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long id;
+
+    @Column(nullable = false, unique = true, length = 50)
+    private String username;
+
+    @Column(nullable = false, length = 100)
+    private String password;
+
+    @Column(nullable = false, length = 100)
+    private String name;
+
+    public User() {
+    }
+
+    public User( String username, String password, String name) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+}

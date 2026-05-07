@@ -1,0 +1,133 @@
+package com.example.boardloginimg.web;
+
+import com.example.boardloginimg.domain.Board;
+import com.example.boardloginimg.domain.User;
+import com.example.boardloginimg.service.BoardService;
+import com.example.boardloginimg.service.UserService;
+import com.example.boardloginimg.web.dto.BoardForm;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequestMapping("/posts")
+public class BoardController {
+    private final BoardService boardService;
+    private final UserService userService;
+
+    public BoardController(BoardService boardService, UserService userService) {
+        this.boardService = boardService;
+        this.userService = userService;
+    }
+
+    @GetMapping
+    public String list(Model model){
+        model.addAttribute("posts",boardService.findAll());
+        return "board/list";
+    }
+
+   @GetMapping("/write")
+    public String writeForm(Model model){
+        model.addAttribute("form", new BoardForm());
+        return "board/write";
+   }
+   @GetMapping("/{id:\\d+}")
+   public String detail(@PathVariable Long id,
+                        HttpSession session,
+                        Model model){
+        Board board = boardService.findById(id);
+        model.addAttribute("post", board);
+        model.addAttribute("canEdit", canEdit(session, board));
+         return "board/detail";
+   }
+
+    private static boolean canEdit(HttpSession session, Board board) {
+
+        Object u = session.getAttribute(AuthController.SESSION_USER); //로그인한 사용자
+        if (u == null) {
+            return false;
+        }
+        return u.toString().equals(board.getAuthor().getUsername());
+        //로그인한 사용자와 == 글작성자 -> true  (수정가능)
+    }
+
+
+    @PostMapping("/write")
+   public String write(@Valid @ModelAttribute("form") BoardForm form,
+                       BindingResult bindingResult,
+                       HttpSession session,
+                       Model model){
+        if(bindingResult.hasErrors()){
+            return "board/write";
+        }
+      String username = (String) session.getAttribute(AuthController.SESSION_USER);
+       User author = userService.findByUsername(username);
+       if(author == null){
+           return "redirect:/login";
+       }
+       boardService.create(form.getTitle(),form.getContent(),author,form.getFiles());
+       return "redirect:/posts";
+
+   }
+
+
+   @GetMapping("/{id:\\d+}/edit")
+    public String editForm(@PathVariable Long id,HttpSession session, Model model){
+       Board board = boardService.findById(id);
+       if(!canEdit(session, board)){
+           return "redirect:/posts/"+id;
+       }
+      BoardForm form = new BoardForm();
+       form.setTitle(board.getTitle());
+       form.setContent(board.getContent());
+       model.addAttribute("form", form);
+       model.addAttribute("postId", id);
+       return "board/edit";
+
+   }
+
+    @PostMapping("/{id:\\d+}/edit")
+    public String edit(@PathVariable Long id,
+                       @Valid @ModelAttribute("form") BoardForm form,
+                       BindingResult bindingResult,
+                       HttpSession session,
+                       Model model){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("postId",id);
+            return "board/list";
+        }
+      String username =  (String) session.getAttribute(AuthController.SESSION_USER);
+      try{
+        boardService.update(id,form.getTitle(),form.getContent(),username, form.getFiles());
+      }catch (IllegalArgumentException e){
+          model.addAttribute("error", e.getMessage());
+          model.addAttribute("postId", id);
+          return "board/edit";
+      }
+      return "redirect:/posts/" + id;
+    }
+
+
+    @PostMapping("/{id:\\d+}/delete")
+    public String delete(@PathVariable Long id,HttpSession session, Model model){
+        String username= (String) session.getAttribute(AuthController.SESSION_USER);
+        try{
+            boardService.delete(id, username);
+        }catch (IllegalArgumentException e){
+            model.addAttribute("error", e.getMessage());
+            Board board =boardService.findById(id);
+            model.addAttribute("post", board);
+            model.addAttribute("canEdit", canEdit(session, board));
+            return "board/detail";
+        }
+        return "redirect:/posts";
+
+    }
+
+
+
+
+}

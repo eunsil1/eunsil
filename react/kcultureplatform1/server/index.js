@@ -435,7 +435,7 @@ app.delete('/api/posts/:id', requireAuth, async (req, res) => {
     }
     if (prev[0]?.imageFilename) {
       await unlinkImageFilename(prev[0].imageFilename);
-    }
+    } //DB삭제 성공 후 이미지(실제파일)도 삭제
     res.json({ ok: true });
   } catch (e) {
     console.error(e);
