@@ -1,0 +1,44 @@
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+}
+.footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+}
+.content{
+    margin-bottom:100px;
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+/* Header navbar (nav만) 파란 배경 + 흰 글씨 */
+.navbar.navbar-dark.bg-primary .navbar-brand,
+.navbar.navbar-dark.bg-primary .nav-link {
+    color: #ffffff !important;
+}
+
+/* 메뉴 항목(상품등록/상품관리/장바구니...) 글자만 작게 */
+.navbar.navbar-dark.bg-primary .nav-link {
+    font-size: 0.9rem;
+}
+
+.navbar.navbar-dark.bg-primary .search-input {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.navbar.navbar-dark.bg-primary .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
