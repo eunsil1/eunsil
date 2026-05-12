@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class Member {
+public class Member extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,6 +32,10 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+//    @OneToOne(mappedBy = "member")
+//    private Cart cart;
+    //member.getCart();
 
 //    public static Member createMember(MemberFormDto memberFormDto,
 //                                      PasswordEncoder passwordEncoder){
