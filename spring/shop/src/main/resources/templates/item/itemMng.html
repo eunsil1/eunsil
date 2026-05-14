@@ -1,0 +1,128 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/layout1}">
+<!--사용자 스크립트 추가-->
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(function (){
+            $("#searchBtn").on('click', function(e){
+               e.preventDefault();
+               page(0);
+            });
+        });
+        function page(page){
+            var searchDateType = $("#searchDateType").val(); //등록기간(1일, 1주일, 1달, 6개월)
+            var searchSellstatus = $("#searchSellStatus").val(); //판매상태(판매중, 품절)
+            var searchBy = $("#searchBy").val(); //검색 기준(상품명, 등록자)
+            var searchQuery = $("#searchQuery").val(); //검색어
+
+            location.href = "/admin/items/" + page + "?searchDateType=" + searchDateType
+                + "&searchSellStatus=" + searchSellstatus
+                + "&searchBy=" + searchBy
+                + "&searchQuery=" + searchQuery;
+        }
+        //주소창 조립 : 수집한 값들을 쿼리스트링 형태로 만들어 url 이동
+        // /admin/items/1/searchDateType=all&searchSellstatus=SELL&searchBy=itemNm&searchQuery=셔츠
+        //
+
+    </script>
+</th:block>
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        select{
+            margin-right:10px;
+        }
+    </style>
+</th:block>
+
+<div layout:fragment="content">
+    <form th:action="@{'/admin/items/'+${items.number}}" role="role" method="get" th:object="${items}">
+        <table class="table">
+            <thead>
+            <tr>
+                <td>상품아이디</td>
+                <td>상품명</td>
+                <td>상태</td>
+                <td>등록자</td>
+                <td>등록일</td>
+            </tr>
+            </thead>
+            <tbody>
+<!--            서버에서 넘어온 Page<item> 객체 안에 실제 리스트 데이터(content)를-->
+<!--            하나씩 꺼내서 item 변수에 담아 반복 -->
+            <tr th:each="item, status: ${items.getContent()}">
+                <td th:text="${item.id}"></td>
+                <td>
+                    <a th:href="'/admin/item/'+${item.id}" th:text="${item.itemNm}"></a>
+                </td>
+                <td th:text="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL} ? '판매중' : '품절'"></td>
+                <td th:text="${item.createdBy}"></td>
+                <td th:text="${item.regTime}"></td>
+            </tr>
+            </tbody>
+        </table>
+<!--    items.number 현재 페이지 번호 0부터 시작 실제 1페이지 items.number 0 2페이지는 items.number 1-->
+<!--    maxPage 한번에 보여줄 페이지 5 / 이전 [1][2][3][4][5] -->
+<!--    start=${(items.number/maxPage)*maxPage + 1} start 계산 현재페이지 그룹의 시작번호    -->
+<!--    maxPage 5    -->
+<!--    예제1 items.number 0 maxPage = 5 (0/5)*5+1 결과는 1-->
+<!--    현재페이지 3페이지 items.number 2 (2/5)*5+1  start = 1 -->
+<!--    현재페이지 6페이지 items.number 5 (5/5)*5+1  start = 6    -->
+
+
+<!--    end 페이지 그룹 끝 번호 계산 (start + (maxPage - 1)  핵심 계산    -->
+<!--    start = 1 maxPage = 5 1+(5-1)  1~5페이지    -->
+<!--    전체페이지 = 7 / 6 7 8 9 10 다 보이면 안됨    -->
+<!--    계산된 end < 전체 페이지 수 ? 작으면 그대로 사용 크면 items.totalPages     -->
+<!--    전체 페이지 = 7 / 6 7 8 9 10 그룹에 속함 실제 6~7 그럴때는 최종 end가 7    -->
+<!--    [이전] 6 7 8 9 10 [다음]    -->
+        <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${items.first}?'disabled'">
+                    <a th:onclick="'javascript:page('+${items.number -1} + ')'" aria-label="Previous"
+                        class="page-link">
+<!--                    현재 3페이지면 items.number = 2 2-1 = 1 javascript:page(1) 2페이지로 이동   -->
+                        <span aria-hidden='true'>Previous</span>
+                    </a>
+                </li>
+
+                <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq (page - 1)}?'active':''">
+                    <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text" class="page-link">[[${page}]]</a>
+                </li>
+<!--            numbers.sequence(1,5) 1 2 3 4 5    -->
+<!--            items.number eq (page - 1) active 현제 페이지 강조 page 번호 1부터 items.numbers 0부터 시작해서 page-1 하는것    -->
+<!--            items.numbers =2 page=3 2 == 3-1   [[${page}]] 페이지 번호 화면출력 -->
+
+                <li class="page-item" th:classappend="${items.last}?'disabled'">
+                    <a th:onclick="'javascript:page('+${items.number +1} + ')'" aria-label="Next"
+                       class="page-link">
+                        <!--현재 3페이지면 items.number = 2 2+1 = 3 javascript:page(3) 4페이지로 이동   -->
+                        <span aria-hidden='true'>Next</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="form-inline justify-content-center" th:object="${itemSearchDto}">
+            <select id="searchDateType" name="searchDateType" th:value="*{searchDateType}" class="form-control" style="width:auto;">
+                <option value="all">전체기간</option>
+                <option value="1d">1일</option>
+                <option value="1w">1주</option>
+                <option value="1m">1개월</option>
+                <option value="6m">6개월</option>
+            </select>
+            <select id="searchSellStatus" name="searchSellStatus" class="form-control" style="width:auto;">
+                <option value="">판매상태(전체)</option>
+                <option value="SELL">판매</option>
+                <option value="SOLD_OUT">품절</option>
+            </select>
+            <select id="searchBy" name="searchBy" class="form-control" style="width:auto;">
+                <option value="itemNm">상품명</option>
+                <option value="createdBy">등록자</option>
+            </select>
+            <input id="searchQuery" name="searchQuery" type="text" class="form-control" placeholder="검색어를 입력해주세요">
+            <button id="searchBtn" type="submit" class="btn btn-primary">검색</button>
+        </div>
+
+    </form>
+</div>

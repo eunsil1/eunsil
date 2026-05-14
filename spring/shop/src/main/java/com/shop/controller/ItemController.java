@@ -59,7 +59,7 @@ public class ItemController {
 
     //수정상품 화면에 불러오기(이미지 포함)
     @GetMapping(value="/admin/item/{itemId}")
-    public String itemDtl(@PathVariable("itemId") Long itemId, Model model){
+    public String itemDtl1(@PathVariable("itemId") Long itemId, Model model){
         try{
             ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
             model.addAttribute("itemFormDto", itemFormDto);
@@ -97,7 +97,8 @@ public class ItemController {
         return "redirect:/";
     }
 
-    //다중 매핑 : 페이지번호가 있는경우 /admin/items/1 페이지번호가 없는 경우 /admin/items
+    //다중 매핑 : 페이지번호가
+    // 있는경우 /admin/items/1 페이지번호가 없는 경우 /admin/items
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page,
                              Model model){
@@ -115,4 +116,12 @@ public class ItemController {
     }
 
 
+    //상세보기
+    @GetMapping(value = "/item/{itemId}")
+    public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        model.addAttribute("item", itemFormDto);
+        return "item/itemDtl";
+
+    }
 }
