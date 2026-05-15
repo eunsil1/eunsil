@@ -25,7 +25,7 @@
 
         }
 
-        function order(){
+        function order() {
             var header = $("meta[name='_csrf_header']").attr("content");
             var token = $("meta[name='_csrf']").attr("content");
             //csrf 토큰 획득 <head>에 설정했던 메타태그에서 토큰갑소가 헤더 이름을 가져옴
@@ -33,37 +33,76 @@
 
             var url = "/order";
             var paramData = {
-                itemId : $("#itemId").val(),
-                count : $("#count").val()
+                itemId: $("#itemId").val(),
+                count: $("#count").val()
             }
 
             var param = JSON.stringify(paramData); //JSON 데이터를 반환(직렬화)
             $.ajax({
-                url : url,
-                type : "POST",
-                contentType : "application/json",
-                data : param,
-                beforeSend : function (xhr){
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: param,
+                beforeSend: function (xhr) {
                     //데이터 전송하기 전에 헤더에 csrf값 설정
-                  xhr.setRequestHeader(header, token)
+                    xhr.setRequestHeader(header, token)
                 },
-                dataType : "json",
-                cache : false,
-                success : function (result, status){
+                dataType: "json",
+                cache: false,
+                success: function (result, status) {
                     alert("주문이 완료 되었습니다.");
-                    location.href='/';
+                    location.href = '/';
                 },
-                error : function (jqXHR, status, error){
-                    if(jqXHR.status =='401'){
+                error: function (jqXHR, status, error) {
+                    if (jqXHR.status == '401') {
                         alert('로그인 후 이용해주세요');
-                        location.href='/members/login';
-                    }else{
+                        location.href = '/members/login';
+                    } else {
                         alert(jqXHR.responseText);
                     }
                 }
             });
-
         }
+
+            function addCart() {
+                var header = $("meta[name='_csrf_header']").attr("content");
+                var token = $("meta[name='_csrf']").attr("content");
+                //csrf 토큰 획득 <head>에 설정했던 메타태그에서 토큰갑소가 헤더 이름을 가져옴
+                //이정보가 없으면 스프링 시큐리티가 POST 요청 거절
+
+                var url = "/cart";
+                var paramData = {
+                    itemId: $("#itemId").val(),
+                    count: $("#count").val()
+                }
+
+                var param = JSON.stringify(paramData); //JSON 데이터를 반환(직렬화)
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    contentType: "application/json",
+                    data: param,
+                    beforeSend: function (xhr) {
+                        //데이터 전송하기 전에 헤더에 csrf값 설정
+                        xhr.setRequestHeader(header, token)
+                    },
+                    dataType: "json",
+                    cache: false,
+                    success: function (result, status) {
+                        alert("상품을 장바구니에 담았습니다.");
+                        location.href = '/';
+                    },
+                    error: function (jqXHR, status, error) {
+                        if (jqXHR.status == '401') {
+                            alert('로그인 후 이용해주세요');
+                            location.href = '/members/login';
+                        } else {
+                            alert(jqXHR.responseText);
+                        }
+                    }
+                });
+
+            }
 
 
     </script>

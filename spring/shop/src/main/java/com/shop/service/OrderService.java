@@ -33,6 +33,8 @@ public class OrderService {
 
     private final ItemImgRepository itemImgRepository;
 
+    //한 품목만 주문
+    //상품 상세페이지
     public Long order(OrderDto orderDto, String email){
         Item item = itemRepository.findById(orderDto.getItemId())
                 .orElseThrow(EntityNotFoundException::new);
@@ -102,4 +104,22 @@ public class OrderService {
         return true;
     }
 
+    //여러상품 주문
+    //장바구니 체크박스 선택 -> 선택주문 -> orders
+    public Long orders(List<OrderDto> orderDtoList, String email){
+
+        List<OrderItem> orderItemList = new ArrayList<>();
+        Member member = memberRepository.findByEmail(email);
+
+        for(OrderDto orderDto : orderDtoList) {
+            Item item = itemRepository.findById(orderDto.getItemId())
+                    .orElseThrow(EntityNotFoundException::new);
+            OrderItem orderItem = OrderItem.createOrderItem(item, orderDto.getCount());
+            orderItemList.add(orderItem);
+        }
+
+        Order order = Order.createOrder(member, orderItemList);
+        orderRepository.save(order);
+        return order.getId();
+    }
 }
