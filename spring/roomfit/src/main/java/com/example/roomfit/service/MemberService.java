@@ -24,17 +24,16 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public void resister(MemberRegisterDto dto){
-        if(!dto.getPassword().equals(dto.getPasswordConfirm())){
+    public void register(MemberRegisterDto dto) {  // resister → register
+        if (!dto.getPassword().equals(dto.getPasswordConfirm())) {
             throw new BusinessException("비밀번호가 일치하지 않습니다.");
         }
-        if(memberRepository.existsByLoginId(dto.getLoginId())){
+        if (memberRepository.existsByLoginId(dto.getLoginId())) {
             throw new BusinessException("이미 사용 중인 아이디입니다.");
         }
-        if(memberRepository.existsByEmail(dto.getEmail())){
+        if (memberRepository.existsByEmail(dto.getEmail())) {
             throw new BusinessException("이미 사용 중인 이메일입니다.");
         }
-
         Member member = Member.builder()
                 .loginId(dto.getLoginId())
                 .password(passwordEncoder.encode(dto.getPassword()))
@@ -98,6 +97,5 @@ public class MemberService {
         member.setWithdrawnAt(LocalDateTime.now());
     }
 
-    public void register(@Valid MemberRegisterDto form) {
-    }
+
 }

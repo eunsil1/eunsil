@@ -81,7 +81,7 @@ public class InteriorPost {
         }
         String path = images.stream()
                 .filter(PostImage::isThumbnail) //thumbnail - true(대표썸네일 필터링)
-                .map(PostImage::getFilePath) //첫번째 유효한 filepath
+                .map(PostImage::getFilePath) //첫번째 유효한 filepath - 파일 경로
                 .filter(p -> p != null && !p.isBlank()) //null이나 빈 문자열 제거
                 .findFirst()//있으면 추출
                 .orElseGet(() -> images.stream() //썸네일 지정이 없으면 -> 아무 이미지나 첫장

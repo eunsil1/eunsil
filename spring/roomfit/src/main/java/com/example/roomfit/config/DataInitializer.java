@@ -1,17 +1,15 @@
 package com.example.roomfit.config;
 
+import com.example.roomfit.Repository.InteriorPostRepository;
 import com.example.roomfit.Repository.MemberRepository;
 import com.example.roomfit.Repository.UserProfileRepository;
-//import com.example.roomfit.domain.InteriorPost;
-import com.example.roomfit.domain.InteriorStyle;
-import com.example.roomfit.domain.Member;
+import com.example.roomfit.domain.InteriorPost;
+import com.example.roomfit.domain.*;
+
 //import com.example.roomfit.domain.PostImage;
 //import com.example.roomfit.domain.Product;
-import com.example.roomfit.domain.Role;
-import com.example.roomfit.domain.UserProfile;
-//import com.example.roomfit.repository.InteriorPostRepository;
-//import com.example.roomfit.repository.MemberRepository;
 //import com.example.roomfit.repository.ProductRepository;
+
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +27,7 @@ public class DataInitializer {
 
 	private final MemberRepository memberRepository;
 	private final UserProfileRepository userProfileRepository;
-	//	private final InteriorPostRepository interiorPostRepository;
+	private final InteriorPostRepository interiorPostRepository;
 //	private final ProductRepository productRepository;
 	private final PasswordEncoder passwordEncoder;
 
@@ -72,22 +70,23 @@ public class DataInitializer {
 				.sleepPattern("아침형")
 				.build());
 
-//		InteriorPost post = InteriorPost.builder()
-//				.author(user)
-//				.style(InteriorStyle.MINIMAL)
-//				.title("8평 원룸 미니멀 자취방")
-//				.content("화이트 톤과 수납 침대로 공간을 넓게 썼습니다.")
-//				.roomSize(BigDecimal.valueOf(8.5))
-//				.budget(120)
-//				.likeCount(12)
-//				.viewCount(80)
-//				.build();
-//		post.addImage(PostImage.builder()
-//				.filePath("https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800")
-//				.thumbnail(true)
-//				.build());
-//		interiorPostRepository.save(post);
-//
+		InteriorPost post = InteriorPost.builder()
+				.author(user)
+				.style(InteriorStyle.MINIMAL)
+				.title("8평 원룸 미니멀 자취방")
+				.content("화이트 톤과 수납 침대로 공간을 넓게 썼습니다.")
+				.roomSize(BigDecimal.valueOf(8.5))
+				.budget(120)
+				.likeCount(12)
+				.viewCount(80)
+				.status(PostStatus.VISIBLE)
+				.build();
+		post.addImage(PostImage.builder()
+				.filePath("https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800")
+				.thumbnail(true)
+				.build());
+		interiorPostRepository.save(post);
+
 //		productRepository.save(Product.builder()
 //				.name("미니 수납 협탁")
 //				.price(39000)
