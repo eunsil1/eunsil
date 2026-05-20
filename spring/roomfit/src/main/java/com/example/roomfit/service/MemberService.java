@@ -1,6 +1,6 @@
 package com.example.roomfit.service;
 
-import com.example.roomfit.Repository.MemberRepository;
+import com.example.roomfit.repository.MemberRepository;
 import com.example.roomfit.domain.Gender;
 import com.example.roomfit.domain.Member;
 import com.example.roomfit.domain.MemberStatus;
@@ -8,7 +8,6 @@ import com.example.roomfit.domain.Role;
 import com.example.roomfit.dto.MemberRegisterDto;
 import com.example.roomfit.exception.BusinessException;
 import com.example.roomfit.exception.ResourceNotFoundException;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

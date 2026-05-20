@@ -1,4 +1,4 @@
-package com.example.roomfit.Repository;
+package com.example.roomfit.repository;
 
 import com.example.roomfit.domain.Member;
 import com.example.roomfit.domain.UserProfile;

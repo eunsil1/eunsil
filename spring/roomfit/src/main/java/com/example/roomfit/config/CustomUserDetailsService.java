@@ -1,6 +1,6 @@
 package com.example.roomfit.config;
 
-import com.example.roomfit.Repository.MemberRepository;
+import com.example.roomfit.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,4 +1,4 @@
-package com.example.roomfit.Repository;
+package com.example.roomfit.repository;
 
 import com.example.roomfit.domain.PostLike;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,5 +23,5 @@ public interface PostLikeRepository extends JpaRepository<PostLike ,Long> {
     //비슷한 사용자들이 좋아한게시글 id 조회(추천)
 
     //회원 좋아요 목록
-    List<PostLikeRepository> findByMemberId(Long memberId);
+    List<PostLike> findByMemberId(Long memberId);
 }

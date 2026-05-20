@@ -1,4 +1,4 @@
-package com.example.roomfit.Repository;
+package com.example.roomfit.repository;
 
 import com.example.roomfit.domain.Comment;
 import com.example.roomfit.domain.PostStatus;

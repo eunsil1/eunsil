@@ -1,6 +1,6 @@
 package com.example.roomfit.service;
 
-import com.example.roomfit.Repository.UserProfileRepository;
+import com.example.roomfit.repository.UserProfileRepository;
 import com.example.roomfit.domain.Member;
 import com.example.roomfit.domain.UserProfile;
 import com.example.roomfit.dto.ProfileFormDto;

@@ -1,8 +1,8 @@
 package com.example.roomfit.service;
 
-import com.example.roomfit.Repository.CommentRepository;
-import com.example.roomfit.Repository.InteriorPostRepository;
-import com.example.roomfit.Repository.PostLikeRepository;
+import com.example.roomfit.repository.CommentRepository;
+import com.example.roomfit.repository.InteriorPostRepository;
+import com.example.roomfit.repository.PostLikeRepository;
 import com.example.roomfit.domain.*;
 import com.example.roomfit.dto.InteriorPostFormDto;
 import com.example.roomfit.exception.BusinessException;
