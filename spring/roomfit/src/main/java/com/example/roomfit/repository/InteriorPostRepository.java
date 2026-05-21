@@ -23,7 +23,7 @@ public interface InteriorPostRepository extends JpaRepository<InteriorPost,Long>
     //게시글 상태 + 인테리어 스타일 조건 조회
 
     @EntityGraph(attributePaths = "images")
-    List<InteriorPost> findTop50ByStatusOrderByCreatedAtDesc(PostStatus status);
+    List<InteriorPost> findTop20ByStatusOrderByLikeCountDescViewCountDescCreatedAtDesc(PostStatus status);
     //상태에 맞는 게시글 중 최신순(CreatedAtDesc) 상위 50개 가져오기
 
     @EntityGraph(attributePaths = "images")
@@ -46,5 +46,7 @@ public interface InteriorPostRepository extends JpaRepository<InteriorPost,Long>
 
     @EntityGraph(attributePaths = {"images", "author"})
     Optional<InteriorPost> findByIdAndStatus(Long id, PostStatus status);
+
+    long countByStatus(PostStatus postStatus);
 }
 

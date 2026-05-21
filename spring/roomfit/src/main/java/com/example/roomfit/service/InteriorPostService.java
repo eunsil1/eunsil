@@ -45,24 +45,14 @@ public class InteriorPostService {
         //list + getThumbnailPath()
     }
 
-    @Transactional(readOnly = true)
-    public java.util.List<InteriorPost> listPopularForView(int limit) {
-        java.util.List<InteriorPost> posts = interiorPostRepository
-                .findTop20ByStatusOrderByLikeCountDescViewCountDescCreatedAtDesc(
-                        PostStatus.VISIBLE, org.springframework.data.domain.PageRequest.of(0, limit));
-        posts.forEach(InteriorPost::getThumbnailPath);
-        return posts;
-        //인기 n건
-    }
 
 
     //메인 인기글
     @Transactional(readOnly = true)
-    public java.util.List<InteriorPost> listRecentForView(int limit) {
-        java.util.List<InteriorPost> posts = interiorPostRepository
-                .findTop50ByStatusOrderByCreatedAtDesc(PostStatus.VISIBLE);
+    public List<InteriorPost> listPopularForView(int limit) {
+        List<InteriorPost> posts = interiorPostRepository
+                .findTop20ByStatusOrderByLikeCountDescViewCountDescCreatedAtDesc(PostStatus.VISIBLE);
         posts.forEach(InteriorPost::getThumbnailPath);
-        //화면 넘기기 넘기기전에 썸네일 경로를 확정하고, 세션밖 오류를 막는것
         return posts.stream().limit(limit).toList();
     }
     //최신 n건

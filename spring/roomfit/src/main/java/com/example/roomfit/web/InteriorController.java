@@ -55,6 +55,13 @@ public class InteriorController {
         return "interior/detail";
     }
 
+    @GetMapping("/write")
+    public String writeForm(Model model) {
+        model.addAttribute("form", new InteriorPostFormDto());
+        model.addAttribute("styles", InteriorStyle.values());
+        return "interior/form";
+    }
+
     @PostMapping("/write")
     public String write(
             @AuthenticationPrincipal Member member,

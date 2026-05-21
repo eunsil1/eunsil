@@ -31,7 +31,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     Page<Product> findAllByOrderByIdDesc(Pageable pageable);
 
     //상품명 부분 검색(대소문자 무시) id 내림차순 + 페이징
-    Page<Product> findByNameContainingIgnoreCaseOrderByIdDesc(Pageable pageable, String name);
+    Page<Product> findByNameContainingIgnoreCaseOrderByIdDesc(String name, Pageable pageable);
 
 
 }

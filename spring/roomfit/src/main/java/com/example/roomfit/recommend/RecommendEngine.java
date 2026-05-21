@@ -38,13 +38,49 @@ public class RecommendEngine {
     private final PostLikeRepository postLikeRepository;
     private final MemberRepository memberRepository;
 
+    //맞춤형 인테리어 포스트(게시물) 추천엔진
+    //사용자 성향 기반 (content-based) + 나와 비슷한 유저 + 실시간 인기 트렌드
+
+    //메인 추천 로직(recommend)
+    //1. 프로필 검증 : 요청한 유저의 프로필(UserProfile)이 있는지 확인
+    //2. 복수 추천 데이터 수집(3가지 경로) 추천후보를 모읍니다.
+    //1)유저 프로필 맞춤형 글 10개
+    //2)실시간 인기글 5개(popular)
+    //3)유사한 취향의 유저들이 좋아하는 글 5개 (recommendBySimilarUsers)
+    //3. 결과 결함 및 부가 정보 제공 : 본인글들의 중복 제거해 최종 15개를 추리고,
+    //유저 취향에 맞는 색상 팔레트와 가구 배치 팁(LayoutAdvice)에 묶어서 반환
+
+    //알고리즘 1) 유저 프로필 기반 점수 매기기
+    //인테리어 스타일 (40점): 유저가 선호하는 스타일(예: 모던, 북유럽 등)과 글의 스타일이 일치하면 가장 큰 점수를 줍니다.
+    //방 크기 (최대 25점): 유저의 방 크기와 게시글의 방 크기 차이가 평수 기준으로 2평 이하이면 25점, 5평 이하이면 10점을 줍니다.
+    //예산 범위 (최대 20점): 오차 범위가 20% 이하이면 20점, 50% 이하이면 5점을 줍니다.
+    //가구 유무 (10점): 유저의 가구 보유 상황과 글의 태그 일치 여부를 봅니다.
+    //기본 인기도 (최대 5점): 로그 함수(Math.log)를 이용해 좋아요 수가 많을수록 약간의 가산점을 더합니다.
+
+    //알고리즘 2) 협업 필터링 - 닮은꼴 유저 추천
+    //"나와 취향이 비슷한 다른 사람들은 어떤 글에 좋아요를 눌렀을까"를 찾아내는 알고리즘
+    //코사인 유사도 (cosineSimilarity): 모든 유저의 방 크기, 예산, 스타일 등을 수치화(벡터 변환)하여 나와 취향이 얼마나 가까운지 방향성을 계산합니다.
+    //이웃 선정: 유사도가 0.3보다 높은 상위 5명의 유저(이웃)를 뽑습니다.
+    //추천 점수 계산: 이 5명이 좋아요를 누른 글 중 내가 아직 좋아요를 누르지 않은 글을 추출합니다. 나랑 많이 닮은 유저가 좋아한 글일수록 점수를 더 높게 주어 최종 상위 5개를 선별합니다.
+
+    //알고리즘 ③: 실시간 인기도 및 시간 가속도 분해 (popularityScore)
+    //단순히 좋아요가 많은 글만 보여주면 옛날 글만 계속 추천되는 문제가 생깁니다. 이를 해결하기 위해 시간에 따른 점수 감쇄(Decay) 로직이 들어가 있습니다.
+    //기본 점수: 조회수 * 0.1 + 좋아요 * 2 + 댓글수 * 1.5 로 환산합니다.
+    //시간 패널티: 작성된 지 7일(일주일) 주기로 점수가 점점 깎이도록 분모를 키웁니다. 즉, 아무리 인기가 많았던 글이라도 시간이 오래 지나면 점수가 낮아져 최신 트렌드 글이 올라올 수 있도록 돕습니다.
+
+    //5. 부가 기능: 맞춤형 레이아웃 조언 (buildLayoutAdvice)
+    //유저의 방 상황에 맞춰 텍스트로 된 인테리어 팁을 조합해 줍니다.
+    //방이 10평 미만으로 좁다면? "접이식 테이블을 쓰세요", "침대를 창 반대에 두세요" 같은 팁을 추가합니다.
+    //재택근무를 하는 유저라면? "책상은 자연광 옆에 두세요" 같은 라이프스타일 맞춤형 조언을 붙여줍니다.
+
+
     @Transactional(readOnly = true)
     public RecommendResultDto recommend(Long memberId) {
         UserProfile profile = userProfileRepository.findByMemberId(memberId)
                 .orElseThrow(() -> new IllegalStateException("추천 프로필을 먼저 등록해 주세요."));
 
         List<InteriorPost> candidates = interiorPostRepository
-                .findTop50ByStatusOrderByCreatedAtDesc(PostStatus.VISIBLE);
+                .findTop20ByStatusOrderByLikeCountDescViewCountDescCreatedAtDesc(PostStatus.VISIBLE);
 
         List<ScorePostDto> profileBased = scoreByProfile(profile, candidates, 10);
         List<InteriorPost> popular = interiorPostRepository
