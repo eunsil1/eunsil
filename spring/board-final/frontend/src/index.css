@@ -1,0 +1,159 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f5f3ee;
+  --surface:   #ffffff;
+  --border:    #e2ddd6;
+  --text:      #1a1814;
+  --muted:     #8a8278;
+  --accent:    #2d5a3d;
+  --accent-lt: #e8f0ea;
+  --danger:    #c0392b;
+  --radius:    10px;
+  --shadow:    0 2px 12px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── 레이아웃 ────────────────────────────── */
+.container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+/* ── 카드 ────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+}
+
+/* ── 버튼 ────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  font-size: 14px; font-weight: 500;
+  cursor: pointer; border: none; transition: all .18s;
+}
+.btn-primary   { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #234a31; }
+.btn-outline   { background: transparent; border: 1.5px solid var(--border); color: var(--text); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.btn-danger    { background: transparent; border: 1.5px solid var(--danger); color: var(--danger); }
+.btn-danger:hover { background: var(--danger); color: #fff; }
+.btn:disabled  { opacity: .5; cursor: not-allowed; }
+.btn-sm        { padding: 6px 14px; font-size: 13px; }
+
+/* ── 폼 ──────────────────────────────────── */
+.form-group        { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.form-group label  { font-size: 13px; font-weight: 500; color: var(--muted); }
+.form-group input,
+.form-group textarea {
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color .18s;
+  outline: none;
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--accent); background: #fff; }
+.form-group .error { font-size: 12px; color: var(--danger); }
+
+/* ── 알림 ────────────────────────────────── */
+.alert { padding: 12px 16px; border-radius: var(--radius); font-size: 14px; margin-bottom: 16px; }
+.alert-error   { background: #fdf2f2; border: 1px solid #f5c6c6; color: var(--danger); }
+.alert-success { background: var(--accent-lt); border: 1px solid #b8d4be; color: var(--accent); }
+
+/* ── 네브바 ──────────────────────────────── */
+.navbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  height: 58px;
+  display: flex; align-items: center;
+  position: sticky; top: 0; z-index: 100;
+}
+.navbar .container {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+}
+.navbar-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px; color: var(--accent); letter-spacing: -.5px;
+}
+.navbar-actions { display: flex; gap: 10px; align-items: center; }
+.navbar-user    { font-size: 13px; color: var(--muted); }
+
+/* ── 페이지 공통 ─────────────────────────── */
+.page { padding: 40px 0 80px; }
+.page-header { margin-bottom: 28px; }
+.page-header h1 { font-family: 'DM Serif Display', serif; font-size: 28px; font-weight: 400; }
+.page-header p  { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+/* ── 게시글 목록 ─────────────────────────── */
+.post-list { display: flex; flex-direction: column; gap: 1px; }
+.post-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: all .18s;
+}
+.post-item:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+.post-item:last-child  { border-radius: 0 0 var(--radius) var(--radius); }
+.post-item:only-child  { border-radius: var(--radius); }
+.post-item:hover       { background: var(--accent-lt); border-color: var(--accent); z-index: 1; position: relative; }
+.post-item-title { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+.post-item-meta  { font-size: 13px; color: var(--muted); display: flex; gap: 12px; }
+
+/* ── 페이지네이션 ────────────────────────── */
+.pagination { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
+.page-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface); cursor: pointer;
+  font-size: 14px; display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.page-btn:hover   { border-color: var(--accent); color: var(--accent); }
+.page-btn.active  { background: var(--accent); border-color: var(--accent); color: #fff; }
+.page-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ── 게시글 상세 ─────────────────────────── */
+.post-detail-header { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.post-detail-title  { font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400; margin-bottom: 10px; }
+.post-detail-meta   { font-size: 13px; color: var(--muted); display: flex; gap: 16px; }
+.post-detail-body   { font-size: 16px; line-height: 1.9; white-space: pre-wrap; }
+.post-detail-actions { display: flex; gap: 10px; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); }
+
+/* ── 로딩 / 빈 상태 ──────────────────────── */
+.empty { text-align: center; padding: 60px 0; color: var(--muted); }
+.empty-icon { font-size: 40px; margin-bottom: 12px; }
+.loading { text-align: center; padding: 60px 0; color: var(--muted); }
+
+/* ── 인증 페이지 ─────────────────────────── */
+.auth-page {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg);
+}
+.auth-box { width: 100%; max-width: 420px; }
+.auth-box .brand {
+  text-align: center; margin-bottom: 32px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px; color: var(--accent);
+}
+.auth-box .subtitle { text-align: center; color: var(--muted); font-size: 14px; margin-top: -24px; margin-bottom: 28px; }
+.auth-footer { text-align: center; margin-top: 18px; font-size: 14px; color: var(--muted); }
+.auth-footer a { color: var(--accent); font-weight: 500; }

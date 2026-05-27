@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">00 res 연습</string>
+    <string name="screen_title">res 폴더 연습</string>
+    <string name="subtitle">문자열 · 색상 · 이미지를 res에서 불러옵니다</string>
+    <string name="label_strings">strings.xml → stringResource()</string>
+    <string name="label_colors">colors.xml → colorResource()</string>
+    <string name="label_drawable">drawable → painterResource()</string>
+    <string name="button_next">다음 팁</string>
+
+    <string-array name="tips">
+        <item>\@string/ 은 res/values/strings.xml의 이름을 가리킵니다.</item>
+        <item>Manifest의 android:label="\@string/app_name" 도 같은 방식입니다.</item>
+        <item>색·글자·이미지를 코드에 박지 말고 res에 두면 수정이 쉽습니다.</item>
+    </string-array>
+</resources>
