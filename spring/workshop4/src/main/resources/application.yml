@@ -30,16 +30,16 @@ spring:
       client:
         registration:
           google:
-            client-id: 422882629232-8pon9f90bifqlt0qlhe4p2ng7jf9qgnj.apps.googleusercontent.com
-            client-secret: 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
+            client-id: ${GOOGLE_CLIENT_ID:change-me}
+            client-secret: ${GOOGLE_CLIENT_SECRET:change-me}
             scope:
               - openid
               - profile
               - email
           naver:
             provider: naver
-            client-id: anRBo1M8psCb4SJXFISI
-            client-secret: K7O1w4r86O
+            client-id: ${NAVER_CLIENT_ID:change-me}
+            client-secret: ${NAVER_CLIENT_SECRET:change-me}
             client-name: Naver
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
@@ -48,8 +48,8 @@ spring:
               - email
           kakao:
             provider: kakao
-            client-id: 7e3ea811040be56df471ac895856a9dd
-            client-secret: iAh6cYzixzkgUeC881r8wCwZJ6NbnoHs
+            client-id: ${KAKAO_CLIENT_ID:change-me}
+            client-secret: ${KAKAO_CLIENT_SECRET:}
             client-name: Kakao
             client-authentication-method: client_secret_post
             authorization-grant-type: authorization_code
@@ -74,4 +74,3 @@ server:
 
 app:
   upload-dir: ${user.home}/board-login-img-security-oauth-uploads/
-  frontend-url: http://localhost:5174
