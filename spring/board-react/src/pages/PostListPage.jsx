@@ -11,7 +11,6 @@ export default function PostListPage() {
   useEffect(() => {
     api.get('/posts')
       .then(res => {
-        // 배열로 오면 그대로, 페이징 객체로 오면 content 꺼내기
         const data = res.data
         if (Array.isArray(data)) {
           setPosts(data)
@@ -35,10 +34,36 @@ export default function PostListPage() {
         {posts.map(post => (
           <div key={post.id}
                onClick={() => navigate(`/posts/${post.id}`)}
-               style={{ padding:16, borderBottom:'1px solid #eee', cursor:'pointer' }}>
-            <div style={{ fontWeight:'bold' }}>{post.title}</div>
-            <div style={{ color:'#888', fontSize:13 }}>
-              {post.authorName} · {post.createdAt?.slice(0, 10)}
+               style={{ padding:16, borderBottom:'1px solid #eee',
+                        cursor:'pointer', display:'flex',
+                        gap:16, alignItems:'center' }}>
+
+            {/* 썸네일 */}
+            {post.thumbnailUrl ? (
+              <img
+                src={'http://localhost:8087' + post.thumbnailUrl}
+                alt="썸네일"
+                style={{ width:80, height:80, objectFit:'cover',
+                         borderRadius:8, flexShrink:0,
+                         border:'1px solid #eee' }} />
+            ) : (
+              <div style={{ width:80, height:80, borderRadius:8,
+                            background:'#f5f5f5', flexShrink:0,
+                            display:'flex', alignItems:'center',
+                            justifyContent:'center',
+                            color:'#ccc', fontSize:28 }}>
+                📝
+              </div>
+            )}
+
+            {/* 글 정보 */}
+            <div>
+              <div style={{ fontWeight:'bold', marginBottom:4 }}>
+                {post.title}
+              </div>
+              <div style={{ color:'#888', fontSize:13 }}>
+                {post.authorName} · {post.createdAt?.slice(0, 10)}
+              </div>
             </div>
           </div>
         ))}

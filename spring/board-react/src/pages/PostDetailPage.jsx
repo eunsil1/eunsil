@@ -43,8 +43,8 @@ export default function PostDetailPage() {
             {post.images?.length > 0 && (
               <div style={{ display:'flex', gap:10, marginTop:20, flexWrap:'wrap' }}>
                 {post.images.map(img => (
-                  <img key={img.id} src={img.thumbnailUrl} alt=""
-                       style={{ width:120, height:120, objectFit:'cover', borderRadius:8 }} />
+                  <img key={img.id} src={'http://localhost:8087' + img.url} alt=""
+                       style={{ maxWidth:'100%', height:'auto', borderRadius:8, border: '1px solid #eee' }} />
                 ))}
               </div>
             )}

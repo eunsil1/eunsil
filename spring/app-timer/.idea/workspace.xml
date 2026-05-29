@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="af7e00ae-42b6-4448-a408-26ae19bc799a" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/../../kotlin/appnote/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../kotlin/appnote/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../workshop4/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../workshop4/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../workshop4/src/main/java/com/example/boardloginimgsecurityoauth/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../workshop4/src/main/java/com/example/boardloginimgsecurityoauth/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../workshop4/src/main/java/com/example/boardloginimgsecurityoauth/domain/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../workshop4/src/main/java/com/example/boardloginimgsecurityoauth/domain/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../workshop4/src/main/java/com/example/boardloginimgsecurityoauth/repository/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../workshop4/src/main/java/com/example/boardloginimgsecurityoauth/repository/BoardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../workshop4/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../workshop4/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3EKZNoqwLWZDhhThQVCcIjGdKa9" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main 리베이스 중",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "C:/eunsil/spring/app-timer/src/Main.kt"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="af7e00ae-42b6-4448-a408-26ae19bc799a" name="변경" comment="" />
+      <created>1779929186853</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1779929186853</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/Main.kt</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
