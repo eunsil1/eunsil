@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_foreground.xml">
+        <config>
+          <theme>@style/Theme.Apptodo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi/ic_launcher.xml">
+        <config>
+          <theme>@style/Theme.Apptodo</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml">
+        <config>
+          <theme>@style/Theme.Apptodo</theme>
+        </config>
+      </layout>
+    </layouts>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4d278faf-bd70-49bd-b971-1d2f7dac793b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/BoardLoginApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/domain/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/domain/BoardImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/domain/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/repository/BoardRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/security/CustomOAuth2UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/security/CustomOidcUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/security/LoginUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/security/LoginUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/security/OAuthUserProfile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/security/SecurityUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/service/BoardService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/web/ApiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/web/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/web/BoardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/web/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/web/LoginCheckInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/web/dto/BoardForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/java/com/example/boardloginimgsecurityoauth/web/dto/RegisterForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/resources/templates/board/detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/resources/templates/board/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/resources/templates/board/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/resources/templates/board/write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/resources/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/resources/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/main/resources/templates/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../spring/workshop4/src/test/java/com/example/boardloginimgsecurityoauth/BoardLoginApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LocalEmulator::path=C:\Users\tj\.android\avd\Medium_Phone.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="app-todo" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\tj\.gradle\wrapper\dists\gradle-9.4.1-bin\arn2x92ynaizyzdaamcbpbhtj\gradle-9.4.1" javaHome="C:\Program Files\Android\Android Studio\jbr" gradleVersion="9.4.1" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3EFHLCWjB20Ct1bYD0muAg7cxFn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "Gradle.Configure Daemon JVM Criteria.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/eunsil/kotlin/apptodo1",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app-todo.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="RESTORE_FRESH_INSTALL_ONLY" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4d278faf-bd70-49bd-b971-1d2f7dac793b" name="Changes" comment="" />
+      <created>1779767338796</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1779767338796</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.example.app_todo">
+          <value>
+            <CheckInfo lastCheckTimestamp="1779947147749" />
+          </value>
+        </entry>
+        <entry key="com.example.app_todo.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1779947147745" />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

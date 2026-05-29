@@ -1,0 +1,82 @@
+.stat-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 24px 0 36px;
+}
+
+.stat-card{
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-value{
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--neon-cyan);
+}
+
+.stat-label{
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+.section-title{
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    color: var(--text-main);
+}
+
+/*기록 리스트*/
+.record-list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.record-row{
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    transition: all 0.2s;
+}
+
+.record-row:hover{
+    border-color: var(--neon-purple);
+}
+
+.record-game{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.record-name{
+    font-weight: 600;
+}
+
+.record-cat{
+    font-size: 0.72rem;
+    color: var(--neon-purple);
+}
+.record-score{
+    font-weight: 700;
+    color: var(--neon-cyan);
+    margin-right: 16px;
+}
+
+.record-date{
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}

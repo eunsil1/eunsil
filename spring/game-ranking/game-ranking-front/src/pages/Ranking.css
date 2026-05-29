@@ -1,0 +1,64 @@
+.score-form{
+    display: flex;
+    gap: 10px;
+    margin: 20px 0 28px;
+}
+
+.rank-list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rank-row{
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    transition: all 0.2s;
+}
+
+.rank-row:hover{
+    background: var(--bg-card-hover);
+    transform: translateX(4px);
+}
+
+.rank-num{
+    width: 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-dim);
+}
+
+.rank-name{
+    flex: 1;
+    font-weight: 500;
+}
+
+.rank-score{
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--neon-cyan);
+}
+
+/*1~3등 강조*/
+.rank-1{
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+.rank-2{
+    border-color: var(--silver);
+}
+
+.rank-3{
+    border-color: var(--bronze);
+}
+
+.empty{
+    text-align: center;
+    color: var(--text-dim);
+    padding: 40px;
+}

@@ -1,0 +1,34 @@
+.auth-box{
+    max-width: 380px;
+    margin: 60px auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 28px;
+}
+
+.auth-box .neon-title{
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.auth-msg{
+    color: var(--neon-pink);
+    font-size: 0.85rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.auth-switch{
+    color: var(--neon-pink);
+    font-size: 0.85rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.auth-switch{
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
