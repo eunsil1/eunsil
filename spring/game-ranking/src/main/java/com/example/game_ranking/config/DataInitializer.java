@@ -43,43 +43,38 @@ public class DataInitializer  implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(users));
 
         // ===== 2. 게임 생성 =====
-        Game tetris  = createGame("테트리스", "블록을 쌓아 줄을 없애는 클래식 퍼즐", "퍼즐");
-        Game snake   = createGame("스네이크", "먹이를 먹고 몸을 키우는 게임", "아케이드");
-        Game game2048 = createGame("2048", "같은 숫자를 합쳐 2048을 만들기", "퍼즐");
-        Game flappy  = createGame("플래피버드", "장애물을 피해 멀리 날아가기", "아케이드");
-        Game minesweeper = createGame("지뢰찾기", "지뢰를 피해 칸을 여는 두뇌게임", "전략");
+        Game clickGame  = createGame("클릭 챌린지", "10초 안에 버튼을 최대한 많이 클릭하세요!", "액션");
+        Game reactionGame   = createGame("반응속도 테스트", "화면이 초록색으로 바뀌는 순간 빠르게 클릭!", "반응");
+        Game targetGame = createGame("타겟 클릭", "30초 안에 나타나는 타겟을 빠르게 클릭하세요!", "액션");
+        Game memoryGame = createGame("숫자 기억", "순서대로 나타나는 숫자를 기억하고 입력하세요!", "두뇌");
 
-        gameRepository.saveAll(Arrays.asList(tetris, snake, game2048, flappy, minesweeper));
+        gameRepository.saveAll(Arrays.asList(clickGame, reactionGame, targetGame, memoryGame));
 
         // ===== 3. 점수 생성 =====
-        // 테트리스 점수
-        saveScore(users[0], tetris, 152000);
-        saveScore(users[2], tetris, 248000);
-        saveScore(users[4], tetris, 310000);
-        saveScore(users[1], tetris, 89000);
-        saveScore(users[3], tetris, 45000);
+        // 클릭 챌린지 (클릭 횟수 - 높을수록 좋음)
+        saveScore(users[0], clickGame, 87);
+        saveScore(users[2], clickGame, 95);
+        saveScore(users[4], clickGame, 102);
+        saveScore(users[1], clickGame, 64);
+        saveScore(users[3], clickGame, 51);
 
-        // 스네이크 점수
-        saveScore(users[0], snake, 1250);
-        saveScore(users[2], snake, 2100);
-        saveScore(users[1], snake, 870);
-        saveScore(users[3], snake, 540);
+        // 반응속도 테스트 점수(점수화된 값 - 높을수록 좋음)
+        saveScore(users[2], reactionGame, 920);
+        saveScore(users[0], reactionGame, 880);
+        saveScore(users[1], reactionGame, 750);
+        saveScore(users[3], reactionGame, 690);
 
-        // 2048 점수
-        saveScore(users[2], game2048, 32768);
-        saveScore(users[0], game2048, 16384);
-        saveScore(users[4], game2048, 20480);
-        saveScore(users[1], game2048, 8192);
+        // 타겟 클릭 (맞춘 개수 - 높을수록 좋음)
+        saveScore(users[4], targetGame, 38);
+        saveScore(users[0], targetGame, 42);
+        saveScore(users[2], targetGame, 35);
+        saveScore(users[1], targetGame, 28);
 
-        // 플래피버드 점수
-        saveScore(users[3], flappy, 42);
-        saveScore(users[0], flappy, 128);
-        saveScore(users[2], flappy, 95);
-
-        // 지뢰찾기 점수 (낮을수록 좋지만, 일단 점수로 저장)
-        saveScore(users[4], minesweeper, 850);
-        saveScore(users[1], minesweeper, 620);
-        saveScore(users[2], minesweeper, 990);
+        // 숫자 기억 (기억한 자릿수 점수 - 높을수록 좋음)
+        saveScore(users[2], memoryGame, 12);
+        saveScore(users[0], memoryGame, 9);
+        saveScore(users[4], memoryGame, 11);
+        saveScore(users[3], memoryGame, 6);
 
         System.out.println("✅ 더미데이터 생성 완료!");
         System.out.println("   - 유저 " + userRepository.count() + "명");

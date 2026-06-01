@@ -17,7 +17,7 @@ function App() {
           <Route path="/ranking/:gameId" element={<Ranking/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
-          <Route path="/mypage" element={<MyPage/>}/>
+          <Route path="/mypage" element={<MyPage/>}/>cd
       </Routes>
   );
 }
